@@ -135,7 +135,6 @@ namespace CapaDatos
             while (reader.Read())
             {
                 cbo.Items.Add(reader.GetString("nombre"));
-
             }
             
 
@@ -157,8 +156,28 @@ namespace CapaDatos
             {
                 cbo.Items.Add(reader.GetString("NombreIdioma"));
             }
+        }
 
+        public int obtenerIdPais(string nombrePais)
+        {
+            int idPais = ;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
 
+            string sql =
+                "SELECT idPais FROM paises WHERE nombre LIKE @nombrePais";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nombrePais", nombrePais);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idPais = int.Parse(reader["Contraseña"].ToString());
+            }
+
+            return idPais;
         }
         public static string MostrarAnuncio(int id)
         {
@@ -204,7 +223,6 @@ namespace CapaDatos
             while (reader.Read())
             {
                 cantidadAnuncios = int.Parse(reader[0].ToString());
- 
             }
 
             return cantidadAnuncios;
