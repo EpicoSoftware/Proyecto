@@ -15,7 +15,8 @@ namespace CapaLogica
         {
             string respuesta;
             Random random = new Random();
-            int randomNumero = random.Next(1, 4);
+            int cantidadAnuncios = Modelos.CantidadDeAnuncios();
+            int randomNumero = random.Next(1, cantidadAnuncios);
             string anuncio = Modelos.MostrarAnuncio(randomNumero);
             if (string.IsNullOrEmpty(anuncio)){
                 respuesta = "No se encontro anuncio";

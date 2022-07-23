@@ -69,7 +69,7 @@ namespace CapaLogica
                 }
                 else
                 {
-                    MessageBox.Show("Eso no aparenta ser un correo");
+                    respuesta = "Eso no aparenta ser un correo";
                 }
                 
             }

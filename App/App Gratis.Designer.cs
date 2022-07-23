@@ -38,9 +38,14 @@
             this.picBanner = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnInicio = new Guna.UI2.WinForms.Guna2Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnMin = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.btnMax = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.toggleColorMode = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -59,7 +64,7 @@
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.FillColor = System.Drawing.Color.Transparent;
             this.btnCerrar.IconColor = System.Drawing.Color.Black;
-            this.btnCerrar.Location = new System.Drawing.Point(807, 12);
+            this.btnCerrar.Location = new System.Drawing.Point(547, 14);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(31, 19);
             this.btnCerrar.TabIndex = 6;
@@ -74,7 +79,7 @@
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(227, 579);
+            this.pnlMenu.Size = new System.Drawing.Size(227, 581);
             this.pnlMenu.TabIndex = 7;
             // 
             // guna2Button1
@@ -94,7 +99,6 @@
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(227, 45);
             this.guna2Button1.TabIndex = 5;
-            this.guna2Button1.Text = "Inicio";
             this.guna2Button1.UseTransparentBackground = true;
             // 
             // guna2PictureBox2
@@ -134,6 +138,8 @@
             this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(146)))), ((int)(((byte)(215)))));
+            this.btnInicio.Image = global::App.Properties.Resources.casa;
+            this.btnInicio.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnInicio.Location = new System.Drawing.Point(0, 136);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(227, 45);
@@ -147,14 +153,65 @@
             this.timer1.Interval = 6000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Controls.Add(this.toggleColorMode);
+            this.guna2Panel1.Controls.Add(this.btnMin);
+            this.guna2Panel1.Controls.Add(this.btnMax);
+            this.guna2Panel1.Controls.Add(this.btnCerrar);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.Location = new System.Drawing.Point(227, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(590, 46);
+            this.guna2Panel1.TabIndex = 8;
+            // 
+            // btnMin
+            // 
+            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMin.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.btnMin.FillColor = System.Drawing.Color.Transparent;
+            this.btnMin.IconColor = System.Drawing.Color.Black;
+            this.btnMin.Location = new System.Drawing.Point(473, 14);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(31, 19);
+            this.btnMin.TabIndex = 8;
+            // 
+            // btnMax
+            // 
+            this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMax.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
+            this.btnMax.FillColor = System.Drawing.Color.Transparent;
+            this.btnMax.IconColor = System.Drawing.Color.Black;
+            this.btnMax.Location = new System.Drawing.Point(509, 14);
+            this.btnMax.Name = "btnMax";
+            this.btnMax.Size = new System.Drawing.Size(31, 19);
+            this.btnMax.TabIndex = 7;
+            // 
+            // toggleColorMode
+            // 
+            this.toggleColorMode.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.toggleColorMode.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.toggleColorMode.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.toggleColorMode.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.toggleColorMode.Location = new System.Drawing.Point(344, 14);
+            this.toggleColorMode.Name = "toggleColorMode";
+            this.toggleColorMode.Size = new System.Drawing.Size(35, 20);
+            this.toggleColorMode.TabIndex = 9;
+            this.toggleColorMode.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleColorMode.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleColorMode.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.toggleColorMode.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.toggleColorMode.CheckedChanged += new System.EventHandler(this.toggleColorMode_CheckedChanged);
+            // 
             // App_Gratis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 579);
+            this.ClientSize = new System.Drawing.Size(817, 581);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.pnlMenu);
-            this.Controls.Add(this.btnCerrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "App_Gratis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -163,6 +220,7 @@
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).EndInit();
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -178,5 +236,9 @@
         private Guna.UI2.WinForms.Guna2Button btnInicio;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Timer timer1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2ControlBox btnMin;
+        private Guna.UI2.WinForms.Guna2ControlBox btnMax;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch toggleColorMode;
     }
 }

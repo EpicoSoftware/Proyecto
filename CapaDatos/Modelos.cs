@@ -142,6 +142,7 @@ namespace CapaDatos
         }
         public static void obtenerListaIdiomas(ComboBox cbo)
         {
+
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
@@ -155,7 +156,6 @@ namespace CapaDatos
             while (reader.Read())
             {
                 cbo.Items.Add(reader.GetString("NombreIdioma"));
-
             }
 
 
@@ -203,7 +203,7 @@ namespace CapaDatos
 
             while (reader.Read())
             {
-                cantidadAnuncios = int.Parse(reader["count(*)"].ToString());
+                cantidadAnuncios = int.Parse(reader[0].ToString());
  
             }
 
