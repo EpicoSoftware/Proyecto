@@ -34,8 +34,12 @@
             this.btnCerrar = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnIngresar = new Guna.UI2.WinForms.Guna2Button();
             this.btnRegistrarse = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblBienvenida = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.pnlCambiarContraseña = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.btnInvitado = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEspañol = new Guna.UI2.WinForms.Guna2Button();
+            this.btnIngles = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCorreo = new Guna.UI2.WinForms.Guna2TextBox();
@@ -48,13 +52,10 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.btnCerrar, "btnCerrar");
             this.btnCerrar.FillColor = System.Drawing.Color.Transparent;
             this.btnCerrar.IconColor = System.Drawing.Color.Black;
-            this.btnCerrar.Location = new System.Drawing.Point(273, 13);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(31, 29);
-            this.btnCerrar.TabIndex = 0;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnIngresar
@@ -66,13 +67,9 @@
             this.btnIngresar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnIngresar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnIngresar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            resources.ApplyResources(this.btnIngresar, "btnIngresar");
             this.btnIngresar.ForeColor = System.Drawing.Color.White;
-            this.btnIngresar.Location = new System.Drawing.Point(58, 282);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(200, 45);
-            this.btnIngresar.TabIndex = 3;
-            this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // btnRegistrarse
@@ -87,25 +84,17 @@
             this.btnRegistrarse.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRegistrarse.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRegistrarse.FillColor = System.Drawing.Color.Transparent;
-            this.btnRegistrarse.Font = new System.Drawing.Font("Segoe UI", 9F);
+            resources.ApplyResources(this.btnRegistrarse, "btnRegistrarse");
             this.btnRegistrarse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnRegistrarse.Location = new System.Drawing.Point(58, 333);
             this.btnRegistrarse.Name = "btnRegistrarse";
-            this.btnRegistrarse.Size = new System.Drawing.Size(200, 45);
-            this.btnRegistrarse.TabIndex = 4;
-            this.btnRegistrarse.Text = "Registrarse";
             this.btnRegistrarse.UseTransparentBackground = true;
             this.btnRegistrarse.Click += new System.EventHandler(this.btnRegistrarse_Click);
             // 
-            // guna2HtmlLabel1
+            // lblBienvenida
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(58, 78);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(130, 60);
-            this.guna2HtmlLabel1.TabIndex = 5;
-            this.guna2HtmlLabel1.Text = "Bienvenido, <br>de nuevo";
+            this.lblBienvenida.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.lblBienvenida, "lblBienvenida");
+            this.lblBienvenida.Name = "lblBienvenida";
             // 
             // guna2DragControl1
             // 
@@ -113,15 +102,66 @@
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
+            // pnlCambiarContraseña
+            // 
+            this.pnlCambiarContraseña.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pnlCambiarContraseña, "pnlCambiarContraseña");
+            this.pnlCambiarContraseña.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.pnlCambiarContraseña.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
+            this.pnlCambiarContraseña.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+            this.pnlCambiarContraseña.Name = "pnlCambiarContraseña";
+            // 
+            // btnInvitado
+            // 
+            this.btnInvitado.Animated = true;
+            this.btnInvitado.BackColor = System.Drawing.Color.Transparent;
+            this.btnInvitado.BorderColor = System.Drawing.Color.Empty;
+            this.btnInvitado.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnInvitado.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnInvitado.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.btnInvitado.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnInvitado.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnInvitado.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnInvitado.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnInvitado.FillColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnInvitado, "btnInvitado");
+            this.btnInvitado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnInvitado.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnInvitado.Name = "btnInvitado";
+            this.btnInvitado.UseTransparentBackground = true;
+            // 
+            // btnEspañol
+            // 
+            this.btnEspañol.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEspañol.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEspañol.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEspañol.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEspañol.FillColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnEspañol, "btnEspañol");
+            this.btnEspañol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnEspañol.Name = "btnEspañol";
+            this.btnEspañol.Click += new System.EventHandler(this.btnEspañol_Click);
+            // 
+            // btnIngles
+            // 
+            this.btnIngles.BackColor = System.Drawing.Color.Transparent;
+            this.btnIngles.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnIngles.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnIngles.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnIngles.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnIngles.FillColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnIngles, "btnIngles");
+            this.btnIngles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.btnIngles.Name = "btnIngles";
+            this.btnIngles.UseTransparentBackground = true;
+            this.btnIngles.Click += new System.EventHandler(this.guna2Button2_Click);
+            // 
             // guna2PictureBox1
             // 
-            this.guna2PictureBox1.Image = global::App.Properties.Resources.logo1;
+            this.guna2PictureBox1.Image = global::App.Properties.Resources.logo;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(13, 13);
+            resources.ApplyResources(this.guna2PictureBox1, "guna2PictureBox1");
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(32, 35);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 6;
             this.guna2PictureBox1.TabStop = false;
             // 
             // txtPassword
@@ -133,17 +173,14 @@
             this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            resources.ApplyResources(this.txtPassword, "txtPassword");
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.IconLeft = global::App.Properties.Resources.cerrar_con_llave;
-            this.txtPassword.Location = new System.Drawing.Point(58, 218);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.PlaceholderText = "Contraseña";
             this.txtPassword.SelectedText = "";
-            this.txtPassword.Size = new System.Drawing.Size(200, 36);
             this.txtPassword.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtPassword.TabIndex = 2;
             // 
             // txtCorreo
             // 
@@ -154,37 +191,33 @@
             this.txtCorreo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCorreo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtCorreo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            resources.ApplyResources(this.txtCorreo, "txtCorreo");
             this.txtCorreo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCorreo.IconLeft = global::App.Properties.Resources.sobre;
-            this.txtCorreo.Location = new System.Drawing.Point(58, 163);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.PasswordChar = '\0';
-            this.txtCorreo.PlaceholderText = "Correo";
+            this.txtCorreo.PlaceholderText = "Email";
             this.txtCorreo.SelectedText = "";
-            this.txtCorreo.Size = new System.Drawing.Size(200, 36);
             this.txtCorreo.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtCorreo.TabIndex = 1;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(316, 446);
+            this.Controls.Add(this.btnIngles);
+            this.Controls.Add(this.btnEspañol);
+            this.Controls.Add(this.btnInvitado);
+            this.Controls.Add(this.pnlCambiarContraseña);
             this.Controls.Add(this.guna2PictureBox1);
-            this.Controls.Add(this.guna2HtmlLabel1);
+            this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.btnRegistrarse);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.btnCerrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Login";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "`";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -201,8 +234,12 @@
         private Guna.UI2.WinForms.Guna2TextBox txtCorreo;
         private Guna.UI2.WinForms.Guna2Button btnRegistrarse;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblBienvenida;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2GradientPanel pnlCambiarContraseña;
+        private Guna.UI2.WinForms.Guna2Button btnInvitado;
+        private Guna.UI2.WinForms.Guna2Button btnIngles;
+        private Guna.UI2.WinForms.Guna2Button btnEspañol;
     }
 }
 

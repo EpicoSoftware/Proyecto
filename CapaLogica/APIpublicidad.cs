@@ -11,20 +11,22 @@ namespace CapaLogica
 {
     public class APIpublicidad
     {
-        public byte[] DisplayAnuncioRandom()
+        public Anuncio DisplayAnuncioRandom()
         {
-            string respuesta;
             Random random = new Random();
             int cantidadAnuncios = Modelos.CantidadDeAnuncios();
             int randomNumero = random.Next(1, cantidadAnuncios);
             string anuncio = Modelos.MostrarAnuncio(randomNumero);
-            if (string.IsNullOrEmpty(anuncio)){
-                respuesta = "No se encontro anuncio";
-            }
             var datosAnuncio = JsonConvert.DeserializeObject<Anuncio>(anuncio);
-            byte[] imagen = datosAnuncio.Imagen;
-            return imagen;
+            return datosAnuncio;
         }
+
+        public string AgregarVista(int idAnuncio, int idUsuario)
+        {
+            string respuesta = Modelos.AgregarVistaAnuncio(idAnuncio, idUsuario);
+            return respuesta;
+        }
+
         public string agregarAnuncio(string anuncioJson)
         {
             string respuesta = "";

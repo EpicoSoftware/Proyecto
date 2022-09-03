@@ -32,6 +32,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_SortFileContentOnSave = False
+		RESX_PrefixTranslations = False
+		RESX_NeutralResourcesLanguage = es-AR
 		SolutionGuid = {C4B4C531-F24C-468A-90E6-2B2D04F6823F}
 	EndGlobalSection
 EndGlobal

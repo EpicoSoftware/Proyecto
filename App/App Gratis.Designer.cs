@@ -39,9 +39,11 @@
             this.btnInicio = new Guna.UI2.WinForms.Guna2Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.toggleColorMode = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.btnMin = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnMax = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.toggleColorMode = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.lblNombre = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pnlContenedor = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
@@ -72,6 +74,7 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.pnlMenu.Controls.Add(this.lblNombre);
             this.pnlMenu.Controls.Add(this.guna2Button1);
             this.pnlMenu.Controls.Add(this.guna2PictureBox2);
             this.pnlMenu.Controls.Add(this.picBanner);
@@ -105,7 +108,7 @@
             // 
             this.guna2PictureBox2.Image = global::App.Properties.Resources.Vector;
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(21, 32);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(24, 31);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(177, 67);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -117,7 +120,7 @@
             this.picBanner.BackColor = System.Drawing.Color.Transparent;
             this.picBanner.FillColor = System.Drawing.Color.Transparent;
             this.picBanner.ImageRotate = 0F;
-            this.picBanner.Location = new System.Drawing.Point(12, 320);
+            this.picBanner.Location = new System.Drawing.Point(12, 319);
             this.picBanner.Name = "picBanner";
             this.picBanner.Size = new System.Drawing.Size(200, 247);
             this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -166,6 +169,21 @@
             this.guna2Panel1.Size = new System.Drawing.Size(590, 46);
             this.guna2Panel1.TabIndex = 8;
             // 
+            // toggleColorMode
+            // 
+            this.toggleColorMode.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.toggleColorMode.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.toggleColorMode.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.toggleColorMode.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.toggleColorMode.Location = new System.Drawing.Point(344, 14);
+            this.toggleColorMode.Name = "toggleColorMode";
+            this.toggleColorMode.Size = new System.Drawing.Size(35, 20);
+            this.toggleColorMode.TabIndex = 9;
+            this.toggleColorMode.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleColorMode.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.toggleColorMode.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.toggleColorMode.UncheckedState.InnerColor = System.Drawing.Color.White;
+            // 
             // btnMin
             // 
             this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -188,21 +206,24 @@
             this.btnMax.Size = new System.Drawing.Size(31, 19);
             this.btnMax.TabIndex = 7;
             // 
-            // toggleColorMode
+            // lblNombre
             // 
-            this.toggleColorMode.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.toggleColorMode.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.toggleColorMode.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.toggleColorMode.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.toggleColorMode.Location = new System.Drawing.Point(344, 14);
-            this.toggleColorMode.Name = "toggleColorMode";
-            this.toggleColorMode.Size = new System.Drawing.Size(35, 20);
-            this.toggleColorMode.TabIndex = 9;
-            this.toggleColorMode.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.toggleColorMode.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.toggleColorMode.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.toggleColorMode.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.toggleColorMode.CheckedChanged += new System.EventHandler(this.toggleColorMode_CheckedChanged);
+            this.lblNombre.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.Coral;
+            this.lblNombre.Location = new System.Drawing.Point(53, 277);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(118, 22);
+            this.lblNombre.TabIndex = 6;
+            this.lblNombre.Text = "Nombre Usuario";
+            // 
+            // pnlContenedor
+            // 
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContenedor.Location = new System.Drawing.Point(227, 46);
+            this.pnlContenedor.Name = "pnlContenedor";
+            this.pnlContenedor.Size = new System.Drawing.Size(590, 535);
+            this.pnlContenedor.TabIndex = 9;
             // 
             // App_Gratis
             // 
@@ -210,6 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 581);
+            this.Controls.Add(this.pnlContenedor);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -218,6 +240,7 @@
             this.Text = "App_Gratis";
             this.Load += new System.EventHandler(this.App_Gratis_Load);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
@@ -240,5 +263,7 @@
         private Guna.UI2.WinForms.Guna2ControlBox btnMin;
         private Guna.UI2.WinForms.Guna2ControlBox btnMax;
         private Guna.UI2.WinForms.Guna2ToggleSwitch toggleColorMode;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblNombre;
+        private Guna.UI2.WinForms.Guna2Panel pnlContenedor;
     }
 }

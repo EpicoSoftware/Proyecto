@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Windows.Forms;
+using System.Data;
 
 namespace CapaLogica
 {
@@ -31,7 +32,17 @@ namespace CapaLogica
 
             if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(password))
             {
-                respuesta = "Debe llenar todos los campos";
+                switch (Sesion.idIdioma)
+                {
+                    case 1:
+                        respuesta = "Debe llenar todos los campos";
+                        break;
+                    case 2:
+                        respuesta = "You must fill all the fields";
+                        break;
+
+                }
+
             }
             else
             {
@@ -42,7 +53,17 @@ namespace CapaLogica
 
                     if (datosUsuario == null)
                     {
-                        respuesta = "El usuario no existe";
+                        switch (Sesion.idIdioma)
+                        {
+                            case 1:
+                                respuesta = "El usuario no existe";
+                                break;
+                            case 2:
+                                respuesta = "User not found";
+                                break;
+
+                        }
+
                     }
                     else
                     {
@@ -54,12 +75,22 @@ namespace CapaLogica
 
                             if (contra != md5.Encriptar(password))//Compara las contrasenas encriptadas para mas seguridad
                             {
-                                respuesta = "El usuario y/o contraseña no coinciden";
+                                switch (Sesion.idIdioma)
+                                {
+                                    case 1:
+                                        respuesta = "La contraseña no es correcta";
+                                        break;
+                                    case 2:
+                                        respuesta = "The password is not correct";
+                                        break;
+                                }
+
                             }
                             else
                             {
                                 Sesion.correo = datosUsuario.Correo;
                                 Sesion.nombre = datosUsuario.Nombre;
+                                Sesion.idUsuario = datosUsuario.IdUsuario;
                                 Sesion.idTipo = datosUsuario.IdTipo;
                                 Sesion.idColorMode = datosUsuario.IdColorMode;
                                 Sesion.idIdioma = datosUsuario.IdIdioma;
@@ -69,29 +100,72 @@ namespace CapaLogica
                 }
                 else
                 {
-                    respuesta = "Eso no aparenta ser un correo";
+                    switch (Sesion.idIdioma)
+                    {
+                        case 1:
+                            respuesta = "Eso no aparenta ser un correo";
+                            break;
+                        case 2:
+                            respuesta = "That doesn't seem to be a mail";
+                            break;
+                    }
                 }
-                
+
             }
             return respuesta;
         }
-        public string Registro (string usuarioJson)
+
+
+        public string Registro(string usuarioJson, string contraseña)
         {
             string respuesta = "";
             var datosUsuario = JsonConvert.DeserializeObject<Usuario>(usuarioJson);
-            if(string.IsNullOrEmpty(datosUsuario.Nombre) ||
-                string.IsNullOrEmpty(datosUsuario.Correo) ||
-                datosUsuario.IdPais == null ||
-                datosUsuario.IdIdioma == null)
+            if (String.IsNullOrEmpty(datosUsuario.Correo) ||
+                String.IsNullOrEmpty(datosUsuario.Nombre) ||
+                String.IsNullOrEmpty(contraseña) ||
+                String.IsNullOrEmpty(datosUsuario.IdIdioma.ToString()) ||
+                String.IsNullOrEmpty(datosUsuario.IdPais.ToString()) ||
+                String.IsNullOrEmpty(datosUsuario.IdColorMode.ToString())
+                )
             {
-                respuesta = "Asegurate de llenar todos los campos";
+                switch (Sesion.idIdioma)
+                {
+                    case 1:
+                        respuesta = "Debes rellenar todos los campos";
+                        break;
+                    case 2:
+                        respuesta = "All field must be filled";
+                        break;
+                }
             }
             else
             {
-                Modelos.RegistrarUsuario(datosUsuario);
+                if (EmailValido(datosUsuario.Correo))
+                {
+                    /*try
+                    {
+                        Modelos.RegistrarUsuario(datosUsuario, contraseña);
+                    }
+                    catch (Exception ex)
+                    {
+                        respuesta = "No se ha podido registrar el usuario";
+                    }*/
+                    Modelos.RegistrarUsuario(datosUsuario, contraseña);
+                }
+                else
+                {
+                    switch (Sesion.idIdioma)
+                    {
+                        case 1:
+                            respuesta = "Eso no aparenta ser un correo";
+                            break;
+                        case 2:
+                            respuesta = "That doesn't seem to be a mail";
+                            break;
+                    }
+                }
             }
             return respuesta;
         }
-        
     }
 }

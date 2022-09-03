@@ -24,7 +24,8 @@ namespace App
 
         private void App_Gratis_Load(object sender, EventArgs e)
         {
-            lblNombre.Text = Sesion.nombre;
+            btnCuenta.Text = Sesion.nombre;
+            
             switch (Sesion.idColorMode)
             {
                 case 1:
@@ -45,7 +46,7 @@ namespace App
             MemoryStream ms = new MemoryStream(img);
             picBanner.Image = Image.FromStream(ms);
 
-            string respuesta = apiPubli.AgregarVista(anuncio.IdAnuncio, Sesion.idUsuario);
+            /*string respuesta = apiPubli.AgregarVista(anuncio.IdAnuncio, Sesion.idUsuario);
 
             if (string.IsNullOrEmpty(respuesta)) //Si respuesta tiene algun valor significa que dio un error
             {
@@ -54,7 +55,7 @@ namespace App
             else
             {
                 MessageBox.Show(respuesta);
-            }
+            }*/
 
         }
 
@@ -63,26 +64,16 @@ namespace App
             System.Diagnostics.Process.Start("http://google.com");
         }
 
-        private void toggleColorMode_CheckedChanged(object sender, EventArgs e)
+
+        private void btnAjustes_Click(object sender, EventArgs e)
         {
-            switch (Sesion.idColorMode)
-            {
-                case 1:
-                    Sesion.idColorMode = 2;
-                    break;
-                case 2:
-                    Sesion.idColorMode = 1;
-                    break;
-            }
-            switch (Sesion.idColorMode)
-            {
-                case 1:
-                    this.BackColor = Color.FromArgb(28, 28, 28);
-                    break;
-                case 2:
-                    this.BackColor = Color.White;
-                    break;
-            }
+            Ajustes frm = new Ajustes();
+            frm.Visible = true;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="APIautenticacion.cs" />
     <Compile Include="APIpublicidad.cs" />
+    <Compile Include="APIresultados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

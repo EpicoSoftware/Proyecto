@@ -28,119 +28,213 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSubirAnuncio = new Guna.UI2.WinForms.Guna2Button();
-            this.picBannerPreview = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.txtNombreMarca = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.txtLink = new Guna.UI2.WinForms.Guna2TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picBannerPreview)).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            this.Elipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnAbrirApp = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDeportes = new Guna.UI2.WinForms.Guna2Button();
+            this.btnMin = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.btnMax = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.btnCerrar = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.ResizeForm = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
+            this.pnlContenedor = new Guna.UI2.WinForms.Guna2Panel();
+            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.pnlMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnSubirAnuncio
+            // Elipse
             // 
-            this.btnSubirAnuncio.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSubirAnuncio.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSubirAnuncio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSubirAnuncio.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSubirAnuncio.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnSubirAnuncio.ForeColor = System.Drawing.Color.White;
-            this.btnSubirAnuncio.Location = new System.Drawing.Point(240, 284);
-            this.btnSubirAnuncio.Name = "btnSubirAnuncio";
-            this.btnSubirAnuncio.Size = new System.Drawing.Size(208, 31);
-            this.btnSubirAnuncio.TabIndex = 0;
-            this.btnSubirAnuncio.Text = "Subir Imagen Banner";
-            this.btnSubirAnuncio.Click += new System.EventHandler(this.btnSubirAnuncio_Click);
+            this.Elipse.TargetControl = this;
             // 
-            // picBannerPreview
+            // btnAbrirApp
             // 
-            this.picBannerPreview.ImageRotate = 0F;
-            this.picBannerPreview.Location = new System.Drawing.Point(240, 27);
-            this.picBannerPreview.Name = "picBannerPreview";
-            this.picBannerPreview.Size = new System.Drawing.Size(208, 251);
-            this.picBannerPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBannerPreview.TabIndex = 1;
-            this.picBannerPreview.TabStop = false;
+            this.btnAbrirApp.Animated = true;
+            this.btnAbrirApp.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrirApp.BorderColor = System.Drawing.Color.Empty;
+            this.btnAbrirApp.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnAbrirApp.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnAbrirApp.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnAbrirApp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAbrirApp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAbrirApp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAbrirApp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAbrirApp.FillColor = System.Drawing.Color.Transparent;
+            this.btnAbrirApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirApp.ForeColor = System.Drawing.Color.White;
+            this.btnAbrirApp.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnAbrirApp.IndicateFocus = true;
+            this.btnAbrirApp.Location = new System.Drawing.Point(762, 14);
+            this.btnAbrirApp.Name = "btnAbrirApp";
+            this.btnAbrirApp.Size = new System.Drawing.Size(153, 38);
+            this.btnAbrirApp.TabIndex = 16;
+            this.btnAbrirApp.Text = "Abrir App de Usuario";
+            this.btnAbrirApp.UseTransparentBackground = true;
             // 
-            // txtNombreMarca
+            // btnDeportes
             // 
-            this.txtNombreMarca.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNombreMarca.DefaultText = "";
-            this.txtNombreMarca.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtNombreMarca.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtNombreMarca.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNombreMarca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNombreMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombreMarca.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtNombreMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNombreMarca.Location = new System.Drawing.Point(21, 27);
-            this.txtNombreMarca.Name = "txtNombreMarca";
-            this.txtNombreMarca.PasswordChar = '\0';
-            this.txtNombreMarca.PlaceholderText = "Nombre de la Marca";
-            this.txtNombreMarca.SelectedText = "";
-            this.txtNombreMarca.Size = new System.Drawing.Size(200, 36);
-            this.txtNombreMarca.TabIndex = 2;
-            this.txtNombreMarca.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
+            this.btnDeportes.Animated = true;
+            this.btnDeportes.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeportes.BorderColor = System.Drawing.Color.Empty;
+            this.btnDeportes.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnDeportes.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnDeportes.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnDeportes.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDeportes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDeportes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDeportes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDeportes.FillColor = System.Drawing.Color.Transparent;
+            this.btnDeportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnDeportes.ForeColor = System.Drawing.Color.White;
+            this.btnDeportes.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnDeportes.IndicateFocus = true;
+            this.btnDeportes.Location = new System.Drawing.Point(97, 1);
+            this.btnDeportes.Name = "btnDeportes";
+            this.btnDeportes.Size = new System.Drawing.Size(120, 64);
+            this.btnDeportes.TabIndex = 13;
+            this.btnDeportes.Text = "Deportes";
+            this.btnDeportes.UseTransparentBackground = true;
+            this.btnDeportes.Click += new System.EventHandler(this.btnDeportes_Click);
             // 
-            // guna2Button1
+            // btnMin
             // 
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.BorderRadius = 14;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(21, 368);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(446, 31);
-            this.guna2Button1.TabIndex = 4;
-            this.guna2Button1.Text = "Subir Imagen Banner";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnMin.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.btnMin.FillColor = System.Drawing.Color.Transparent;
+            this.btnMin.IconColor = System.Drawing.Color.White;
+            this.btnMin.Location = new System.Drawing.Point(933, 15);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(31, 19);
+            this.btnMin.TabIndex = 11;
             // 
-            // txtLink
+            // btnMax
             // 
-            this.txtLink.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtLink.DefaultText = "";
-            this.txtLink.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtLink.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtLink.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtLink.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtLink.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLink.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtLink.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtLink.Location = new System.Drawing.Point(21, 80);
-            this.txtLink.Name = "txtLink";
-            this.txtLink.PasswordChar = '\0';
-            this.txtLink.PlaceholderText = "Link relacionado";
-            this.txtLink.SelectedText = "";
-            this.txtLink.Size = new System.Drawing.Size(200, 36);
-            this.txtLink.TabIndex = 3;
-            this.txtLink.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
+            this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMax.BackColor = System.Drawing.Color.Transparent;
+            this.btnMax.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
+            this.btnMax.FillColor = System.Drawing.Color.Transparent;
+            this.btnMax.IconColor = System.Drawing.Color.White;
+            this.btnMax.Location = new System.Drawing.Point(969, 15);
+            this.btnMax.Name = "btnMax";
+            this.btnMax.Size = new System.Drawing.Size(31, 19);
+            this.btnMax.TabIndex = 10;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.FillColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.IconColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(1007, 15);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(31, 19);
+            this.btnCerrar.TabIndex = 9;
+            // 
+            // ResizeForm
+            // 
+            this.ResizeForm.TargetForm = this;
+            // 
+            // pnlContenedor
+            // 
+            this.pnlContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlContenedor.Location = new System.Drawing.Point(0, 65);
+            this.pnlContenedor.Name = "pnlContenedor";
+            this.pnlContenedor.Size = new System.Drawing.Size(1061, 563);
+            this.pnlContenedor.TabIndex = 2;
+            // 
+            // dragControl
+            // 
+            this.dragControl.DockIndicatorTransparencyValue = 0.6D;
+            this.dragControl.TargetControl = this.pnlMenu;
+            this.dragControl.UseTransparentDrag = true;
+            // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Controls.Add(this.guna2Button3);
+            this.pnlMenu.Controls.Add(this.btnAbrirApp);
+            this.pnlMenu.Controls.Add(this.guna2PictureBox1);
+            this.pnlMenu.Controls.Add(this.btnDeportes);
+            this.pnlMenu.Controls.Add(this.btnMin);
+            this.pnlMenu.Controls.Add(this.btnCerrar);
+            this.pnlMenu.Controls.Add(this.btnMax);
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
+            this.pnlMenu.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.pnlMenu.Location = new System.Drawing.Point(0, 0);
+            this.pnlMenu.Name = "pnlMenu";
+            this.pnlMenu.Size = new System.Drawing.Size(1061, 65);
+            this.pnlMenu.TabIndex = 3;
+            // 
+            // guna2Button3
+            // 
+            this.guna2Button3.Animated = true;
+            this.guna2Button3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button3.BorderColor = System.Drawing.Color.Empty;
+            this.guna2Button3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.guna2Button3.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.guna2Button3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.guna2Button3.ForeColor = System.Drawing.Color.White;
+            this.guna2Button3.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.guna2Button3.IndicateFocus = true;
+            this.guna2Button3.Location = new System.Drawing.Point(214, 1);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.Size = new System.Drawing.Size(120, 64);
+            this.guna2Button3.TabIndex = 17;
+            this.guna2Button3.Text = "Equipos";
+            this.guna2Button3.UseTransparentBackground = true;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::App.Properties.Resources.logo1;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(12, 17);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(42, 32);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 14;
+            this.guna2PictureBox1.TabStop = false;
+            this.guna2PictureBox1.UseTransparentBackground = true;
             // 
             // AdminApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 411);
-            this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.txtLink);
-            this.Controls.Add(this.txtNombreMarca);
-            this.Controls.Add(this.picBannerPreview);
-            this.Controls.Add(this.btnSubirAnuncio);
+            this.ClientSize = new System.Drawing.Size(1061, 628);
+            this.Controls.Add(this.pnlMenu);
+            this.Controls.Add(this.pnlContenedor);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminApp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminAppcs";
-            ((System.ComponentModel.ISupportInitialize)(this.picBannerPreview)).EndInit();
+            this.pnlMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Button btnSubirAnuncio;
-        private Guna.UI2.WinForms.Guna2PictureBox picBannerPreview;
-        private Guna.UI2.WinForms.Guna2TextBox txtNombreMarca;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2TextBox txtLink;
+        private Guna.UI2.WinForms.Guna2Elipse Elipse;
+        private Guna.UI2.WinForms.Guna2ControlBox btnMin;
+        private Guna.UI2.WinForms.Guna2ControlBox btnMax;
+        private Guna.UI2.WinForms.Guna2ControlBox btnCerrar;
+        private Guna.UI2.WinForms.Guna2ResizeForm ResizeForm;
+        private Guna.UI2.WinForms.Guna2Panel pnlContenedor;
+        private Guna.UI2.WinForms.Guna2Button btnDeportes;
+        private Guna.UI2.WinForms.Guna2DragControl dragControl;
+        private Guna.UI2.WinForms.Guna2Button btnAbrirApp;
+        private Guna.UI2.WinForms.Guna2GradientPanel pnlMenu;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
     }
 }

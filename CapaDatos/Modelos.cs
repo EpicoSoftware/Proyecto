@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 using System.IO;
+using System.Data;
 
 namespace CapaDatos
 {
@@ -101,13 +102,15 @@ namespace CapaDatos
 
             return usuarioJson;
         }
-        public static void RegistrarUsuario(Usuario usuario)
+
+        public static void RegistrarUsuario(Usuario usuario, string contraseñaEnc)
         {
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "INSERT INTO usuarios (Correo, Nombre, idTipo, idIdioma, idNacionalidad, fotoPerfil) VALUES(@correo, @nombre, @idTipo, @idIdioma, @idNacionalidad, @fotoPerfil)";
+                "INSERT INTO usuarios (Correo, Nombre, idTipo, idIdioma, idNacionalidad, fotoPerfil) VALUES(@correo, @nombre, @idTipo, @idIdioma, @idNacionalidad, @fotoPerfil); " +
+                "INSERT INTO contraseñas (Contraseña) VALUES(@contraseña)";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@correo", usuario.Correo);
@@ -116,18 +119,30 @@ namespace CapaDatos
             comando.Parameters.AddWithValue("@idIdioma", usuario.IdIdioma);
             comando.Parameters.AddWithValue("@idNacionalidad", usuario.IdPais);
             comando.Parameters.AddWithValue("@fotoPerfil", usuario.FotoPerfil);
+            comando.Parameters.AddWithValue("@contraseña", contraseñaEnc);
             Console.WriteLine(comando.ExecuteNonQuery());
-            
-
         }
-        public static void obtenerListaPaises(ComboBox cbo)
+
+        /*public void RelacionarPassword(string correo, string password)
+        {
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql = "INSERT INTO contraseñas (Contraseña) VALUES(@contraseña)";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@correo", usuario.Correo);
+            Console.WriteLine(comando.ExecuteNonQuery());
+        }*/
+
+        /*public static void ActualizarPassword(int idUsuario, string password)
         {
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT * from paises";
+                "SELECT  from paises";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             reader = comando.ExecuteReader();
@@ -136,49 +151,50 @@ namespace CapaDatos
             {
                 cbo.Items.Add(reader.GetString("nombre"));
             }
-            
+        }*/
 
-        }
-        public static void obtenerListaIdiomas(ComboBox cbo)
+        //Metodo para rellenar combobox ("Inteligentes")
+        public static void RellanarCbo(ComboBox cbo, string tabla, string columnaTabla)
         {
-
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT * from idiomas";
+                "SELECT * from " + tabla;
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             reader = comando.ExecuteReader();
 
             while (reader.Read())
             {
-                cbo.Items.Add(reader.GetString("NombreIdioma"));
+                cbo.Items.Add(reader.GetString(columnaTabla));
             }
         }
-
-        public int obtenerIdPais(string nombrePais)
+        public static int ObtenerId(string opcionSelecionada, string tabla, string columnaTabla)
         {
-            int idPais = ;
+            int id = 0;
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT idPais FROM paises WHERE nombre LIKE @nombrePais";
+                "SELECT * FROM @tabla WHERE @columnaTabla LIKE @opcionSelecionada";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@nombrePais", nombrePais);
+            comando.Parameters.AddWithValue("@tabla", tabla);
+            comando.Parameters.AddWithValue("@columnaTabla", columnaTabla);
+            comando.Parameters.AddWithValue("@opcionSelecionada", opcionSelecionada);
             reader = comando.ExecuteReader();
 
             while (reader.Read())
             {
-                idPais = int.Parse(reader["Contraseña"].ToString());
+                id = int.Parse(reader[columnaTabla].ToString());
             }
 
-            return idPais;
+            return id;
         }
+
         public static string MostrarAnuncio(int id)
         {
             Anuncio banner = null;
@@ -191,14 +207,14 @@ namespace CapaDatos
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@idAnuncio", id);
-            
+
             reader = comando.ExecuteReader();
 
             while (reader.Read())
             {
                 banner = new Anuncio();
                 banner.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
-                banner.Imagen =  (byte[])(reader["Imagen"]);   //pasando de string a arreglo de bytes
+                banner.Imagen = (byte[])(reader["Imagen"]);   //pasando de string a arreglo de bytes
                 banner.NombreMarca = reader["NombreMarca"].ToString();
                 banner.Link = reader["Link"].ToString();
             }
@@ -227,6 +243,89 @@ namespace CapaDatos
 
             return cantidadAnuncios;
         }
+
+        public static int ExisteVista(int idAnuncio, int idUsuario)
+        {
+            int cantidadVistas = 0;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            //Buscando se existe una vista del anuncio por ese usuario
+            string sql =
+                "SELECT * FROM anuncios_usuariosgratis WHERE idUsuario LIKE @idUsuario AND idAnuncio = @idAnuncio";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+            comando.Parameters.AddWithValue("@idAnuncio", idAnuncio);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                cantidadVistas = int.Parse(reader["CantidadVistas"].ToString());
+            }
+
+            return cantidadVistas;
+        }
+
+        public static string CrearVista(int idAnuncio, int idUsuario)
+        {
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+            try
+            {
+                //Crea la primer vista al anuncio
+                string sql =
+                        "INSERT INTO anuncios_usuariosgratis (idAnuncio, idUsuario, CantidadVistas) VALUES(@idAnuncio, @idUsuario @cantidadVistas)";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                comando.Parameters.AddWithValue("@idAnuncio", idAnuncio);
+                comando.Parameters.AddWithValue("@cantidadVistas", 1);
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = "Error al crear vista";
+            }
+            return respuesta;
+        }
+
+        public static string AgregarVistaAnuncio(int idAnuncio, int idUsuario)
+        {
+            string respuesta = null;
+            int cantidadVistas = ExisteVista(idAnuncio, idUsuario);
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            if (cantidadVistas>0) //Si existe
+            {
+                try //agrega una nueva vista en el atributo CantidadVistas
+                {
+                    cantidadVistas += 1;
+
+                    string sql =
+                        "UPDATE anuncios_usuariosgratis SET CantidadVistas = @cantidadVistas WHERE idAnuncio = @idAnuncio AND idUsuario = @idUsuario";
+
+                    MySqlCommand comando = new MySqlCommand(sql, conexion);
+                    comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    comando.Parameters.AddWithValue("@idAnuncio", idAnuncio);
+                    comando.Parameters.AddWithValue("@cantidadVistas", cantidadVistas);
+                    Console.WriteLine(comando.ExecuteNonQuery());
+                }
+                catch (Exception e)
+                {
+                    respuesta = "Error al agregar vista";
+                }
+            }
+            else //Si no existe
+            {
+                respuesta = CrearVista(idAnuncio, idUsuario);
+            }
+            return respuesta;
+        }
+
         public static void RegistrarAnuncio(Anuncio anuncio)
         {
             MySqlConnection conexion = getConexion();
@@ -239,10 +338,27 @@ namespace CapaDatos
             comando.Parameters.AddWithValue("@imagen", anuncio.Imagen);
             comando.Parameters.AddWithValue("@nombreMarca", anuncio.NombreMarca);
             comando.Parameters.AddWithValue("@link", anuncio.Link);
-            
+
             Console.WriteLine(comando.ExecuteNonQuery());
         }
 
+        //Resultados
+        public static DataTable obtenerDeportes()
+        {
+            DataTable dataTable = new DataTable();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
 
+            string sql =
+                "SELECT * from deportes";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            //comando.Parameters.AddWithValue("@correo", correo);
+
+            reader = comando.ExecuteReader();
+            dataTable.Load(reader);
+            return dataTable;
+        }
     }
 }

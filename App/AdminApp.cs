@@ -1,4 +1,5 @@
-﻿using CapaDatos;
+﻿using App.UserControlAdmin;
+using CapaDatos;
 using CapaLogica;
 using Newtonsoft.Json;
 using System;
@@ -16,63 +17,23 @@ namespace App
 {
     public partial class AdminApp : Form
     {
-        Image imagenBanner;
-        Bitmap imagenBitmap;
-        static byte[] fotoBanner;
         public AdminApp()
         {
             InitializeComponent();
         }
 
-        private void btnSubirAnuncio_Click(object sender, EventArgs e)
+        private void agregarUserControl(UserControl userControl)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
-            DialogResult re = ofd.ShowDialog();
-            if (re == DialogResult.OK)
-            {
-                imagenBanner = Image.FromFile(ofd.FileName);
-                imagenBitmap = (Bitmap)imagenBanner;
-                picBannerPreview.Image = imagenBitmap;
-                var ms = new MemoryStream();
-                imagenBanner.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                // to get the bytes we type
-                fotoBanner = ms.ToArray();
-            }
-        }
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            userControl.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Clear();
+            pnlContenedor.Controls.Add(userControl);
+            userControl.BringToFront();
         }
 
-        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
+        private void btnDeportes_Click(object sender, EventArgs e)
         {
-
+            UserControl Deportes = new Deportes();
+            agregarUserControl(Deportes);
         }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-
-            Anuncio anuncio = new Anuncio();
-            anuncio.Link = txtLink.Text;
-            anuncio.NombreMarca = txtNombreMarca.Text;
-            anuncio.Imagen = fotoBanner;
-
-            string anuncioJson = JsonConvert.SerializeObject(anuncio);
-            APIpublicidad apiPublicidad = new APIpublicidad();
-            string respuesta = apiPublicidad.agregarAnuncio(anuncioJson);
-
-            if (string.IsNullOrEmpty(respuesta))
-            {
-                MessageBox.Show("Se agrego correctamente");
-            }
-            else
-            {
-                MessageBox.Show(respuesta);
-            }
-        }
-
     }
-
 }

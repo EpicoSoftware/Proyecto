@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
 using CapaDatos;
+using System.Threading;
 
 namespace App
 {
@@ -19,11 +20,21 @@ namespace App
         public Login()
         {
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             
+        }
+
+        void Alerta(Color color, string titulo, string descripcion)
+        {
+            Alerta alerta = new Alerta();
+            alerta.ColorAlerta = color;
+            alerta.TituloAlerta = titulo;
+            alerta.DescripcionAlerta = descripcion;
+            alerta.ShowDialog();
         }
 
 
@@ -45,7 +56,17 @@ namespace App
             }
             else
             {
-                MessageBox.Show(respuesta);
+                switch (Sesion.idIdioma)
+                {
+                    case 1:
+                        Alerta(Color.DarkRed, "Error al ingresar", respuesta);
+                        break;
+                    case 2:
+                        Alerta(Color.DarkRed, "Login Error", respuesta);
+                        break;
+                }
+               
+                //MessageBox.Show(respuesta);
             }
         }
 
@@ -61,6 +82,22 @@ namespace App
     {
         this.Close();
     }
-}
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+            Sesion.idIdioma = 2;
+            this.Controls.Clear();
+            InitializeComponent();
+        }
+
+        private void btnEspañol_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
+            Sesion.idIdioma = 1;
+            this.Controls.Clear();
+            InitializeComponent();
+        }
+    }
 }
 

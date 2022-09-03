@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,9 @@ namespace App
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string respuesta;
+            //Obtiene opcion seleccionada del cboIdioma
+            string paisSeleccionado = RegionInfo.CurrentRegion.DisplayName;
+            //Obtiene opcion seleccionada del cboPaises
             if (txtPassword.Text != txtConfirmarPassword.Text)
             {
                 MessageBox.Show("Error", "Las contraseñas no coindicen");
@@ -38,13 +42,18 @@ namespace App
                 EncriptarMD5 md5 = new EncriptarMD5();
                 string passwordEncriptada = md5.Encriptar(txtPassword.Text);
                 Usuario user = new Usuario();
+
                 user.Correo = txtCorreo.Text;
                 user.Nombre = txtNombre.Text;
                 user.FotoPerfil = fotoPerfil;
+                user.IdColorMode = 1; //Color por defecto de la App
+                user.IdPais = Modelos.ObtenerId(paisSeleccionado, "paises", "nombre");
 
+                //Serializa JSON para enviarlo al metodo Registro de la clase APIautenticacion
                 var usuarioJson = JsonConvert.SerializeObject(user);
-                respuesta = auth.Registro(usuarioJson);
-                if (string.IsNullOrEmpty(respuesta))
+                respuesta = auth.Registro(usuarioJson, passwordEncriptada);
+
+                if (string.IsNullOrEmpty(respuesta)) //Si respuesta tiene algun valor significa que dio un error
                 {
                     this.Close();
                     App_Gratis appGratis = new App_Gratis();
@@ -64,8 +73,6 @@ namespace App
 
         private void Registro_Load(object sender, EventArgs e)
         {
-            Modelos.obtenerListaPaises(cboPaises);
-            Modelos.obtenerListaIdiomas(cboIdioma);
         }
 
         private void btnSubirImagen_Click(object sender, EventArgs e)
@@ -84,12 +91,6 @@ namespace App
                 // to get the bytes we type
                 fotoPerfil = ms.ToArray();
             }
-        }
-
-        private void cboPaises_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int text = cboPaises.SelectedIndex;
-            Console.WriteLine(text);
         }
     }
 }

@@ -58,17 +58,35 @@
     <Compile Include="AdminApp.Designer.cs">
       <DependentUpon>AdminApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="App Gratis.cs">
+    <Compile Include="Ajustes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App Gratis.Designer.cs">
-      <DependentUpon>App Gratis.cs</DependentUpon>
+    <Compile Include="Ajustes.Designer.cs">
+      <DependentUpon>Ajustes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Encriptador.cs">
+    <Compile Include="Alerta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Encriptador.Designer.cs">
-      <DependentUpon>Encriptador.cs</DependentUpon>
+    <Compile Include="Alerta.Designer.cs">
+      <DependentUpon>Alerta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App.Designer.cs">
+      <DependentUpon>App.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\Deportes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAdmin\Deportes.Designer.cs">
+      <DependentUpon>Deportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\GestorAnuncios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAdmin\GestorAnuncios.Designer.cs">
+      <DependentUpon>GestorAnuncios.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -84,14 +102,50 @@
     <Compile Include="Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlAdmin\Inicio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAdmin\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\Partidos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAdmin\Partidos.Designer.cs">
+      <DependentUpon>Partidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAjustes\Notificaciones.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAjustes\Notificaciones.Designer.cs">
+      <DependentUpon>Notificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAjustes\Perfil.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAjustes\Perfil.Designer.cs">
+      <DependentUpon>Perfil.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminApp.resx">
       <DependentUpon>AdminApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App Gratis.resx">
-      <DependentUpon>App Gratis.cs</DependentUpon>
+    <EmbeddedResource Include="Ajustes.resx">
+      <DependentUpon>Ajustes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Encriptador.resx">
-      <DependentUpon>Encriptador.cs</DependentUpon>
+    <EmbeddedResource Include="Alerta.resx">
+      <DependentUpon>Alerta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App.resx">
+      <DependentUpon>App.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.en.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAdmin\Deportes.resx">
+      <DependentUpon>Deportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAdmin\GestorAnuncios.resx">
+      <DependentUpon>GestorAnuncios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -108,6 +162,18 @@
     </Compile>
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAdmin\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAdmin\Partidos.resx">
+      <DependentUpon>Partidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAjustes\Notificaciones.resx">
+      <DependentUpon>Notificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAjustes\Perfil.resx">
+      <DependentUpon>Perfil.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -198,6 +264,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alerta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\busqueda.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
