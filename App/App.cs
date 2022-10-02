@@ -15,9 +15,9 @@ using static System.Windows.Forms.DataFormats;
 
 namespace App
 {
-    public partial class App_Gratis : Form
+    public partial class App : Form
     {
-        public App_Gratis()
+        public App()
         {
             InitializeComponent();
         }
@@ -59,10 +59,7 @@ namespace App
 
         }
 
-        private void btnBanner_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://google.com");
-        }
+        
 
 
         private void btnAjustes_Click(object sender, EventArgs e)
@@ -73,7 +70,17 @@ namespace App
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(Sesion.correo))
+            {
+                Login login = new Login();
+                login.Visible = true;
+                this.Visible = false;
+            }
+        }
 
+        private void picBanner_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://google.com");
         }
     }
 }

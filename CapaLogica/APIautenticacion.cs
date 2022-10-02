@@ -150,7 +150,7 @@ namespace CapaLogica
                     {
                         respuesta = "No se ha podido registrar el usuario";
                     }*/
-                    Modelos.RegistrarUsuario(datosUsuario, contraseña);
+                    //Modelos.RegistrarUsuario(datosUsuario, contraseña);
                 }
                 else
                 {

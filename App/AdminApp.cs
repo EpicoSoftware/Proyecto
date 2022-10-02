@@ -35,5 +35,29 @@ namespace App
             UserControl Deportes = new Deportes();
             agregarUserControl(Deportes);
         }
+
+        private void btnAbrirApp_Click(object sender, EventArgs e)
+        {
+            App app = new App();
+            app.Visible = true;
+            this.Visible = false;
+        }
+
+        private void btnEquipos_Click(object sender, EventArgs e)
+        {
+            //UserControl Equipos = new Equipos();
+            //agregarUserControl(Equipos);
+        }
+
+        private void btnAnuncios_Click(object sender, EventArgs e)
+        {
+            UserControl gAnuncios = new GestorAnuncios();
+            agregarUserControl(gAnuncios);
+        }
+
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

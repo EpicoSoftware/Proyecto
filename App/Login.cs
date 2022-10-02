@@ -49,10 +49,20 @@ namespace App
             respuesta = auth.Login(correo, password);
             if (string.IsNullOrEmpty(respuesta))
             {
+                switch (Sesion.idTipo)
+                {
+                    case 2:
+                        App app = new App();
+                        app.Visible = true;
+                        this.Visible = false;
+                        break;
+                    case 3:
+                        AdminApp adminApp = new AdminApp();
+                        adminApp.Visible = true;
+                        this.Visible = false;
+                        break;
+                }
                 
-                App_Gratis appGratis = new App_Gratis();
-                appGratis.Visible = true;
-                this.Visible = false;
             }
             else
             {
@@ -97,6 +107,14 @@ namespace App
             Sesion.idIdioma = 1;
             this.Controls.Clear();
             InitializeComponent();
+        }
+
+        private void btnInvitado_Click(object sender, EventArgs e)
+        {
+            App app = new App();
+            this.Visible = false;
+            app.Visible = true;
+            
         }
     }
 }

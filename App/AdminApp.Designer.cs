@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminApp));
             this.Elipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnAbrirApp = new Guna.UI2.WinForms.Guna2Button();
             this.btnDeportes = new Guna.UI2.WinForms.Guna2Button();
@@ -39,7 +40,8 @@
             this.pnlContenedor = new Guna.UI2.WinForms.Guna2Panel();
             this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAnuncios = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEquipos = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -72,6 +74,7 @@
             this.btnAbrirApp.TabIndex = 16;
             this.btnAbrirApp.Text = "Abrir App de Usuario";
             this.btnAbrirApp.UseTransparentBackground = true;
+            this.btnAbrirApp.Click += new System.EventHandler(this.btnAbrirApp_Click);
             // 
             // btnDeportes
             // 
@@ -140,11 +143,11 @@
             // pnlContenedor
             // 
             this.pnlContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlContenedor.Location = new System.Drawing.Point(0, 65);
+            this.pnlContenedor.Location = new System.Drawing.Point(0, 58);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(1061, 563);
+            this.pnlContenedor.Size = new System.Drawing.Size(1061, 571);
             this.pnlContenedor.TabIndex = 2;
+            this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             // 
             // dragControl
             // 
@@ -154,44 +157,71 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Controls.Add(this.guna2Button3);
+            this.pnlMenu.Controls.Add(this.btnAnuncios);
+            this.pnlMenu.Controls.Add(this.btnEquipos);
             this.pnlMenu.Controls.Add(this.btnAbrirApp);
             this.pnlMenu.Controls.Add(this.guna2PictureBox1);
             this.pnlMenu.Controls.Add(this.btnDeportes);
             this.pnlMenu.Controls.Add(this.btnMin);
             this.pnlMenu.Controls.Add(this.btnCerrar);
             this.pnlMenu.Controls.Add(this.btnMax);
-            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMenu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
             this.pnlMenu.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(1061, 65);
+            this.pnlMenu.Size = new System.Drawing.Size(1061, 64);
             this.pnlMenu.TabIndex = 3;
             // 
-            // guna2Button3
+            // btnAnuncios
             // 
-            this.guna2Button3.Animated = true;
-            this.guna2Button3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.BorderColor = System.Drawing.Color.Empty;
-            this.guna2Button3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button3.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.guna2Button3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.guna2Button3.IndicateFocus = true;
-            this.guna2Button3.Location = new System.Drawing.Point(214, 1);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(120, 64);
-            this.guna2Button3.TabIndex = 17;
-            this.guna2Button3.Text = "Equipos";
-            this.guna2Button3.UseTransparentBackground = true;
+            this.btnAnuncios.Animated = true;
+            this.btnAnuncios.BackColor = System.Drawing.Color.Transparent;
+            this.btnAnuncios.BorderColor = System.Drawing.Color.Empty;
+            this.btnAnuncios.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnAnuncios.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnAnuncios.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnAnuncios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAnuncios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAnuncios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAnuncios.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAnuncios.FillColor = System.Drawing.Color.Transparent;
+            this.btnAnuncios.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnAnuncios.ForeColor = System.Drawing.Color.White;
+            this.btnAnuncios.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnAnuncios.IndicateFocus = true;
+            this.btnAnuncios.Location = new System.Drawing.Point(351, 1);
+            this.btnAnuncios.Name = "btnAnuncios";
+            this.btnAnuncios.Size = new System.Drawing.Size(120, 64);
+            this.btnAnuncios.TabIndex = 18;
+            this.btnAnuncios.Text = "Anuncios";
+            this.btnAnuncios.UseTransparentBackground = true;
+            this.btnAnuncios.Click += new System.EventHandler(this.btnAnuncios_Click);
+            // 
+            // btnEquipos
+            // 
+            this.btnEquipos.Animated = true;
+            this.btnEquipos.BackColor = System.Drawing.Color.Transparent;
+            this.btnEquipos.BorderColor = System.Drawing.Color.Empty;
+            this.btnEquipos.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnEquipos.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEquipos.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnEquipos.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEquipos.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEquipos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEquipos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEquipos.FillColor = System.Drawing.Color.Transparent;
+            this.btnEquipos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnEquipos.ForeColor = System.Drawing.Color.White;
+            this.btnEquipos.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEquipos.IndicateFocus = true;
+            this.btnEquipos.Location = new System.Drawing.Point(224, 1);
+            this.btnEquipos.Name = "btnEquipos";
+            this.btnEquipos.Size = new System.Drawing.Size(120, 64);
+            this.btnEquipos.TabIndex = 17;
+            this.btnEquipos.Text = "Equipos";
+            this.btnEquipos.UseTransparentBackground = true;
+            this.btnEquipos.Click += new System.EventHandler(this.btnEquipos_Click);
             // 
             // guna2PictureBox1
             // 
@@ -210,10 +240,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1061, 628);
+            this.ClientSize = new System.Drawing.Size(1061, 629);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminAppcs";
@@ -235,6 +266,7 @@
         private Guna.UI2.WinForms.Guna2Button btnAbrirApp;
         private Guna.UI2.WinForms.Guna2GradientPanel pnlMenu;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button btnEquipos;
+        private Guna.UI2.WinForms.Guna2Button btnAnuncios;
     }
 }

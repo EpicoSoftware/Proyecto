@@ -11,7 +11,6 @@ namespace CapaDatos
     {
         int idUsuario ,idTipo ,idPais, idColorMode, idIdioma;
         string correo, nombre;
-        byte[] fotoPerfil;
 
         public string Correo { get => correo; set => correo = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -20,6 +19,5 @@ namespace CapaDatos
         public int IdPais { get => idPais; set => idPais = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
         public int IdTipo { get => idTipo; set => idTipo = value; }
-        public byte[] FotoPerfil { get => fotoPerfil; set => fotoPerfil = value; }
     }
 }

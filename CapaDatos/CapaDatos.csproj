@@ -91,6 +91,7 @@
     <Compile Include="Anuncio.cs" />
     <Compile Include="Deporte.cs" />
     <Compile Include="EncriptarMD5.cs" />
+    <Compile Include="IpInfo.cs" />
     <Compile Include="Modelos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sesion.cs" />

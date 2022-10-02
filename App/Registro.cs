@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,10 +18,40 @@ namespace App
 {
     public partial class Registro : Form
     {
-        Image imagenPerfil;
-        Bitmap imagenBitmap;
+        public static string GetCountryByIP()
+        {
+            
+
+            IpInfo ipInfo = new IpInfo();
+            try
+            {
+                string info = new WebClient().DownloadString("http://ipinfo.io/");
+                ipInfo = JsonConvert.DeserializeObject<IpInfo>(info);
+                RegionInfo myRI1 = new RegionInfo(ipInfo.Country);
+                ipInfo.Country = myRI1.EnglishName;
+            }
+            catch (Exception)
+            {
+                ipInfo.Country = null;
+            }
+
+            return ipInfo.Country;
+        }
+
+
+
+        public string ObtenerPais(){
+            StringBuilder sb = new StringBuilder();
+            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
+            {
+                sb.Append(ci.DisplayName);
+                sb.AppendLine();
+            }
+           return sb.ToString();
+            
+        }
+        
         APIautenticacion auth = new APIautenticacion();
-        static byte[] fotoPerfil;
         public Registro()
         {
             InitializeComponent();
@@ -30,9 +61,9 @@ namespace App
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string respuesta;
-            //Obtiene opcion seleccionada del cboIdioma
-            string paisSeleccionado = RegionInfo.CurrentRegion.DisplayName;
-            //Obtiene opcion seleccionada del cboPaises
+            
+            
+            
             if (txtPassword.Text != txtConfirmarPassword.Text)
             {
                 MessageBox.Show("Error", "Las contraseñas no coindicen");
@@ -45,9 +76,8 @@ namespace App
 
                 user.Correo = txtCorreo.Text;
                 user.Nombre = txtNombre.Text;
-                user.FotoPerfil = fotoPerfil;
                 user.IdColorMode = 1; //Color por defecto de la App
-                user.IdPais = Modelos.ObtenerId(paisSeleccionado, "paises", "nombre");
+                user.IdPais = Modelos.ObtenerId(GetCountryByIP(), "paises", "nombre");
 
                 //Serializa JSON para enviarlo al metodo Registro de la clase APIautenticacion
                 var usuarioJson = JsonConvert.SerializeObject(user);
@@ -55,8 +85,8 @@ namespace App
 
                 if (string.IsNullOrEmpty(respuesta)) //Si respuesta tiene algun valor significa que dio un error
                 {
-                    this.Close();
-                    App_Gratis appGratis = new App_Gratis();
+                    this.Visible = false;
+                    App appGratis = new App();
                     appGratis.Visible = true;
                 }
                 else
@@ -73,24 +103,8 @@ namespace App
 
         private void Registro_Load(object sender, EventArgs e)
         {
+            
         }
 
-        private void btnSubirImagen_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
-            DialogResult re = ofd.ShowDialog();
-            if (re == DialogResult.OK)
-            {
-                imagenPerfil = Image.FromFile(ofd.FileName);
-                imagenBitmap = (Bitmap)imagenPerfil;
-                picImagenPerfil.Image = imagenBitmap;
-                var ms = new MemoryStream();
-                imagenPerfil.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                // to get the bytes we type
-                fotoPerfil = ms.ToArray();
-            }
-        }
     }
 }

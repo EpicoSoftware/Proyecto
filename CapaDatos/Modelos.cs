@@ -103,55 +103,6 @@ namespace CapaDatos
             return usuarioJson;
         }
 
-        public static void RegistrarUsuario(Usuario usuario, string contraseñaEnc)
-        {
-            MySqlConnection conexion = getConexion();
-            conexion.Open();
-
-            string sql =
-                "INSERT INTO usuarios (Correo, Nombre, idTipo, idIdioma, idNacionalidad, fotoPerfil) VALUES(@correo, @nombre, @idTipo, @idIdioma, @idNacionalidad, @fotoPerfil); " +
-                "INSERT INTO contraseñas (Contraseña) VALUES(@contraseña)";
-
-            MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@correo", usuario.Correo);
-            comando.Parameters.AddWithValue("@nombre", usuario.Nombre);
-            comando.Parameters.AddWithValue("@idTipo", 2);
-            comando.Parameters.AddWithValue("@idIdioma", usuario.IdIdioma);
-            comando.Parameters.AddWithValue("@idNacionalidad", usuario.IdPais);
-            comando.Parameters.AddWithValue("@fotoPerfil", usuario.FotoPerfil);
-            comando.Parameters.AddWithValue("@contraseña", contraseñaEnc);
-            Console.WriteLine(comando.ExecuteNonQuery());
-        }
-
-        /*public void RelacionarPassword(string correo, string password)
-        {
-            MySqlConnection conexion = getConexion();
-            conexion.Open();
-
-            string sql = "INSERT INTO contraseñas (Contraseña) VALUES(@contraseña)";
-
-            MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@correo", usuario.Correo);
-            Console.WriteLine(comando.ExecuteNonQuery());
-        }*/
-
-        /*public static void ActualizarPassword(int idUsuario, string password)
-        {
-            MySqlDataReader reader;
-            MySqlConnection conexion = getConexion();
-            conexion.Open();
-
-            string sql =
-                "SELECT  from paises";
-
-            MySqlCommand comando = new MySqlCommand(sql, conexion);
-            reader = comando.ExecuteReader();
-
-            while (reader.Read())
-            {
-                cbo.Items.Add(reader.GetString("nombre"));
-            }
-        }*/
 
         //Metodo para rellenar combobox ("Inteligentes")
         public static void RellanarCbo(ComboBox cbo, string tabla, string columnaTabla)
@@ -195,6 +146,30 @@ namespace CapaDatos
             return id;
         }
 
+        public static int ObtenerIdPais(string pais)
+        {
+            int id = 0;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * FROM paises WHERE nombre LIKE @pais";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@pais", pais);
+
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                id = int.Parse(reader["idPais"].ToString());
+            }
+
+            return id;
+        }
+
+        //ANUNCIOS
         public static string MostrarAnuncio(int id)
         {
             Anuncio banner = null;
@@ -230,7 +205,7 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "SELECT count(*) FROM anuncios";
+                "SELECT count(*) FROM anuncios WHERE Estado = true;";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
 
@@ -332,17 +307,36 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "INSERT INTO anuncios (Imagen, NombreMarca, Link) VALUES(@imagen, @nombreMarca, @link)";
+                "INSERT INTO anuncios (Imagen, NombreMarca, Link, Estado, CorreoContacto) VALUES(@imagen, @nombreMarca, @link, @estado, @correoContacto)";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@imagen", anuncio.Imagen);
             comando.Parameters.AddWithValue("@nombreMarca", anuncio.NombreMarca);
             comando.Parameters.AddWithValue("@link", anuncio.Link);
+            comando.Parameters.AddWithValue("@estado", anuncio.Estado);
+            comando.Parameters.AddWithValue("@correoContacto", anuncio.CorreoContacto);
 
             Console.WriteLine(comando.ExecuteNonQuery());
         }
 
-        //Resultados
+        public static string EliminarAnuncio(int idAununcio)
+        {
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                         "DELETE FROM anuncios WHERE idAnuncio = @idAununcio, " +
+                         "DELETE FROM anuncios_usuariosgratis WHERE idAnuncio = @idAununcio, ";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@idAununcio", idAununcio);
+            
+            Console.WriteLine(comando.ExecuteNonQuery());
+
+            return respuesta;
+        }
+        //RESULTADOS
         public static DataTable obtenerDeportes()
         {
             DataTable dataTable = new DataTable();

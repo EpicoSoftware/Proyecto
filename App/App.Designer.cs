@@ -1,6 +1,6 @@
 ﻿namespace App
 {
-    partial class App_Gratis
+    partial class App
     {
         /// <summary>
         /// Required designer variable.
@@ -40,11 +40,11 @@
             this.picBanner = new Guna.UI2.WinForms.Guna2PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnCuenta = new Guna.UI2.WinForms.Guna2Button();
             this.btnAjustes = new Guna.UI2.WinForms.Guna2Button();
             this.btnMin = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnMax = new Guna.UI2.WinForms.Guna2ControlBox();
             this.pnlContenedor = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnCuenta = new Guna.UI2.WinForms.Guna2Button();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
@@ -132,7 +132,7 @@
             this.btnPartidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnPartidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
             this.btnPartidos.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnPartidos.Image = global::App.Properties.Resources.casa;
+            this.btnPartidos.Image = global::App.Properties.Resources.logo;
             this.btnPartidos.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPartidos.ImageOffset = new System.Drawing.Point(12, 0);
             this.btnPartidos.ImageSize = new System.Drawing.Size(25, 25);
@@ -199,6 +199,7 @@
             this.picBanner.TabIndex = 3;
             this.picBanner.TabStop = false;
             this.picBanner.UseTransparentBackground = true;
+            this.picBanner.Click += new System.EventHandler(this.picBanner_Click);
             // 
             // timer1
             // 
@@ -219,6 +220,37 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(590, 46);
             this.guna2Panel1.TabIndex = 8;
+            // 
+            // btnCuenta
+            // 
+            this.btnCuenta.BackColor = System.Drawing.Color.Transparent;
+            this.btnCuenta.BorderColor = System.Drawing.Color.Empty;
+            this.btnCuenta.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnCuenta.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnCuenta.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.btnCuenta.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCuenta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCuenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCuenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCuenta.FillColor = System.Drawing.Color.Transparent;
+            this.btnCuenta.FocusedColor = System.Drawing.Color.Transparent;
+            this.btnCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCuenta.ForeColor = System.Drawing.Color.Black;
+            this.btnCuenta.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnCuenta.Image = global::App.Properties.Resources.usuario;
+            this.btnCuenta.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCuenta.ImageOffset = new System.Drawing.Point(12, 0);
+            this.btnCuenta.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnCuenta.IndicateFocus = true;
+            this.btnCuenta.Location = new System.Drawing.Point(6, 8);
+            this.btnCuenta.Name = "btnCuenta";
+            this.btnCuenta.Size = new System.Drawing.Size(174, 32);
+            this.btnCuenta.TabIndex = 17;
+            this.btnCuenta.Text = "Inicia Sesion";
+            this.btnCuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCuenta.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnCuenta.UseTransparentBackground = true;
+            this.btnCuenta.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // btnAjustes
             // 
@@ -268,38 +300,7 @@
             this.pnlContenedor.Size = new System.Drawing.Size(590, 535);
             this.pnlContenedor.TabIndex = 9;
             // 
-            // btnCuenta
-            // 
-            this.btnCuenta.BackColor = System.Drawing.Color.Transparent;
-            this.btnCuenta.BorderColor = System.Drawing.Color.Empty;
-            this.btnCuenta.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnCuenta.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnCuenta.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.btnCuenta.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCuenta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCuenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCuenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCuenta.FillColor = System.Drawing.Color.Transparent;
-            this.btnCuenta.FocusedColor = System.Drawing.Color.Transparent;
-            this.btnCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCuenta.ForeColor = System.Drawing.Color.Black;
-            this.btnCuenta.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnCuenta.Image = global::App.Properties.Resources.usuario;
-            this.btnCuenta.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCuenta.ImageOffset = new System.Drawing.Point(12, 0);
-            this.btnCuenta.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnCuenta.IndicateFocus = true;
-            this.btnCuenta.Location = new System.Drawing.Point(6, 8);
-            this.btnCuenta.Name = "btnCuenta";
-            this.btnCuenta.Size = new System.Drawing.Size(174, 32);
-            this.btnCuenta.TabIndex = 17;
-            this.btnCuenta.Text = "Inicia Sesion";
-            this.btnCuenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCuenta.TextOffset = new System.Drawing.Point(20, 0);
-            this.btnCuenta.UseTransparentBackground = true;
-            this.btnCuenta.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // App_Gratis
+            // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -309,7 +310,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "App_Gratis";
+            this.Name = "App";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "App_Gratis";
             this.Load += new System.EventHandler(this.App_Gratis_Load);
