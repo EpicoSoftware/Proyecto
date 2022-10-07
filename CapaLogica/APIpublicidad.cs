@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace CapaLogica
 {
@@ -42,5 +43,30 @@ namespace CapaLogica
             }
             return respuesta;
         }
+
+        public List<Anuncio> CargarListaAnuncios()
+        {
+            //List<Anuncio> listaAnuncios = new List<Anuncio>();
+            string listaJson = Modelos.ObtenerListaAnuncios();
+            var listaAnuncios = JsonConvert.DeserializeObject<List<Anuncio>>(listaJson);
+
+            return listaAnuncios;
+
+        }
+
+        public List<Anuncio> buscarAnuncio(string nomMarca)
+        {
+            string resultadoBusqueda = Modelos.BuscarAnuncio(nomMarca);
+            var listaResultados = JsonConvert.DeserializeObject<List<Anuncio>>(resultadoBusqueda);
+
+            return listaResultados;
+        }
+
+        public string EliminarAnuncio(int idAnuncio)
+        {
+            string respuesta = Modelos.EliminarAnuncio(idAnuncio);
+            return respuesta;
+        }
+
     }
 }

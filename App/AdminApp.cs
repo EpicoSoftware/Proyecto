@@ -30,11 +30,7 @@ namespace App
             userControl.BringToFront();
         }
 
-        private void btnDeportes_Click(object sender, EventArgs e)
-        {
-            UserControl Deportes = new Deportes();
-            agregarUserControl(Deportes);
-        }
+      
 
         private void btnAbrirApp_Click(object sender, EventArgs e)
         {
@@ -42,12 +38,7 @@ namespace App
             app.Visible = true;
             this.Visible = false;
         }
-
-        private void btnEquipos_Click(object sender, EventArgs e)
-        {
-            //UserControl Equipos = new Equipos();
-            //agregarUserControl(Equipos);
-        }
+        
 
         private void btnAnuncios_Click(object sender, EventArgs e)
         {
@@ -58,6 +49,12 @@ namespace App
         private void pnlContenedor_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnEncuentros_Click(object sender, EventArgs e)
+        {
+            UserControl encuentro = new Encuentros();
+            agregarUserControl(encuentro);
         }
     }
 }

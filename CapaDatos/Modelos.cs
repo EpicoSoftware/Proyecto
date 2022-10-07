@@ -301,13 +301,42 @@ namespace CapaDatos
             return respuesta;
         }
 
+        public static string ObtenerListaAnuncios()
+        {
+            List<Anuncio> listaAnuncios = new List<Anuncio>();
+            Anuncio ad = new Anuncio();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from anuncios";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ad.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
+                ad.Link = reader["link"].ToString();
+                ad.NombreMarca = reader["nomMarca"].ToString();
+                ad.Estado = bool.Parse(reader["estado"].ToString());
+                ad.Imagen = (byte[])(reader["imagen"]); //pasando de string a arreglo de bytes
+
+                listaAnuncios.Add(ad);
+            }
+
+            var listaAnunciosJson = JsonConvert.SerializeObject(listaAnuncios);
+            return listaAnunciosJson;
+        }
+
         public static void RegistrarAnuncio(Anuncio anuncio)
         {
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "INSERT INTO anuncios (Imagen, NombreMarca, Link, Estado, CorreoContacto) VALUES(@imagen, @nombreMarca, @link, @estado, @correoContacto)";
+                "INSERT INTO anuncios (nomMarca, imagen, link, correoContacto, estado) VALUES(@nombreMarca, @imagen, @link, @correoContacto, @estado)";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@imagen", anuncio.Imagen);
@@ -323,36 +352,90 @@ namespace CapaDatos
         {
             string respuesta = null;
             MySqlConnection conexion = getConexion();
-            conexion.Open();
+            try
+            {
+                conexion.Open();
 
-            string sql =
-                         "DELETE FROM anuncios WHERE idAnuncio = @idAununcio, " +
-                         "DELETE FROM anuncios_usuariosgratis WHERE idAnuncio = @idAununcio, ";
+                string sql =
+                             "DELETE FROM anuncios WHERE idAnuncio LIKE @idAununcio; " +
+                             "DELETE FROM gratisanuncios WHERE idAnuncio LIKE @idAununcio";
 
-            MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@idAununcio", idAununcio);
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@idAununcio", idAununcio);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch(Exception e)
+            {
+                respuesta = e.ToString();
+            }
             
-            Console.WriteLine(comando.ExecuteNonQuery());
 
             return respuesta;
         }
-        //RESULTADOS
-        public static DataTable obtenerDeportes()
+
+        public static string BuscarAnuncio(string nomMarca)
         {
-            DataTable dataTable = new DataTable();
+            List<Anuncio> listaAnuncios = new List<Anuncio>();
+            Anuncio ad = new Anuncio();
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT * from deportes";
+                "SELECT * from anuncios WHERE nomMarca LIKE @nomMarca";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
-            //comando.Parameters.AddWithValue("@correo", correo);
-
+            comando.Parameters.AddWithValue("@nomMarca", nomMarca);
             reader = comando.ExecuteReader();
-            dataTable.Load(reader);
-            return dataTable;
+
+            while (reader.Read())
+            {
+                ad.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
+                ad.Link = reader["link"].ToString();
+                ad.NombreMarca = reader["nomMarca"].ToString();
+                ad.Estado = bool.Parse(reader["estado"].ToString());
+                ad.Imagen = (byte[])(reader["imagen"]); //pasando de string a arreglo de bytes
+
+                listaAnuncios.Add(ad);
+            }
+
+            var listaAnunciosJson = JsonConvert.SerializeObject(listaAnuncios);
+            return listaAnunciosJson;
+        }
+
+        //ENCUENTROS
+        public static string ObtenerListaEncuentrosEstado(int estadoFiltro)
+        {
+            List<Encuentro> listaEncuentros = new List<Encuentro>();
+            Encuentro encuentro = new Encuentro();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from encuentro WHERE idEstado LIKE @idEstado";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@idEstado", estadoFiltro);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                encuentro.IdEncuentro = int.Parse(reader["idEncuentro"].ToString());
+                encuentro.IdDeporte = int.Parse(reader["idDeporte"].ToString());
+                encuentro.IdTorneo = int.Parse(reader["IdTorneo"].ToString());
+                encuentro.IdEstado = int.Parse(reader["IdTorneo"].ToString());
+                encuentro.Fecha = reader["Fecha"].ToString();
+                encuentro.NomEstadio = reader["nomEstadio"].ToString();
+                encuentro.NomArbitro = reader["nomArbitro"].ToString();
+                encuentro.ApeArbitro = reader["apeArbitro"].ToString();
+
+                listaEncuentros.Add(encuentro);
+            }
+
+            var listaEncuentrosJson = JsonConvert.SerializeObject(listaEncuentros);
+            return listaEncuentrosJson;
         }
     }
 }

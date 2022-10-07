@@ -12,13 +12,15 @@ namespace CapaLogica
 {
     public class APIresultados
     {
-        public DataTable CargarDeportes()
+        public List<Encuentro> CargarListaVivo(int estado)
         {
-            DataTable dataTable = new DataTable();
-            dataTable = Modelos.obtenerDeportes();
-            return dataTable;
+            //List<Anuncio> listaAnuncios = new List<Anuncio>();
+            string listaJson = Modelos.ObtenerListaEncuentrosEstado(estado);
+            var listaEncuentro = JsonConvert.DeserializeObject<List<Encuentro>>(listaJson);
+
+            return listaEncuentro;
+
         }
-        
 
     }
 }

@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminApp));
             this.Elipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnAbrirApp = new Guna.UI2.WinForms.Guna2Button();
-            this.btnDeportes = new Guna.UI2.WinForms.Guna2Button();
             this.btnMin = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnMax = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnCerrar = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -41,8 +40,8 @@
             this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.btnAnuncios = new Guna.UI2.WinForms.Guna2Button();
-            this.btnEquipos = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnEncuentros = new Guna.UI2.WinForms.Guna2Button();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,31 +74,6 @@
             this.btnAbrirApp.Text = "Abrir App de Usuario";
             this.btnAbrirApp.UseTransparentBackground = true;
             this.btnAbrirApp.Click += new System.EventHandler(this.btnAbrirApp_Click);
-            // 
-            // btnDeportes
-            // 
-            this.btnDeportes.Animated = true;
-            this.btnDeportes.BackColor = System.Drawing.Color.Transparent;
-            this.btnDeportes.BorderColor = System.Drawing.Color.Empty;
-            this.btnDeportes.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnDeportes.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnDeportes.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.btnDeportes.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDeportes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDeportes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDeportes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDeportes.FillColor = System.Drawing.Color.Transparent;
-            this.btnDeportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.btnDeportes.ForeColor = System.Drawing.Color.White;
-            this.btnDeportes.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnDeportes.IndicateFocus = true;
-            this.btnDeportes.Location = new System.Drawing.Point(97, 1);
-            this.btnDeportes.Name = "btnDeportes";
-            this.btnDeportes.Size = new System.Drawing.Size(120, 64);
-            this.btnDeportes.TabIndex = 13;
-            this.btnDeportes.Text = "Deportes";
-            this.btnDeportes.UseTransparentBackground = true;
-            this.btnDeportes.Click += new System.EventHandler(this.btnDeportes_Click);
             // 
             // btnMin
             // 
@@ -142,6 +116,7 @@
             // 
             // pnlContenedor
             // 
+            this.pnlContenedor.AutoSize = true;
             this.pnlContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.pnlContenedor.Location = new System.Drawing.Point(0, 58);
             this.pnlContenedor.Name = "pnlContenedor";
@@ -157,11 +132,10 @@
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.btnEncuentros);
             this.pnlMenu.Controls.Add(this.btnAnuncios);
-            this.pnlMenu.Controls.Add(this.btnEquipos);
             this.pnlMenu.Controls.Add(this.btnAbrirApp);
             this.pnlMenu.Controls.Add(this.guna2PictureBox1);
-            this.pnlMenu.Controls.Add(this.btnDeportes);
             this.pnlMenu.Controls.Add(this.btnMin);
             this.pnlMenu.Controls.Add(this.btnCerrar);
             this.pnlMenu.Controls.Add(this.btnMax);
@@ -190,38 +164,13 @@
             this.btnAnuncios.ForeColor = System.Drawing.Color.White;
             this.btnAnuncios.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
             this.btnAnuncios.IndicateFocus = true;
-            this.btnAnuncios.Location = new System.Drawing.Point(351, 1);
+            this.btnAnuncios.Location = new System.Drawing.Point(228, 0);
             this.btnAnuncios.Name = "btnAnuncios";
             this.btnAnuncios.Size = new System.Drawing.Size(120, 64);
             this.btnAnuncios.TabIndex = 18;
             this.btnAnuncios.Text = "Anuncios";
             this.btnAnuncios.UseTransparentBackground = true;
             this.btnAnuncios.Click += new System.EventHandler(this.btnAnuncios_Click);
-            // 
-            // btnEquipos
-            // 
-            this.btnEquipos.Animated = true;
-            this.btnEquipos.BackColor = System.Drawing.Color.Transparent;
-            this.btnEquipos.BorderColor = System.Drawing.Color.Empty;
-            this.btnEquipos.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnEquipos.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnEquipos.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.btnEquipos.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEquipos.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEquipos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEquipos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEquipos.FillColor = System.Drawing.Color.Transparent;
-            this.btnEquipos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.btnEquipos.ForeColor = System.Drawing.Color.White;
-            this.btnEquipos.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnEquipos.IndicateFocus = true;
-            this.btnEquipos.Location = new System.Drawing.Point(224, 1);
-            this.btnEquipos.Name = "btnEquipos";
-            this.btnEquipos.Size = new System.Drawing.Size(120, 64);
-            this.btnEquipos.TabIndex = 17;
-            this.btnEquipos.Text = "Equipos";
-            this.btnEquipos.UseTransparentBackground = true;
-            this.btnEquipos.Click += new System.EventHandler(this.btnEquipos_Click);
             // 
             // guna2PictureBox1
             // 
@@ -235,6 +184,31 @@
             this.guna2PictureBox1.TabIndex = 14;
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
+            // 
+            // btnEncuentros
+            // 
+            this.btnEncuentros.Animated = true;
+            this.btnEncuentros.BackColor = System.Drawing.Color.Transparent;
+            this.btnEncuentros.BorderColor = System.Drawing.Color.Empty;
+            this.btnEncuentros.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnEncuentros.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEncuentros.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnEncuentros.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEncuentros.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEncuentros.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEncuentros.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEncuentros.FillColor = System.Drawing.Color.Transparent;
+            this.btnEncuentros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnEncuentros.ForeColor = System.Drawing.Color.White;
+            this.btnEncuentros.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEncuentros.IndicateFocus = true;
+            this.btnEncuentros.Location = new System.Drawing.Point(73, 0);
+            this.btnEncuentros.Name = "btnEncuentros";
+            this.btnEncuentros.Size = new System.Drawing.Size(149, 64);
+            this.btnEncuentros.TabIndex = 19;
+            this.btnEncuentros.Text = "Encuentros";
+            this.btnEncuentros.UseTransparentBackground = true;
+            this.btnEncuentros.Click += new System.EventHandler(this.btnEncuentros_Click);
             // 
             // AdminApp
             // 
@@ -251,6 +225,7 @@
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -261,12 +236,11 @@
         private Guna.UI2.WinForms.Guna2ControlBox btnCerrar;
         private Guna.UI2.WinForms.Guna2ResizeForm ResizeForm;
         private Guna.UI2.WinForms.Guna2Panel pnlContenedor;
-        private Guna.UI2.WinForms.Guna2Button btnDeportes;
         private Guna.UI2.WinForms.Guna2DragControl dragControl;
         private Guna.UI2.WinForms.Guna2Button btnAbrirApp;
         private Guna.UI2.WinForms.Guna2GradientPanel pnlMenu;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button btnEquipos;
         private Guna.UI2.WinForms.Guna2Button btnAnuncios;
+        private Guna.UI2.WinForms.Guna2Button btnEncuentros;
     }
 }

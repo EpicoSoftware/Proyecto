@@ -8,18 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.UserControlAdmin
+namespace App.UserControlApp
 {
-    public partial class Partidos : UserControl
+    public partial class Inicio : UserControl
     {
-        public Partidos()
+        public Inicio()
         {
             InitializeComponent();
         }
 
-        private void tabCrear_Click(object sender, EventArgs e)
+        private void scbAnuncios_Scroll(object sender, ScrollEventArgs e)
         {
 
+        }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+        
         }
     }
 }

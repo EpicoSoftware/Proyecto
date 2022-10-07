@@ -90,11 +90,23 @@
     <Compile Include="Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAdmin\Deportes.cs">
+    <Compile Include="UserControlAdmin\AnuncioElemento.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAdmin\Deportes.Designer.cs">
-      <DependentUpon>Deportes.cs</DependentUpon>
+    <Compile Include="UserControlAdmin\AnuncioElemento.Designer.cs">
+      <DependentUpon>AnuncioElemento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\Encuentros.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAdmin\Encuentros.Designer.cs">
+      <DependentUpon>Encuentros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlAdmin\EncuetroEquipo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlAdmin\EncuetroEquipo.Designer.cs">
+      <DependentUpon>EncuetroEquipo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlAdmin\GestorAnuncios.cs">
       <SubType>UserControl</SubType>
@@ -108,12 +120,6 @@
     <Compile Include="UserControlAdmin\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAdmin\Partidos.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlAdmin\Partidos.Designer.cs">
-      <DependentUpon>Partidos.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControlAjustes\Notificaciones.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +131,12 @@
     </Compile>
     <Compile Include="UserControlAjustes\Perfil.Designer.cs">
       <DependentUpon>Perfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlApp\Inicio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlApp\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdminApp.resx">
       <DependentUpon>AdminApp.cs</DependentUpon>
@@ -160,8 +172,14 @@
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin\Deportes.resx">
-      <DependentUpon>Deportes.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlAdmin\AnuncioElemento.resx">
+      <DependentUpon>AnuncioElemento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAdmin\Encuentros.resx">
+      <DependentUpon>Encuentros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlAdmin\EncuetroEquipo.resx">
+      <DependentUpon>EncuetroEquipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlAdmin\GestorAnuncios.resx">
       <DependentUpon>GestorAnuncios.cs</DependentUpon>
@@ -169,14 +187,14 @@
     <EmbeddedResource Include="UserControlAdmin\Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin\Partidos.resx">
-      <DependentUpon>Partidos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControlAjustes\Notificaciones.resx">
       <DependentUpon>Notificaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlAjustes\Perfil.resx">
       <DependentUpon>Perfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlApp\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -273,6 +291,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\busqueda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expandir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descarga.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descarga1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\escudo-de-la-seleccion-colombia-11550120390hiuedkhwt4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actualizar1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -73,6 +73,16 @@ namespace App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap actualizar1 {
+            get {
+                object obj = ResourceManager.GetObject("actualizar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agregar {
             get {
                 object obj = ResourceManager.GetObject("agregar", resourceCulture);
@@ -116,6 +126,16 @@ namespace App.Properties {
         internal static System.Drawing.Bitmap BannerAD {
             get {
                 object obj = ResourceManager.GetObject("BannerAD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap basura {
+            get {
+                object obj = ResourceManager.GetObject("basura", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,6 +193,36 @@ namespace App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap descarga {
+            get {
+                object obj = ResourceManager.GetObject("descarga", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap descarga1 {
+            get {
+                object obj = ResourceManager.GetObject("descarga1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap escudo_de_la_seleccion_colombia_11550120390hiuedkhwt4 {
+            get {
+                object obj = ResourceManager.GetObject("escudo-de-la-seleccion-colombia-11550120390hiuedkhwt4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap estrella {
             get {
                 object obj = ResourceManager.GetObject("estrella", resourceCulture);
@@ -186,6 +236,16 @@ namespace App.Properties {
         internal static System.Drawing.Bitmap estrella_vacia {
             get {
                 object obj = ResourceManager.GetObject("estrella vacia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap expandir {
+            get {
+                object obj = ResourceManager.GetObject("expandir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
