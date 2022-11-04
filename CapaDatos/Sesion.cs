@@ -8,9 +8,9 @@ namespace CapaDatos
 {
     public class Sesion
     {
-        public static int idUsuario, idTipo, idColorMode, idIdioma;
+        public static int idUsuario, idTipoUsuario, idIdioma = 1;
         public static string correo, nombre;
         public static byte fotoPerfil;
-        
+
     }
 }

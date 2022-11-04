@@ -49,9 +49,9 @@ namespace App
             respuesta = auth.Login(correo, password);
             if (string.IsNullOrEmpty(respuesta))
             {
-                switch (Sesion.idTipo)
+                switch (Sesion.idTipoUsuario)
                 {
-                    case 2:
+                    case 1: case 2:
                         App app = new App();
                         app.Visible = true;
                         this.Visible = false;
@@ -61,6 +61,7 @@ namespace App
                         adminApp.Visible = true;
                         this.Visible = false;
                         break;
+
                 }
                 
             }
@@ -115,6 +116,11 @@ namespace App
             this.Visible = false;
             app.Visible = true;
             
+        }
+
+        private void lblBienvenida_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

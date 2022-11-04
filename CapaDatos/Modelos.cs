@@ -13,6 +13,7 @@ namespace CapaDatos
 {
     public class Modelos
     {
+        //GENERALES
         public static MySqlConnection getConexion()
         {
             string servidor = "localhost";
@@ -26,7 +27,31 @@ namespace CapaDatos
 
             return conexion;
         }
+        public static string CargarPaises()
+        {
+            List<String> listaPais = new List<String>();
+            string pais;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
 
+            string sql =
+                "SELECT * from torneos";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                pais = reader["Nombre"].ToString();
+                listaPais.Add(pais);
+            }
+
+            var listaPaisJson = JsonConvert.SerializeObject(listaPais);
+            return listaPaisJson;
+        }
+
+        //AUTENTICACION
         public static int obtenerIdPassword(int idUsuario)
         {
             int idPassword = 0;
@@ -35,7 +60,7 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "SELECT * from contraseñas_usuarios WHERE idUsuario LIKE @idUsuario";
+                "SELECT * from Usuariologin WHERE idUsuario LIKE @idUsuario";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@idUsuario", idUsuario);
@@ -48,6 +73,7 @@ namespace CapaDatos
 
             return idPassword;
         }
+
         public static string obtenerPassword(int idPassword)
         {
             string password = null;
@@ -56,7 +82,7 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "SELECT Contraseña FROM contraseñas WHERE idContraseña LIKE @idPassword";
+                "SELECT Contraseña FROM Contraseña WHERE idContraseña LIKE @idPassword";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@idPassword", idPassword);
@@ -78,7 +104,7 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "SELECT * from usuarios WHERE Correo LIKE @correo";
+                "SELECT * from Usuario WHERE email LIKE @correo";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@correo", correo);
@@ -89,13 +115,9 @@ namespace CapaDatos
             {
                 user = new Usuario();
                 user.IdUsuario = int.Parse(reader["idUsuario"].ToString());
-                user.Correo = reader["Correo"].ToString();
-                user.Nombre = reader["Nombre"].ToString();
-                user.IdTipo = int.Parse(reader["idTipo"].ToString());
-                user.IdColorMode = int.Parse(reader["idColorMode"].ToString());
-                user.IdIdioma = int.Parse(reader["idIdioma"].ToString());
-                user.IdPais = int.Parse(reader["idNacionalidad"].ToString());
-
+                user.Email = reader["email"].ToString();
+                user.NomUsuario = reader["nomUsuario"].ToString();
+                user.IdTipoUsuario = int.Parse(reader["idTipoUsuario"].ToString());
             }
 
             var usuarioJson = JsonConvert.SerializeObject(user);
@@ -103,70 +125,100 @@ namespace CapaDatos
             return usuarioJson;
         }
 
-
-        //Metodo para rellenar combobox ("Inteligentes")
-        public static void RellanarCbo(ComboBox cbo, string tabla, string columnaTabla)
+        public static void RegistrarUsuario(Usuario user, string contaseña)
         {
-            MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT * from " + tabla;
+                "INSERT INTO Usuario (email, nomUsuario, idTipoUsuario) VALUES(@email, @nomUsuario, @idTipoUsuario); " +
+                "INSERT INTO Contraseña (Contraseña) VALUES(@contaseña); " +
+                "INSERT INTO Usuariologin VALUES(" +
+                    "(SELECT idContraseña FROM contraseña WHERE Contraseña = @contaseña), " +
+                    "(SELECT idUsuario FROM usuario WHERE email = @email));";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
-            reader = comando.ExecuteReader();
+            comando.Parameters.AddWithValue("@email", user.Email);
+            comando.Parameters.AddWithValue("@nomUsuario", user.NomUsuario);
+            comando.Parameters.AddWithValue("@idTipoUsuario", user.IdTipoUsuario);
+            comando.Parameters.AddWithValue("@contaseña", contaseña);
 
-            while (reader.Read())
-            {
-                cbo.Items.Add(reader.GetString(columnaTabla));
-            }
-        }
-        public static int ObtenerId(string opcionSelecionada, string tabla, string columnaTabla)
-        {
-            int id = 0;
-            MySqlDataReader reader;
-            MySqlConnection conexion = getConexion();
-            conexion.Open();
-
-            string sql =
-                "SELECT * FROM @tabla WHERE @columnaTabla LIKE @opcionSelecionada";
-
-            MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@tabla", tabla);
-            comando.Parameters.AddWithValue("@columnaTabla", columnaTabla);
-            comando.Parameters.AddWithValue("@opcionSelecionada", opcionSelecionada);
-            reader = comando.ExecuteReader();
-
-            while (reader.Read())
-            {
-                id = int.Parse(reader[columnaTabla].ToString());
-            }
-
-            return id;
+            Console.WriteLine(comando.ExecuteNonQuery());
         }
 
-        public static int ObtenerIdPais(string pais)
+        public static string EliminarUsuario(int idUsuario)
         {
-            int id = 0;
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                             "DELETE FROM Usuario WHERE idUsuario = @idUsuario; " +
+                             "DELETE FROM Usuariologin WHERE idUsuario = @idUsuario;";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+
+            return respuesta;
+        }
+
+        public static string ObtenerListaUsuarios()
+        {
+            List<Usuario> listaUsuario = new List<Usuario>();
+            Usuario user;
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT * FROM paises WHERE nombre LIKE @pais";
+                "SELECT * from Usuario";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@pais", pais);
-
             reader = comando.ExecuteReader();
 
             while (reader.Read())
             {
-                id = int.Parse(reader["idPais"].ToString());
+                user = new Usuario();
+                user.IdUsuario = int.Parse(reader["idUsuario"].ToString());
+                user.Email = reader["email"].ToString();
+                user.NomUsuario = reader["nomUsuario"].ToString();
+                user.IdTipoUsuario = int.Parse(reader["idTipoUsuario"].ToString());
+                listaUsuario.Add(user);
             }
 
-            return id;
+            var listaUsuarioJson = JsonConvert.SerializeObject(listaUsuario);
+            return listaUsuarioJson;
+        }
+
+        public static void ActualizarUsuario(Usuario user)
+        {
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "UPDATE Usuario SET " +
+                    "nomUsuario = @nomNuevo, " +
+                    "email = @emailNuevo, " +
+                    "idTipoUsuario = @idTipoNuevo" +
+                "WHERE idUsuario = @id; ";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nomNuevo", user.NomUsuario);
+            comando.Parameters.AddWithValue("@emailNuevo", user.Email);
+            comando.Parameters.AddWithValue("@idTipoNuevo", user.IdTipoUsuario);
+            comando.Parameters.AddWithValue("@id", user.IdUsuario);
+            reader = comando.ExecuteReader();
         }
 
         //ANUNCIOS
@@ -189,9 +241,10 @@ namespace CapaDatos
             {
                 banner = new Anuncio();
                 banner.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
-                banner.Imagen = (byte[])(reader["Imagen"]);   //pasando de string a arreglo de bytes
-                banner.NombreMarca = reader["NombreMarca"].ToString();
-                banner.Link = reader["Link"].ToString();
+                banner.Imagen = (byte[])(reader["imagen"]);   //pasando de string a arreglo de bytes
+                banner.NombreMarca = reader["nomMarca"].ToString();
+                banner.Link = reader["link"].ToString();
+                banner.Estado = bool.Parse(reader["estado"].ToString());
             }
 
             var bannerJson = JsonConvert.SerializeObject(banner);
@@ -274,7 +327,7 @@ namespace CapaDatos
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
-            if (cantidadVistas>0) //Si existe
+            if (cantidadVistas > 0) //Si existe
             {
                 try //agrega una nueva vista en el atributo CantidadVistas
                 {
@@ -304,7 +357,7 @@ namespace CapaDatos
         public static string ObtenerListaAnuncios()
         {
             List<Anuncio> listaAnuncios = new List<Anuncio>();
-            Anuncio ad = new Anuncio();
+            Anuncio ad;
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
@@ -317,6 +370,7 @@ namespace CapaDatos
 
             while (reader.Read())
             {
+                ad = new Anuncio();
                 ad.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
                 ad.Link = reader["link"].ToString();
                 ad.NombreMarca = reader["nomMarca"].ToString();
@@ -326,7 +380,9 @@ namespace CapaDatos
                 listaAnuncios.Add(ad);
             }
 
-            var listaAnunciosJson = JsonConvert.SerializeObject(listaAnuncios);
+            string listaAnunciosJson = JsonConvert.SerializeObject(listaAnuncios);
+            MessageBox.Show(listaAnunciosJson);
+
             return listaAnunciosJson;
         }
 
@@ -365,11 +421,11 @@ namespace CapaDatos
 
                 Console.WriteLine(comando.ExecuteNonQuery());
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 respuesta = e.ToString();
             }
-            
+
 
             return respuesta;
         }
@@ -377,20 +433,21 @@ namespace CapaDatos
         public static string BuscarAnuncio(string nomMarca)
         {
             List<Anuncio> listaAnuncios = new List<Anuncio>();
-            Anuncio ad = new Anuncio();
+            Anuncio ad;
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT * from anuncios WHERE nomMarca LIKE @nomMarca";
+                "SELECT * from anuncios WHERE nomMarca LIKE '%" + nomMarca + "%'";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@nomMarca", nomMarca);
+            //comando.Parameters.AddWithValue("@nomMarca", nomMarca);
             reader = comando.ExecuteReader();
 
             while (reader.Read())
             {
+                ad = new Anuncio();
                 ad.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
                 ad.Link = reader["link"].ToString();
                 ad.NombreMarca = reader["nomMarca"].ToString();
@@ -408,13 +465,13 @@ namespace CapaDatos
         public static string ObtenerListaEncuentrosEstado(int estadoFiltro)
         {
             List<Encuentro> listaEncuentros = new List<Encuentro>();
-            Encuentro encuentro = new Encuentro();
+            Encuentro encuentro;
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
             conexion.Open();
 
             string sql =
-                "SELECT * from encuentro WHERE idEstado LIKE @idEstado";
+                "SELECT * from encuentro WHERE idEstado = @idEstado";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@idEstado", estadoFiltro);
@@ -422,6 +479,7 @@ namespace CapaDatos
 
             while (reader.Read())
             {
+                encuentro = new Encuentro();
                 encuentro.IdEncuentro = int.Parse(reader["idEncuentro"].ToString());
                 encuentro.IdDeporte = int.Parse(reader["idDeporte"].ToString());
                 encuentro.IdTorneo = int.Parse(reader["IdTorneo"].ToString());
@@ -437,5 +495,224 @@ namespace CapaDatos
             var listaEncuentrosJson = JsonConvert.SerializeObject(listaEncuentros);
             return listaEncuentrosJson;
         }
+        public static string ObtenerListaDeportes()
+        {
+            List<Deporte> listaDeporte = new List<Deporte>();
+            Deporte deporte;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from deportes";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                deporte = new Deporte();
+                deporte.IdDeporte = int.Parse(reader["idDeporte"].ToString());
+                deporte.NomDeporte = reader["nomDeporte"].ToString();
+                listaDeporte.Add(deporte);
+            }
+
+            var listaDeporteJson = JsonConvert.SerializeObject(listaDeporte);
+            return listaDeporteJson;
+        }
+        public static int ObtenerIdDeporte(string nomDeporte)
+        {
+            Deporte deporte = new Deporte();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from deportes WHERE nomDeporte = @nomDeporte";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nomDeporte", nomDeporte);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                deporte.IdDeporte = int.Parse(reader["idDeporte"].ToString());
+            }
+
+            return deporte.IdDeporte;
+        }
+        public static void ActualizarDeporte(int id, string nomNuevo)
+        {
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "UPDATE deportes SET nomDeporte = @nomNuevo WHERE idDeporte = @id; ";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nomNuevo", nomNuevo);
+            comando.Parameters.AddWithValue("@id", id);
+            reader = comando.ExecuteReader();
+
+        }
+        public static string EliminarDeporte(int id)
+        {
+            string respuesta = null;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "DELETE FROM deportes WHERE idDeporte = @id; ";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                reader = comando.ExecuteReader();
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+            return respuesta;
+        }
+        public static string CrearDeporte(string nomDeporte)
+        {
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "INSERT INTO deportes (nomDeporte) VALUES(@nomDeporte)";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@nomDeporte", nomDeporte);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+            return respuesta;
+        }
+        public static string ObtenerListaTorneos()
+        {
+            List<Torneo> listaTorneo = new List<Torneo>();
+            Torneo torneo;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from torneos";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                torneo = new Torneo();
+                torneo.IdTorneo = int.Parse(reader["idTorneo"].ToString());
+                torneo.NomTorneo = reader["nomTorneo"].ToString();
+                listaTorneo.Add(torneo);
+            }
+
+            var listaTorneoJson = JsonConvert.SerializeObject(listaTorneo);
+            return listaTorneoJson;
+        }
+        public static int ObtenerIdTorneo(string nombre)
+        {
+            Torneo torneo = new Torneo();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from torneos WHERE nomTorneo = @nombre";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nombre", nombre);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                torneo.IdTorneo = int.Parse(reader["idTorneo"].ToString());
+            }
+
+            return torneo.IdTorneo;
+        }
+        public static void ActualizarTorneo(int id, string nomNuevo)
+        {
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "UPDATE torneos SET nomTorneo = @nomNuevo WHERE idTorneo = @id; ";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nomNuevo", nomNuevo);
+            comando.Parameters.AddWithValue("@id", id);
+            reader = comando.ExecuteReader();
+
+        }
+        public static string EliminarTorneo(int id)
+        {
+            string respuesta = null;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "DELETE FROM torneos WHERE idTorneo = @id; ";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                reader = comando.ExecuteReader();
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+            return respuesta;
+        }
+        public static string CrearTorneo(string nombre)
+        {
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "INSERT INTO torneos (nomTorneo) VALUES(@nombre)";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@nombre", nombre);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+            return respuesta;
+        }
+
     }
 }

@@ -18,40 +18,18 @@ namespace App
 {
     public partial class Registro : Form
     {
-        public static string GetCountryByIP()
+        void Alerta(Color color, string titulo, string descripcion)
         {
-            
-
-            IpInfo ipInfo = new IpInfo();
-            try
-            {
-                string info = new WebClient().DownloadString("http://ipinfo.io/");
-                ipInfo = JsonConvert.DeserializeObject<IpInfo>(info);
-                RegionInfo myRI1 = new RegionInfo(ipInfo.Country);
-                ipInfo.Country = myRI1.EnglishName;
-            }
-            catch (Exception)
-            {
-                ipInfo.Country = null;
-            }
-
-            return ipInfo.Country;
+            Alerta alerta = new Alerta();
+            alerta.ColorAlerta = color;
+            alerta.TituloAlerta = titulo;
+            alerta.DescripcionAlerta = descripcion;
+            alerta.ShowDialog();
         }
 
-
-
-        public string ObtenerPais(){
-            StringBuilder sb = new StringBuilder();
-            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
-            {
-                sb.Append(ci.DisplayName);
-                sb.AppendLine();
-            }
-           return sb.ToString();
-            
-        }
-        
         APIautenticacion auth = new APIautenticacion();
+
+
         public Registro()
         {
             InitializeComponent();
@@ -60,38 +38,40 @@ namespace App
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            string respuesta;
-            
-            
-            
-            if (txtPassword.Text != txtConfirmarPassword.Text)
+            string respuesta = "";
+            if (txtPassword.Text != txtConfirmarPassword.Text) //Confirmar contrsenas
             {
-                MessageBox.Show("Error", "Las contraseñas no coindicen");
+                switch (Sesion.idIdioma)
+                {
+                    case 1:
+                        Alerta(Color.DarkRed, "Error", "Las contraseñas no coindicen");
+                        break;
+                    case 2:
+                        Alerta(Color.DarkRed, "Error", "passwords dosen't much");
+                        break;
+                }
             }
             else
             {
                 EncriptarMD5 md5 = new EncriptarMD5();
                 string passwordEncriptada = md5.Encriptar(txtPassword.Text);
                 Usuario user = new Usuario();
+                user.Email = txtCorreo.Text;
+                user.NomUsuario = txtNombre.Text;
+                user.IdTipoUsuario = 1;
 
-                user.Correo = txtCorreo.Text;
-                user.Nombre = txtNombre.Text;
-                user.IdColorMode = 1; //Color por defecto de la App
-                user.IdPais = Modelos.ObtenerId(GetCountryByIP(), "paises", "nombre");
-
-                //Serializa JSON para enviarlo al metodo Registro de la clase APIautenticacion
-                var usuarioJson = JsonConvert.SerializeObject(user);
-                respuesta = auth.Registro(usuarioJson, passwordEncriptada);
+                respuesta = auth.Registro(user, passwordEncriptada);
 
                 if (string.IsNullOrEmpty(respuesta)) //Si respuesta tiene algun valor significa que dio un error
                 {
+                    auth.Login(user.Email, passwordEncriptada);
                     this.Visible = false;
-                    App appGratis = new App();
-                    appGratis.Visible = true;
+                    App app = new App();
+                    app.Visible = true;
                 }
                 else
                 {
-                    MessageBox.Show(respuesta);
+                    Alerta(Color.DarkRed, "Error", respuesta);
                 }
             }
         }

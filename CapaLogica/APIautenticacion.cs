@@ -88,12 +88,10 @@ namespace CapaLogica
                             }
                             else
                             {
-                                Sesion.correo = datosUsuario.Correo;
-                                Sesion.nombre = datosUsuario.Nombre;
+                                Sesion.correo = datosUsuario.Email;
+                                Sesion.nombre = datosUsuario.NomUsuario;
                                 Sesion.idUsuario = datosUsuario.IdUsuario;
-                                Sesion.idTipo = datosUsuario.IdTipo;
-                                Sesion.idColorMode = datosUsuario.IdColorMode;
-                                Sesion.idIdioma = datosUsuario.IdIdioma;
+                                Sesion.idTipoUsuario = datosUsuario.IdTipoUsuario;
                             }
                         }
                     }
@@ -115,17 +113,14 @@ namespace CapaLogica
             return respuesta;
         }
 
-
-        public string Registro(string usuarioJson, string contraseña)
+        public string Registro(Usuario datosUsuario, string contraseña)
         {
             string respuesta = "";
-            var datosUsuario = JsonConvert.DeserializeObject<Usuario>(usuarioJson);
-            if (String.IsNullOrEmpty(datosUsuario.Correo) ||
-                String.IsNullOrEmpty(datosUsuario.Nombre) ||
-                String.IsNullOrEmpty(contraseña) ||
-                String.IsNullOrEmpty(datosUsuario.IdIdioma.ToString()) ||
-                String.IsNullOrEmpty(datosUsuario.IdPais.ToString()) ||
-                String.IsNullOrEmpty(datosUsuario.IdColorMode.ToString())
+
+            //Verificar que esta completo
+            if (string.IsNullOrEmpty(datosUsuario.Email) ||
+                string.IsNullOrEmpty(datosUsuario.NomUsuario) ||
+                string.IsNullOrEmpty(contraseña)
                 )
             {
                 switch (Sesion.idIdioma)
@@ -138,19 +133,28 @@ namespace CapaLogica
                         break;
                 }
             }
-            else
+            else //Si esta completo
             {
-                if (EmailValido(datosUsuario.Correo))
+                if (EmailValido(datosUsuario.Email)) //Validar email
                 {
-                    /*try
+                    if (string.IsNullOrEmpty(Modelos.obtenerUsuario(datosUsuario.Email))) //Si no esta el correo registrado
+                    {
+                        switch (Sesion.idIdioma)
+                        {
+                            case 1:
+                                respuesta = "Ya existe una cuenta con ese correo, intenta iniciando sesion";
+                                break;
+                            case 2:
+                                respuesta = "There is already an account for that email, try loging in";
+                                break;
+                        }
+                        
+                    }
+                    else
                     {
                         Modelos.RegistrarUsuario(datosUsuario, contraseña);
+                       
                     }
-                    catch (Exception ex)
-                    {
-                        respuesta = "No se ha podido registrar el usuario";
-                    }*/
-                    //Modelos.RegistrarUsuario(datosUsuario, contraseña);
                 }
                 else
                 {
@@ -166,6 +170,13 @@ namespace CapaLogica
                 }
             }
             return respuesta;
+        }
+
+        public List<Usuario> ListaUsuarios()
+        {
+            string listaJson = Modelos.ObtenerListaUsuarios();
+            var listaAnuncios = JsonConvert.DeserializeObject<List<Usuario>>(listaJson);
+            return listaAnuncios;
         }
     }
 }

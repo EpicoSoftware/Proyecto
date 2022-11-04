@@ -1,4 +1,5 @@
-﻿using App.UserControlAdmin;
+﻿using App.Admin;
+using App.UserControlAdmin;
 using CapaDatos;
 using CapaLogica;
 using Newtonsoft.Json;
@@ -55,6 +56,12 @@ namespace App
         {
             UserControl encuentro = new Encuentros();
             agregarUserControl(encuentro);
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            UserControl gUsuarios = new GestorUsuarios();
+            agregarUserControl(gUsuarios);
         }
     }
 }

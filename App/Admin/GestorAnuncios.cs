@@ -121,8 +121,8 @@ namespace App
                 anuncio.Marca = ad.NombreMarca;
                 anuncio.Preview = ad.Imagen;
                 anuncio.Estado = ad.Estado;
-                anuncio.IdAnuncio = ad.IdAnuncio; 
-
+                anuncio.IdAnuncio = ad.IdAnuncio;
+                //MessageBox.Show(ad.NombreMarca);
                 flpAnuncios.Controls.Add(anuncio);
             }
             

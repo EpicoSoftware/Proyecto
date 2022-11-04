@@ -123,6 +123,16 @@ namespace App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap baloncesto {
+            get {
+                object obj = ResourceManager.GetObject("baloncesto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BannerAD {
             get {
                 object obj = ResourceManager.GetObject("BannerAD", resourceCulture);
@@ -176,6 +186,16 @@ namespace App.Properties {
         internal static System.Drawing.Bitmap cerrar_con_llave {
             get {
                 object obj = ResourceManager.GetObject("cerrar-con-llave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap correr {
+            get {
+                object obj = ResourceManager.GetObject("correr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,6 +343,16 @@ namespace App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap trofeo {
+            get {
+                object obj = ResourceManager.GetObject("trofeo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap usuario {
             get {
                 object obj = ResourceManager.GetObject("usuario", resourceCulture);
@@ -336,6 +366,16 @@ namespace App.Properties {
         internal static System.Drawing.Bitmap usuarioImagen {
             get {
                 object obj = ResourceManager.GetObject("usuarioImagen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usuarios_alt {
+            get {
+                object obj = ResourceManager.GetObject("usuarios-alt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

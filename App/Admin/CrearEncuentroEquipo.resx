@@ -117,83 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="guna2Elipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>316, 464</value>
-  </data>
-  <data name="btnIngles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 20</value>
-  </data>
-  <data name="btnIngles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 19</value>
-  </data>
-  <data name="btnEspañol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 20</value>
-  </data>
-  <data name="btnEspañol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 19</value>
-  </data>
-  <data name="btnInvitado.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 412</value>
-  </data>
-  <data name="btnInvitado.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 26</value>
-  </data>
-  <data name="pnlCambiarContraseña.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 448</value>
-  </data>
-  <data name="pnlCambiarContraseña.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 16</value>
-  </data>
-  <data name="guna2PictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 12</value>
-  </data>
-  <data name="guna2PictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 35</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblBienvenida.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="lblBienvenida.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 73</value>
-  </data>
-  <data name="lblBienvenida.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 64</value>
-  </data>
-  <data name="btnRegistrarse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 328</value>
-  </data>
-  <data name="btnRegistrarse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 45</value>
-  </data>
-  <data name="btnIngresar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 277</value>
-  </data>
-  <data name="btnIngresar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 45</value>
-  </data>
-  <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 213</value>
-  </data>
-  <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 36</value>
-  </data>
-  <data name="txtCorreo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 158</value>
-  </data>
-  <data name="txtCorreo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 36</value>
-  </data>
-  <data name="btnCerrar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 15</value>
-  </data>
-  <data name="btnCerrar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 29</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAAjLgAAZgAAAICAAAABACAAKAgBAIkuAABAQAAAAQAgAChCAACxNgEAMDAAAAEA
@@ -2057,8 +1984,7 @@
         AOGHAADgAwAA8AEAAPAAAAD4EAAA/DgAAA==
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
+  <metadata name="guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 14</value>
+  </metadata>
 </root>

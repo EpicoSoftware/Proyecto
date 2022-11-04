@@ -9,15 +9,14 @@ namespace CapaDatos
     [Serializable]
     public class Usuario
     {
-        int idUsuario ,idTipo ,idPais, idColorMode, idIdioma;
-        string correo, nombre;
+        int idUsuario ,idTipoUsuario, IdIdioma;
+        string email, nomUsuario;
 
-        public string Correo { get => correo; set => correo = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public int IdColorMode { get => idColorMode; set => idColorMode = value; }
-        public int IdIdioma { get => idIdioma; set => idIdioma = value; }
-        public int IdPais { get => idPais; set => idPais = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
-        public int IdTipo { get => idTipo; set => idTipo = value; }
+        public int IdTipoUsuario { get => idTipoUsuario; set => idTipoUsuario = value; }
+        public string Email { get => email; set => email = value; }
+        public string NomUsuario { get => nomUsuario; set => nomUsuario = value; }
+        public int IdIdioma1 { get => IdIdioma; set => IdIdioma = value; }
+        public object Value { get; set; }
     }
 }

@@ -36,27 +36,110 @@
     <Reference Include="Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.3.2\lib\net40\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminApp.cs">
+    <Compile Include="Admin\AdminApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminApp.Designer.cs">
+    <Compile Include="Admin\AdminApp.Designer.cs">
       <DependentUpon>AdminApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ceDeporte.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ceDeporte.Designer.cs">
+      <DependentUpon>ceDeporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ceJugador.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ceJugador.Designer.cs">
+      <DependentUpon>ceJugador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ceTorneo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ceTorneo.Designer.cs">
+      <DependentUpon>ceTorneo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CrearEncuentroEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\CrearEncuentroEquipo.Designer.cs">
+      <DependentUpon>CrearEncuentroEquipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\GestorUsuarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\GestorUsuarios.Designer.cs">
+      <DependentUpon>GestorUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Ajustes.cs">
       <SubType>Form</SubType>
@@ -90,34 +173,34 @@
     <Compile Include="Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAdmin\AnuncioElemento.cs">
+    <Compile Include="Admin\AnuncioElemento.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAdmin\AnuncioElemento.Designer.cs">
+    <Compile Include="Admin\AnuncioElemento.Designer.cs">
       <DependentUpon>AnuncioElemento.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAdmin\Encuentros.cs">
+    <Compile Include="Admin\Encuentros.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAdmin\Encuentros.Designer.cs">
+    <Compile Include="Admin\Encuentros.Designer.cs">
       <DependentUpon>Encuentros.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAdmin\EncuetroEquipo.cs">
+    <Compile Include="Admin\EncuetroEquipo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAdmin\EncuetroEquipo.Designer.cs">
+    <Compile Include="Admin\EncuetroEquipo.Designer.cs">
       <DependentUpon>EncuetroEquipo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAdmin\GestorAnuncios.cs">
+    <Compile Include="Admin\GestorAnuncios.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAdmin\GestorAnuncios.Designer.cs">
+    <Compile Include="Admin\GestorAnuncios.Designer.cs">
       <DependentUpon>GestorAnuncios.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlAdmin\Inicio.cs">
+    <Compile Include="Admin\Inicio.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlAdmin\Inicio.Designer.cs">
+    <Compile Include="Admin\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlAjustes\Notificaciones.cs">
@@ -138,8 +221,23 @@
     <Compile Include="UserControlApp\Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminApp.resx">
+    <EmbeddedResource Include="Admin\AdminApp.resx">
       <DependentUpon>AdminApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\ceDeporte.resx">
+      <DependentUpon>ceDeporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\ceJugador.resx">
+      <DependentUpon>ceJugador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\ceTorneo.resx">
+      <DependentUpon>ceTorneo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\CrearEncuentroEquipo.resx">
+      <DependentUpon>CrearEncuentroEquipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\GestorUsuarios.resx">
+      <DependentUpon>GestorUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajustes.resx">
       <DependentUpon>Ajustes.cs</DependentUpon>
@@ -172,19 +270,19 @@
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin\AnuncioElemento.resx">
+    <EmbeddedResource Include="Admin\AnuncioElemento.resx">
       <DependentUpon>AnuncioElemento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin\Encuentros.resx">
+    <EmbeddedResource Include="Admin\Encuentros.resx">
       <DependentUpon>Encuentros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin\EncuetroEquipo.resx">
+    <EmbeddedResource Include="Admin\EncuetroEquipo.resx">
       <DependentUpon>EncuetroEquipo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin\GestorAnuncios.resx">
+    <EmbeddedResource Include="Admin\GestorAnuncios.resx">
       <DependentUpon>GestorAnuncios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlAdmin\Inicio.resx">
+    <EmbeddedResource Include="Admin\Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlAjustes\Notificaciones.resx">
@@ -309,6 +407,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\actualizar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\correr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baloncesto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trofeo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,8 +24,8 @@ namespace App.UserControlAdmin
             _correo = correo;
             _fecha = fecha;
             _preview = preview;
-            this.idAnuncio = idAnuncio;
-            this.estado = estado;
+            _idAnuncio = idAnuncio;
+            _estado = estado;
         }
 
         private void AnuncioElemento_Load(object sender, EventArgs e)
@@ -44,8 +44,8 @@ namespace App.UserControlAdmin
         private string _correo;
         private string _fecha;
         private byte[] _preview;
-        private int idAnuncio;
-        private bool estado;
+        private int _idAnuncio;
+        private bool _estado;
 
         [Category("Custom Props")]
         public string Marca
@@ -76,10 +76,10 @@ namespace App.UserControlAdmin
         }
 
         [Category("Custom Props")]
-        public int IdAnuncio { get => idAnuncio; set => idAnuncio = value; }
+        public int IdAnuncio { get => _idAnuncio; set => _idAnuncio = value; }
 
         [Category("Custom Props")]
-        public bool Estado { get => estado; set => estado = value; }
+        public bool Estado { get => _estado; set => _estado = value; }
 
         #endregion
 
@@ -92,7 +92,7 @@ namespace App.UserControlAdmin
                 string respuesta = Modelos.EliminarAnuncio(IdAnuncio);
                 if (string.IsNullOrEmpty(respuesta))
                 {
-
+                    MessageBox.Show("Se elimino correctamente, actializa para ver cambios", "Hecho");
                 }
                 else MessageBox.Show(respuesta, "error");
                

@@ -25,16 +25,6 @@ namespace App
         private void App_Gratis_Load(object sender, EventArgs e)
         {
             btnCuenta.Text = Sesion.nombre;
-            
-            switch (Sesion.idColorMode)
-            {
-                case 1:
-                    this.BackColor = Color.FromArgb(28, 28, 28);
-                    break;
-                case 2:
-                    this.BackColor = Color.White;
-                    break;
-            }
 
         }
 

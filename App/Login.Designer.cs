@@ -95,6 +95,7 @@
             resources.ApplyResources(this.lblBienvenida, "lblBienvenida");
             this.lblBienvenida.BackColor = System.Drawing.Color.Transparent;
             this.lblBienvenida.Name = "lblBienvenida";
+            this.lblBienvenida.Click += new System.EventHandler(this.lblBienvenida_Click);
             // 
             // guna2DragControl1
             // 
@@ -222,7 +223,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

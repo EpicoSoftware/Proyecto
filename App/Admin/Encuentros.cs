@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDatos;
 using CapaLogica;
+using App.Admin;
 
 namespace App.UserControlAdmin
 {
@@ -35,8 +36,15 @@ namespace App.UserControlAdmin
             {
                 EncuetroEquipo enEqui = new EncuetroEquipo();
                 
-                flpVivo.Controls.Add(anuncio);
+                flpVivo.Controls.Add(enEqui);
             }
+        }
+
+        private void btnCrearXEquipo_Click(object sender, EventArgs e)
+        {
+            CrearEncuentroEquipo cee = new CrearEncuentroEquipo();
+            cee.Visible = true;
+
         }
     }
 }

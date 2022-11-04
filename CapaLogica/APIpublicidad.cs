@@ -46,13 +46,14 @@ namespace CapaLogica
 
         public List<Anuncio> CargarListaAnuncios()
         {
-            //List<Anuncio> listaAnuncios = new List<Anuncio>();
+            List<Anuncio> listaAnuncios = new List<Anuncio>();
             string listaJson = Modelos.ObtenerListaAnuncios();
-            var listaAnuncios = JsonConvert.DeserializeObject<List<Anuncio>>(listaJson);
+            listaAnuncios = JsonConvert.DeserializeObject<List<Anuncio>>(listaJson);
 
             return listaAnuncios;
 
         }
+        
 
         public List<Anuncio> buscarAnuncio(string nomMarca)
         {

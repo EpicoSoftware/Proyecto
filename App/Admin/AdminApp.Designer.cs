@@ -39,9 +39,10 @@
             this.pnlContenedor = new Guna.UI2.WinForms.Guna2Panel();
             this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.btnAnuncios = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnEncuentros = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAnuncios = new Guna.UI2.WinForms.Guna2Button();
+            this.btnUsuarios = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -132,6 +133,7 @@
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.btnUsuarios);
             this.pnlMenu.Controls.Add(this.btnEncuentros);
             this.pnlMenu.Controls.Add(this.btnAnuncios);
             this.pnlMenu.Controls.Add(this.btnAbrirApp);
@@ -146,6 +148,31 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(1061, 64);
             this.pnlMenu.TabIndex = 3;
+            // 
+            // btnEncuentros
+            // 
+            this.btnEncuentros.Animated = true;
+            this.btnEncuentros.BackColor = System.Drawing.Color.Transparent;
+            this.btnEncuentros.BorderColor = System.Drawing.Color.Empty;
+            this.btnEncuentros.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnEncuentros.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEncuentros.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnEncuentros.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEncuentros.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEncuentros.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEncuentros.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEncuentros.FillColor = System.Drawing.Color.Transparent;
+            this.btnEncuentros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnEncuentros.ForeColor = System.Drawing.Color.White;
+            this.btnEncuentros.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEncuentros.IndicateFocus = true;
+            this.btnEncuentros.Location = new System.Drawing.Point(73, 0);
+            this.btnEncuentros.Name = "btnEncuentros";
+            this.btnEncuentros.Size = new System.Drawing.Size(149, 64);
+            this.btnEncuentros.TabIndex = 19;
+            this.btnEncuentros.Text = "Encuentros";
+            this.btnEncuentros.UseTransparentBackground = true;
+            this.btnEncuentros.Click += new System.EventHandler(this.btnEncuentros_Click);
             // 
             // btnAnuncios
             // 
@@ -172,6 +199,31 @@
             this.btnAnuncios.UseTransparentBackground = true;
             this.btnAnuncios.Click += new System.EventHandler(this.btnAnuncios_Click);
             // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Animated = true;
+            this.btnUsuarios.BackColor = System.Drawing.Color.Transparent;
+            this.btnUsuarios.BorderColor = System.Drawing.Color.Empty;
+            this.btnUsuarios.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnUsuarios.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnUsuarios.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnUsuarios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUsuarios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUsuarios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUsuarios.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUsuarios.FillColor = System.Drawing.Color.Transparent;
+            this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.btnUsuarios.ForeColor = System.Drawing.Color.White;
+            this.btnUsuarios.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnUsuarios.IndicateFocus = true;
+            this.btnUsuarios.Location = new System.Drawing.Point(364, 0);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(120, 64);
+            this.btnUsuarios.TabIndex = 20;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.UseTransparentBackground = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -184,31 +236,6 @@
             this.guna2PictureBox1.TabIndex = 14;
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
-            // 
-            // btnEncuentros
-            // 
-            this.btnEncuentros.Animated = true;
-            this.btnEncuentros.BackColor = System.Drawing.Color.Transparent;
-            this.btnEncuentros.BorderColor = System.Drawing.Color.Empty;
-            this.btnEncuentros.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnEncuentros.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnEncuentros.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.btnEncuentros.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEncuentros.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnEncuentros.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnEncuentros.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnEncuentros.FillColor = System.Drawing.Color.Transparent;
-            this.btnEncuentros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.btnEncuentros.ForeColor = System.Drawing.Color.White;
-            this.btnEncuentros.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.btnEncuentros.IndicateFocus = true;
-            this.btnEncuentros.Location = new System.Drawing.Point(73, 0);
-            this.btnEncuentros.Name = "btnEncuentros";
-            this.btnEncuentros.Size = new System.Drawing.Size(149, 64);
-            this.btnEncuentros.TabIndex = 19;
-            this.btnEncuentros.Text = "Encuentros";
-            this.btnEncuentros.UseTransparentBackground = true;
-            this.btnEncuentros.Click += new System.EventHandler(this.btnEncuentros_Click);
             // 
             // AdminApp
             // 
@@ -242,5 +269,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnAnuncios;
         private Guna.UI2.WinForms.Guna2Button btnEncuentros;
+        private Guna.UI2.WinForms.Guna2Button btnUsuarios;
     }
 }

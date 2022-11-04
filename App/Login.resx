@@ -117,15 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtCorreo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 158</value>
-  </data>
   <data name="&gt;&gt;btnRegistrarse.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>316, 472</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pnlCambiarContraseña.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="btnInvitado.Text" xml:space="preserve">
     <value>Continuar como invitado</value>
@@ -133,17 +130,15 @@
   <data name="&gt;&gt;guna2PictureBox1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblBienvenida.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 18pt</value>
   </data>
   <data name="&gt;&gt;guna2PictureBox1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;guna2DragControl1.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2DragControl, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
-  </data>
-  <data name="lblBienvenida.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 73</value>
+  <data name="btnIngles.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="&gt;&gt;btnRegistrarse.Name" xml:space="preserve">
     <value>btnRegistrarse</value>
@@ -155,28 +150,28 @@
     <value>Guna.UI2.WinForms.Guna2Elipse, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="btnCerrar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 15</value>
+    <value>546, 29</value>
+  </data>
+  <data name="guna2PictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="&gt;&gt;btnEspañol.Name" xml:space="preserve">
     <value>btnEspañol</value>
   </data>
   <data name="btnIngresar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 45</value>
+    <value>400, 87</value>
   </data>
   <data name="&gt;&gt;btnIngles.Name" xml:space="preserve">
     <value>btnIngles</value>
   </data>
-  <data name="&gt;&gt;btnIngresar.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
+  <data name="btnInvitado.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="btnRegistrarse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 45</value>
-  </data>
-  <data name="pnlCambiarContraseña.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 456</value>
+    <value>400, 87</value>
   </data>
   <data name="&gt;&gt;btnRegistrarse.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
@@ -185,45 +180,52 @@
     <value>Guna.UI2.WinForms.Guna2PictureBox, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="btnInvitado.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 26</value>
+    <value>424, 50</value>
+  </data>
+  <data name="txtCorreo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="txtPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 36</value>
+    <value>400, 69</value>
   </data>
   <data name="guna2PictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 35</value>
+    <value>64, 67</value>
   </data>
   <data name="pnlCambiarContraseña.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 16</value>
+    <value>632, 31</value>
   </data>
   <data name="btnInvitado.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt, style=Bold</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnInvitado.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
+  <data name="btnIngresar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
-  <data name="btnIngles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 20</value>
+  <data name="&gt;&gt;txtCorreo.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>12, 25</value>
+  </data>
+  <data name="btnIngresar.Text" xml:space="preserve">
+    <value>Ingresar</value>
   </data>
   <data name="&gt;&gt;txtCorreo.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="btnRegistrarse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
   <data name="btnIngles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 19</value>
+    <value>84, 37</value>
   </data>
   <data name="&gt;&gt;pnlCambiarContraseña.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
   <data name="&gt;&gt;guna2PictureBox1.Name" xml:space="preserve">
     <value>guna2PictureBox1</value>
-  </data>
-  <data name="&gt;&gt;lblBienvenida.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="&gt;&gt;btnIngles.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
@@ -231,14 +233,17 @@
   <data name="&gt;&gt;guna2DragControl1.Name" xml:space="preserve">
     <value>guna2DragControl1</value>
   </data>
+  <data name="btnRegistrarse.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
   <data name="&gt;&gt;btnIngresar.Name" xml:space="preserve">
     <value>btnIngresar</value>
   </data>
   <data name="btnIngresar.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="&gt;&gt;txtPassword.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;lblBienvenida.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;txtCorreo.Name" xml:space="preserve">
     <value>txtCorreo</value>
@@ -246,50 +251,63 @@
   <data name="guna2PictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="lblBienvenida.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
   <data name="&gt;&gt;btnInvitado.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="&gt;&gt;lblBienvenida.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnIngles.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
   <data name="&gt;&gt;btnCerrar.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2ControlBox, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="btnCerrar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 29</value>
+    <value>62, 56</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="btnCerrar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="btnEspañol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 20</value>
+    <value>444, 38</value>
   </data>
-  <data name="&gt;&gt;btnRegistrarse.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="btnCerrar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="guna2PictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 12</value>
+    <value>26, 23</value>
+  </data>
+  <data name="&gt;&gt;btnIngles.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtPassword.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="txtCorreo.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="btnRegistrarse.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;btnCerrar.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="btnInvitado.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 412</value>
+    <value>104, 792</value>
   </data>
   <data name="&gt;&gt;btnIngles.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="txtPassword.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 213</value>
+    <value>112, 410</value>
   </data>
   <data name="pnlCambiarContraseña.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
-  </data>
-  <data name="&gt;&gt;btnEspañol.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="btnIngresar.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -300,11 +318,20 @@
   <data name="btnIngles.Text" xml:space="preserve">
     <value>EN</value>
   </data>
+  <data name="&gt;&gt;btnIngresar.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
+  </data>
   <data name="txtCorreo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 36</value>
+    <value>400, 69</value>
+  </data>
+  <data name="&gt;&gt;guna2DragControl1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2DragControl, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="&gt;&gt;btnIngresar.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="btnEspañol.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="&gt;&gt;txtPassword.Parent" xml:space="preserve">
     <value>$this</value>
@@ -312,14 +339,17 @@
   <data name="lblBienvenida.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;btnIngresar.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="&gt;&gt;txtPassword.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2TextBox, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="&gt;&gt;pnlCambiarContraseña.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2GradientPanel, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
-  <data name="&gt;&gt;btnEspañol.Type" xml:space="preserve">
-    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
+  <data name="btnRegistrarse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 631</value>
   </data>
   <data name="&gt;&gt;txtCorreo.Type" xml:space="preserve">
     <value>Guna.UI2.WinForms.Guna2TextBox, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
@@ -331,7 +361,7 @@
     <value>$this</value>
   </data>
   <data name="btnIngresar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 277</value>
+    <value>112, 533</value>
   </data>
   <data name="btnRegistrarse.Text" xml:space="preserve">
     <value>Registrarse</value>
@@ -339,11 +369,17 @@
   <data name="lblBienvenida.Text" xml:space="preserve">
     <value>Bienvenido, &lt;br&gt;de nuevo</value>
   </data>
-  <data name="&gt;&gt;btnIngles.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="txtPassword.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
-  <data name="btnRegistrarse.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="btnIngles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 38</value>
+  </data>
+  <data name="btnEspañol.Text" xml:space="preserve">
+    <value>ES</value>
+  </data>
+  <data name="&gt;&gt;btnRegistrarse.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;btnEspañol.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -354,8 +390,8 @@
   <data name="&gt;&gt;lblBienvenida.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="btnIngles.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+  <data name="&gt;&gt;btnEspañol.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4</value>
   </data>
   <data name="btnCerrar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -366,26 +402,23 @@
   <data name="btnEspañol.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="btnCerrar.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;btnEspañol.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;btnInvitado.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="btnIngresar.Text" xml:space="preserve">
-    <value>Ingresar</value>
+  <data name="txtCorreo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 304</value>
   </data>
   <data name="&gt;&gt;btnInvitado.Name" xml:space="preserve">
     <value>btnInvitado</value>
-  </data>
-  <data name="btnRegistrarse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 328</value>
   </data>
   <data name="&gt;&gt;txtPassword.Name" xml:space="preserve">
     <value>txtPassword</value>
   </data>
   <data name="btnEspañol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 19</value>
+    <value>90, 37</value>
   </data>
   <data name="btnIngles.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -393,8 +426,8 @@
   <data name="$this.Text" xml:space="preserve">
     <value>`</value>
   </data>
-  <data name="btnRegistrarse.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="pnlCambiarContraseña.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 877</value>
   </data>
   <data name="txtPassword.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -405,8 +438,8 @@
   <data name="&gt;&gt;btnCerrar.Name" xml:space="preserve">
     <value>btnCerrar</value>
   </data>
-  <data name="&gt;&gt;txtCorreo.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>632, 908</value>
   </data>
   <data name="guna2PictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -415,7 +448,7 @@
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2287,16 +2320,16 @@
     <value>pnlCambiarContraseña</value>
   </data>
   <data name="lblBienvenida.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 60</value>
+    <value>254, 112</value>
   </data>
-  <data name="btnEspañol.Text" xml:space="preserve">
-    <value>ES</value>
+  <data name="btnInvitado.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
   </data>
   <data name="&gt;&gt;btnInvitado.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;btnIngresar.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="lblBienvenida.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 140</value>
   </data>
   <data name="guna2PictureBox1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2306,6 +2339,9 @@
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>es</value>
   </metadata>
   <metadata name="guna2DragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>141, 17</value>
