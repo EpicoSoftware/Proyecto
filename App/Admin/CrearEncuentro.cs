@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace App.Admin
 {
-    public partial class CrearEncuentroEquipo : Form
+    public partial class CrearEncuentro : Form
     {
-        public CrearEncuentroEquipo()
+        public static int tipoEncuentro;
+        public CrearEncuentro()
         {
             InitializeComponent();
         }
@@ -50,7 +51,9 @@ namespace App.Admin
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-
+            cePanelCreacion uc = new cePanelCreacion();
+            uc.TipoEncuentro = 1;
+            agregarUserControl(uc);
         }
     }
 }

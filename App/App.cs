@@ -32,9 +32,7 @@ namespace App
         {
             APIpublicidad apiPubli = new APIpublicidad();
             Anuncio anuncio = apiPubli.DisplayAnuncioRandom();
-            byte[] img = anuncio.Imagen;
-            MemoryStream ms = new MemoryStream(img);
-            picBanner.Image = Image.FromStream(ms);
+            
 
             /*string respuesta = apiPubli.AgregarVista(anuncio.IdAnuncio, Sesion.idUsuario);
 

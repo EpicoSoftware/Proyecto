@@ -81,6 +81,20 @@ namespace CapaLogica
             return respuesta;
         }
 
+        public List<Equipo> CargarEquipos()
+        {
+            string listaJson = Modelos.ObtenerListaEquipos();
+            var listaEquipos = JsonConvert.DeserializeObject<List<Equipo>>(listaJson);
+            return listaEquipos;
+        }
+
+        public List<Equipo> CargarEquiposFiltro(int idDeporte, int idPais)
+        {
+            string listaJson = Modelos.ObtenerListaEquiposFiltro(idDeporte, idPais);
+            var listaEquipos = JsonConvert.DeserializeObject<List<Equipo>>(listaJson);
+            return listaEquipos;
+        }
+
         public List<Torneo> CargarTorneos()
         {
             string listaJson = Modelos.ObtenerListaTorneos();

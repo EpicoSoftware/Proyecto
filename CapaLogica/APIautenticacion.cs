@@ -67,33 +67,29 @@ namespace CapaLogica
                     }
                     else
                     {
-                        int idPassoword = Modelos.obtenerIdPassword(datosUsuario.IdUsuario);
-                        //busca el Id contraseña del usuario registrado con ese correo en la tabla contraseñas_usuarios
-                        if (idPassoword != 0)
+                        string contra = Modelos.obtenerPassword(datosUsuario.IdUsuario);
+
+                        if (contra != md5.Encriptar(password))//Compara las contrasenas encriptadas para mas seguridad
                         {
-                            string contra = Modelos.obtenerPassword(idPassoword);
-
-                            if (contra != md5.Encriptar(password))//Compara las contrasenas encriptadas para mas seguridad
+                            switch (Sesion.idIdioma)
                             {
-                                switch (Sesion.idIdioma)
-                                {
-                                    case 1:
-                                        respuesta = "La contraseña no es correcta";
-                                        break;
-                                    case 2:
-                                        respuesta = "The password is not correct";
-                                        break;
-                                }
+                                case 1:
+                                    respuesta = "La contraseña no es correcta";
+                                    break;
+                                case 2:
+                                    respuesta = "The password is not correct";
+                                    break;
+                            }
 
-                            }
-                            else
-                            {
-                                Sesion.correo = datosUsuario.Email;
-                                Sesion.nombre = datosUsuario.NomUsuario;
-                                Sesion.idUsuario = datosUsuario.IdUsuario;
-                                Sesion.idTipoUsuario = datosUsuario.IdTipoUsuario;
-                            }
                         }
+                        else
+                        {
+                            Sesion.correo = datosUsuario.Email;
+                            Sesion.nombre = datosUsuario.NomUsuario;
+                            Sesion.idUsuario = datosUsuario.IdUsuario;
+                            Sesion.idTipoUsuario = datosUsuario.IdTipoUsuario;
+                        }
+
                     }
                 }
                 else
@@ -148,12 +144,12 @@ namespace CapaLogica
                                 respuesta = "There is already an account for that email, try loging in";
                                 break;
                         }
-                        
+
                     }
                     else
                     {
                         Modelos.RegistrarUsuario(datosUsuario, contraseña);
-                       
+
                     }
                 }
                 else
@@ -177,6 +173,41 @@ namespace CapaLogica
             string listaJson = Modelos.ObtenerListaUsuarios();
             var listaAnuncios = JsonConvert.DeserializeObject<List<Usuario>>(listaJson);
             return listaAnuncios;
+        }
+
+        public Usuario obtenerUsuario(string correo)
+        {
+            string usuarioJSON = Modelos.obtenerUsuario(correo);
+            var usuario = JsonConvert.DeserializeObject<Usuario>(usuarioJSON);
+            return usuario;
+        }
+
+        public string ActualizarUsuario(Usuario user)
+        {
+            string respuesta = "";
+            if (string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.NomUsuario))
+            {
+                switch (Sesion.idIdioma)
+                {
+                    case 1:
+                        respuesta = "Todos los campos deben estar llenos";
+                        break;
+                    case 2:
+                        respuesta = "All fields must be filled";
+                        break;
+                }
+            }
+            else
+            {
+                Modelos.ActualizarUsuario(user);
+            }
+            return respuesta;
+
+        }
+
+        public void EliminarUsuario(int idUsuario, int tipoUsuario)
+        {
+            Modelos.EliminarUsuario(idUsuario, tipoUsuario);
         }
     }
 }

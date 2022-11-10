@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDatos;
+using App.Admin;
 
 namespace App.UserControlAdmin
 {
@@ -18,11 +19,10 @@ namespace App.UserControlAdmin
             InitializeComponent();
         }
 
-        public AnuncioElemento(string marca, string correo, string fecha, byte[] preview, int idAnuncio = 0, bool estado = true)
+        public AnuncioElemento(string marca, string correo, string preview, int idAnuncio = 0, bool estado = true)
         {
             _marca = marca;
             _correo = correo;
-            _fecha = fecha;
             _preview = preview;
             _idAnuncio = idAnuncio;
             _estado = estado;
@@ -42,8 +42,7 @@ namespace App.UserControlAdmin
 
         private string _marca;
         private string _correo;
-        private string _fecha;
-        private byte[] _preview;
+        private string _preview;
         private int _idAnuncio;
         private bool _estado;
 
@@ -62,17 +61,10 @@ namespace App.UserControlAdmin
         }
 
         [Category("Custom Props")]
-        public string Fecha
-        {
-            get { return _fecha; }
-            set { _fecha = value; lblFechaCreacion.Text = value; }
-        }
-
-        [Category("Custom Props")]
-        public byte[] Preview
+        public string Preview
         {
             get { return _preview; }
-            set { _preview = value; picAnuncio.Image = Imagenes.ByteToImagen(_preview); }
+            set { _preview = value; picAnuncio.Image = Imagenes.ObtenerImagen(_preview); }
         }
 
         [Category("Custom Props")]
@@ -92,21 +84,34 @@ namespace App.UserControlAdmin
                 string respuesta = Modelos.EliminarAnuncio(IdAnuncio);
                 if (string.IsNullOrEmpty(respuesta))
                 {
-                    MessageBox.Show("Se elimino correctamente, actializa para ver cambios", "Hecho");
+                    switch (Sesion.idIdioma)
+                    {
+                        case 1:
+                            MessageBox.Show("Se elimino correctamente, actualiza para ver cambios", "Hecho");
+                            break;
+                        case 2:
+                            MessageBox.Show("It was deleted succesfuly, refresh to see changes", "Done");
+
+                            break;
+                    }
+              
                 }
                 else MessageBox.Show(respuesta, "error");
-               
+
             }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnVer_Click(object sender, EventArgs e)
-        {
-
+            EditarAnuncio anuncio = new EditarAnuncio();
+            anuncio.Correo = _correo;
+            anuncio.Marca = _marca;
+            anuncio.Preview = _preview;
+            anuncio.Estado = _estado;
+            anuncio.IdAnuncio = _idAnuncio;
+            anuncio.Visible = true;
         }
     }
 }
+        
+    

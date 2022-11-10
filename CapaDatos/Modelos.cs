@@ -36,14 +36,14 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "SELECT * from torneos";
+                "SELECT * from paises";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             reader = comando.ExecuteReader();
 
             while (reader.Read())
             {
-                pais = reader["Nombre"].ToString();
+                pais = reader["nomPais"].ToString();
                 listaPais.Add(pais);
             }
 
@@ -52,29 +52,8 @@ namespace CapaDatos
         }
 
         //AUTENTICACION
-        public static int obtenerIdPassword(int idUsuario)
-        {
-            int idPassword = 0;
-            MySqlDataReader reader;
-            MySqlConnection conexion = getConexion();
-            conexion.Open();
 
-            string sql =
-                "SELECT * from Usuariologin WHERE idUsuario LIKE @idUsuario";
-
-            MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@idUsuario", idUsuario);
-            reader = comando.ExecuteReader();
-
-            while (reader.Read())
-            {
-                idPassword = int.Parse(reader["idContraseña"].ToString());
-            }
-
-            return idPassword;
-        }
-
-        public static string obtenerPassword(int idPassword)
+        public static string obtenerPassword(int idUsuario)
         {
             string password = null;
             MySqlDataReader reader;
@@ -82,10 +61,10 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "SELECT Contraseña FROM Contraseña WHERE idContraseña LIKE @idPassword";
+                "SELECT Contraseña FROM Contraseña WHERE idUsuario LIKE @idUsuario";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
-            comando.Parameters.AddWithValue("@idPassword", idPassword);
+            comando.Parameters.AddWithValue("@idUsuario", idUsuario);
             reader = comando.ExecuteReader();
 
             while (reader.Read())
@@ -131,11 +110,18 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "INSERT INTO Usuario (email, nomUsuario, idTipoUsuario) VALUES(@email, @nomUsuario, @idTipoUsuario); " +
-                "INSERT INTO Contraseña (Contraseña) VALUES(@contaseña); " +
-                "INSERT INTO Usuariologin VALUES(" +
-                    "(SELECT idContraseña FROM contraseña WHERE Contraseña = @contaseña), " +
-                    "(SELECT idUsuario FROM usuario WHERE email = @email));";
+                    "INSERT INTO Usuario (email, nomUsuario, idTipoUsuario) VALUES(@email, @nomUsuario, @idTipoUsuario); " +
+                    "INSERT INTO Contraseña(Contraseña, idUsuario) VALUES(@contaseña, (SELECT idUsuario FROM Usuario WHERE email = @email)); ";
+               
+            switch (user.IdTipoUsuario)
+            {
+                case 1:
+                    sql += "INSERT INTO Usuariosgratis VALUES((SELECT idUsuario FROM usuario WHERE email = @email))";
+                    break;
+                case 2:
+                    sql += "INSERT INTO Usuariospago VALUES((SELECT idUsuario FROM usuario WHERE email = @email))";
+                    break;
+            }
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@email", user.Email);
@@ -146,17 +132,25 @@ namespace CapaDatos
             Console.WriteLine(comando.ExecuteNonQuery());
         }
 
-        public static string EliminarUsuario(int idUsuario)
+        public static string EliminarUsuario(int idUsuario, int tipoUsuario)
         {
             string respuesta = null;
             MySqlConnection conexion = getConexion();
             try
             {
                 conexion.Open();
-
-                string sql =
-                             "DELETE FROM Usuario WHERE idUsuario = @idUsuario; " +
-                             "DELETE FROM Usuariologin WHERE idUsuario = @idUsuario;";
+                string sql = "";
+                switch (tipoUsuario)
+                {
+                    case 1:
+                        sql += "DELETE FROM usuariosgratis WHERE idUsuario = @idUsuario; ";
+                        break;
+                    case 2:
+                        sql += "DELETE FROM usuariopago WHERE idUsuario = @idUsuario; ";
+                        break;
+                }
+                sql += "DELETE FROM Contraseña WHERE idUsuario = @idUsuario; " +
+                    "DELETE FROM Usuario WHERE idUsuario = @idUsuario;";
 
                 MySqlCommand comando = new MySqlCommand(sql, conexion);
                 comando.Parameters.AddWithValue("@idUsuario", idUsuario);
@@ -165,7 +159,7 @@ namespace CapaDatos
             }
             catch (Exception e)
             {
-                respuesta = e.ToString();
+                MessageBox.Show(e.ToString());
             }
 
 
@@ -210,8 +204,24 @@ namespace CapaDatos
                 "UPDATE Usuario SET " +
                     "nomUsuario = @nomNuevo, " +
                     "email = @emailNuevo, " +
-                    "idTipoUsuario = @idTipoNuevo" +
+                    "idTipoUsuario = @idTipoNuevo " +
                 "WHERE idUsuario = @id; ";
+
+            switch (user.IdTipoUsuario)
+            {
+                case 1:
+                    sql += "INSERT INTO usuariosgratis VALUES(@id); " +
+                        "DELETE FROM usuariopago WHERE idUsuario = @id;";
+                    break;
+                case 2:
+                    sql += "INSERT INTO usuariopago VALUES(@id);" +
+                        "DELETE FROM usuariosgratis WHERE idUsuario = @id;";
+                    break;
+                case 3:
+                    sql += "DELETE FROM usuariopago WHERE idUsuario = @id; " +
+                        "DELETE FROM usuariosgratis WHERE idUsuario = @id;";
+                    break;
+            }
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@nomNuevo", user.NomUsuario);
@@ -241,7 +251,7 @@ namespace CapaDatos
             {
                 banner = new Anuncio();
                 banner.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
-                banner.Imagen = (byte[])(reader["imagen"]);   //pasando de string a arreglo de bytes
+                banner.Imagen = reader["imagen"].ToString();   
                 banner.NombreMarca = reader["nomMarca"].ToString();
                 banner.Link = reader["link"].ToString();
                 banner.Estado = bool.Parse(reader["estado"].ToString());
@@ -375,15 +385,38 @@ namespace CapaDatos
                 ad.Link = reader["link"].ToString();
                 ad.NombreMarca = reader["nomMarca"].ToString();
                 ad.Estado = bool.Parse(reader["estado"].ToString());
-                ad.Imagen = (byte[])(reader["imagen"]); //pasando de string a arreglo de bytes
+                ad.Imagen = reader["imagen"].ToString(); //pasando de string a arreglo de bytes
 
                 listaAnuncios.Add(ad);
             }
 
             string listaAnunciosJson = JsonConvert.SerializeObject(listaAnuncios);
-            MessageBox.Show(listaAnunciosJson);
-
             return listaAnunciosJson;
+        }
+
+        public static void ActualizarAnuncio(Anuncio anuncio)
+        {
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "UPDATE anuncios SET " +
+                "nomMarca = @nomMarca " +
+                "imagen = @imagen " +
+                "link = @link " +
+                "correoContacto = @correoContacto " +
+                "estado = @estado " +
+                "WHERE idDeporte = @id; ";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nomMarca", anuncio.NombreMarca);
+            comando.Parameters.AddWithValue("@imagen", anuncio.Imagen);
+            comando.Parameters.AddWithValue("@link", anuncio.Link);
+            comando.Parameters.AddWithValue("@correoContacto", anuncio.CorreoContacto);
+            comando.Parameters.AddWithValue("@estado", anuncio.Estado);
+            comando.Parameters.AddWithValue("@id", anuncio.IdAnuncio);
+            reader = comando.ExecuteReader();
         }
 
         public static void RegistrarAnuncio(Anuncio anuncio)
@@ -452,13 +485,41 @@ namespace CapaDatos
                 ad.Link = reader["link"].ToString();
                 ad.NombreMarca = reader["nomMarca"].ToString();
                 ad.Estado = bool.Parse(reader["estado"].ToString());
-                ad.Imagen = (byte[])(reader["imagen"]); //pasando de string a arreglo de bytes
+                ad.Imagen = reader["imagen"].ToString(); //pasando de string a arreglo de bytes
 
                 listaAnuncios.Add(ad);
             }
 
             var listaAnunciosJson = JsonConvert.SerializeObject(listaAnuncios);
             return listaAnunciosJson;
+        }
+
+        public static string ObtenerAnuncio(int idAnuncios)
+        {
+            Anuncio anuncio = new Anuncio();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from anuncios WHERE idAnuncio = @idAnuncio";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@idAnuncio", anuncio.Imagen);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                anuncio.IdAnuncio = int.Parse(reader["idAnuncio"].ToString());
+                anuncio.Link = reader["link"].ToString();
+                anuncio.NombreMarca = reader["nomMarca"].ToString();
+                anuncio.Estado = bool.Parse(reader["estado"].ToString());
+                anuncio.Imagen = reader["imagen"].ToString(); //pasando de string a arreglo de bytes
+            }
+
+            string anuncioJson = JsonConvert.SerializeObject(anuncio);
+
+            return anuncioJson;
         }
 
         //ENCUENTROS
@@ -495,6 +556,7 @@ namespace CapaDatos
             var listaEncuentrosJson = JsonConvert.SerializeObject(listaEncuentros);
             return listaEncuentrosJson;
         }
+
         public static string ObtenerListaDeportes()
         {
             List<Deporte> listaDeporte = new List<Deporte>();
@@ -520,6 +582,73 @@ namespace CapaDatos
             var listaDeporteJson = JsonConvert.SerializeObject(listaDeporte);
             return listaDeporteJson;
         }
+
+        public static string ObtenerListaEquipos()
+        {
+            List<Equipo> listaEquipo = new List<Equipo>();
+            Equipo equipo;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from equipo";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                equipo = new Equipo();
+                equipo.IdEquipo = int.Parse(reader["idEquipo"].ToString());
+                equipo.IdDeporte = int.Parse(reader["idDeporte"].ToString());
+                equipo.IdPais = int.Parse(reader["idPais"].ToString());
+                equipo.NomEquipo = reader["nomEquipo"].ToString();
+                equipo.NomDt = reader["nomDt"].ToString();
+                equipo.RutaEscudo = reader["escudo"].ToString();
+                equipo.EsSeleccion = bool.Parse(reader["esSeleccion"].ToString());
+
+                listaEquipo.Add(equipo);
+            }
+
+            var listaEquipoJson = JsonConvert.SerializeObject(listaEquipo);
+            return listaEquipoJson;
+        }
+
+        public static string ObtenerListaEquiposFiltro(int idDeporte, int idPais)
+        {
+            List<Equipo> listaEquipo = new List<Equipo>();
+            Equipo equipo;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from equipo WHERE idDeporte = @idDeporte AND idPais = @idPais";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@idDeporte", idDeporte);
+            comando.Parameters.AddWithValue("@idPais", idPais);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                equipo = new Equipo();
+                equipo.IdEquipo = int.Parse(reader["idEquipo"].ToString());
+                equipo.IdDeporte = int.Parse(reader["idDeporte"].ToString());
+                equipo.IdPais = int.Parse(reader["idPais"].ToString());
+                equipo.NomEquipo = reader["nomEquipo"].ToString();
+                equipo.NomDt = reader["nomDt"].ToString();
+                equipo.RutaEscudo = reader["escudo"].ToString();
+                equipo.EsSeleccion = bool.Parse(reader["esSeleccion"].ToString());
+
+                listaEquipo.Add(equipo);
+            }
+
+            var listaEquipoJson = JsonConvert.SerializeObject(listaEquipo);
+            return listaEquipoJson;
+        }
+
         public static int ObtenerIdDeporte(string nomDeporte)
         {
             Deporte deporte = new Deporte();
@@ -541,6 +670,7 @@ namespace CapaDatos
 
             return deporte.IdDeporte;
         }
+
         public static void ActualizarDeporte(int id, string nomNuevo)
         {
             MySqlDataReader reader;
@@ -556,6 +686,7 @@ namespace CapaDatos
             reader = comando.ExecuteReader();
 
         }
+
         public static string EliminarDeporte(int id)
         {
             string respuesta = null;
@@ -580,6 +711,7 @@ namespace CapaDatos
 
             return respuesta;
         }
+
         public static string CrearDeporte(string nomDeporte)
         {
             string respuesta = null;
@@ -604,6 +736,7 @@ namespace CapaDatos
 
             return respuesta;
         }
+
         public static string ObtenerListaTorneos()
         {
             List<Torneo> listaTorneo = new List<Torneo>();
@@ -629,6 +762,7 @@ namespace CapaDatos
             var listaTorneoJson = JsonConvert.SerializeObject(listaTorneo);
             return listaTorneoJson;
         }
+
         public static int ObtenerIdTorneo(string nombre)
         {
             Torneo torneo = new Torneo();
@@ -650,6 +784,7 @@ namespace CapaDatos
 
             return torneo.IdTorneo;
         }
+
         public static void ActualizarTorneo(int id, string nomNuevo)
         {
             MySqlDataReader reader;
@@ -665,6 +800,7 @@ namespace CapaDatos
             reader = comando.ExecuteReader();
 
         }
+
         public static string EliminarTorneo(int id)
         {
             string respuesta = null;
@@ -689,6 +825,7 @@ namespace CapaDatos
 
             return respuesta;
         }
+
         public static string CrearTorneo(string nombre)
         {
             string respuesta = null;

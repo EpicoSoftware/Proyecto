@@ -111,6 +111,18 @@
     <Compile Include="Admin\AdminApp.Designer.cs">
       <DependentUpon>AdminApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AgreJugadoresEn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\AgreJugadoresEn.Designer.cs">
+      <DependentUpon>AgreJugadoresEn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\cePanelCreacion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\cePanelCreacion.Designer.cs">
+      <DependentUpon>cePanelCreacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ceDeporte.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,11 +141,17 @@
     <Compile Include="Admin\ceTorneo.Designer.cs">
       <DependentUpon>ceTorneo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\CrearEncuentroEquipo.cs">
+    <Compile Include="Admin\CrearEncuentro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\CrearEncuentroEquipo.Designer.cs">
-      <DependentUpon>CrearEncuentroEquipo.cs</DependentUpon>
+    <Compile Include="Admin\CrearEncuentro.Designer.cs">
+      <DependentUpon>CrearEncuentro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EditarAnuncio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\EditarAnuncio.Designer.cs">
+      <DependentUpon>EditarAnuncio.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\GestorUsuarios.cs">
       <SubType>UserControl</SubType>
@@ -224,6 +242,12 @@
     <EmbeddedResource Include="Admin\AdminApp.resx">
       <DependentUpon>AdminApp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\AgreJugadoresEn.resx">
+      <DependentUpon>AgreJugadoresEn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\cePanelCreacion.resx">
+      <DependentUpon>cePanelCreacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\ceDeporte.resx">
       <DependentUpon>ceDeporte.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,8 +257,11 @@
     <EmbeddedResource Include="Admin\ceTorneo.resx">
       <DependentUpon>ceTorneo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\CrearEncuentroEquipo.resx">
-      <DependentUpon>CrearEncuentroEquipo.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\CrearEncuentro.resx">
+      <DependentUpon>CrearEncuentro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\EditarAnuncio.resx">
+      <DependentUpon>EditarAnuncio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\GestorUsuarios.resx">
       <DependentUpon>GestorUsuarios.cs</DependentUpon>
@@ -419,6 +446,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trofeo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="imagenes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

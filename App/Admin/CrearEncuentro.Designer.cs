@@ -1,6 +1,6 @@
 ﻿namespace App.Admin
 {
-    partial class CrearEncuentroEquipo
+    partial class CrearEncuentro
     {
         /// <summary>
         /// Required designer variable.
@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearEncuentroEquipo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearEncuentro));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlMenu = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.btnCerrar = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pnlContenedor = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.btnCrear = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnEquipos = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnTorneo = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnJugador = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnDeporte = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnCerrar = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnCrear = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.pnlContenedor = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -68,6 +68,84 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(63, 627);
             this.pnlMenu.TabIndex = 4;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.FillColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.IconColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(784, 12);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(31, 19);
+            this.btnCerrar.TabIndex = 9;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(16, 16);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(331, 44);
+            this.guna2HtmlLabel1.TabIndex = 19;
+            this.guna2HtmlLabel1.Text = "Crea un encuetro o partido";
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
+            this.guna2Panel1.Controls.Add(this.btnCrear);
+            this.guna2Panel1.Controls.Add(this.btnCerrar);
+            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.Location = new System.Drawing.Point(63, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(827, 63);
+            this.guna2Panel1.TabIndex = 20;
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Poppins Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(602, 19);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(150, 30);
+            this.guna2HtmlLabel2.TabIndex = 20;
+            this.guna2HtmlLabel2.Text = "Panel de Creacion";
+            // 
+            // pnlContenedor
+            // 
+            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContenedor.Location = new System.Drawing.Point(63, 63);
+            this.pnlContenedor.Name = "pnlContenedor";
+            this.pnlContenedor.Size = new System.Drawing.Size(827, 564);
+            this.pnlContenedor.TabIndex = 21;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // btnCrear
+            // 
+            this.btnCrear.BackColor = System.Drawing.Color.Transparent;
+            this.btnCrear.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnCrear.HoverState.Image = global::App.Properties.Resources.agregar;
+            this.btnCrear.HoverState.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnCrear.Image = global::App.Properties.Resources.agregar;
+            this.btnCrear.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnCrear.ImageRotate = 0F;
+            this.btnCrear.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnCrear.Location = new System.Drawing.Point(548, 8);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnCrear.Size = new System.Drawing.Size(48, 49);
+            this.btnCrear.TabIndex = 0;
+            this.btnCrear.UseTransparentBackground = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnEquipos
             // 
@@ -149,84 +227,6 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCerrar.FillColor = System.Drawing.Color.Transparent;
-            this.btnCerrar.IconColor = System.Drawing.Color.White;
-            this.btnCerrar.Location = new System.Drawing.Point(784, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(31, 19);
-            this.btnCerrar.TabIndex = 9;
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(16, 16);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(331, 44);
-            this.guna2HtmlLabel1.TabIndex = 19;
-            this.guna2HtmlLabel1.Text = "Crea un encuetro o partido";
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
-            this.guna2Panel1.Controls.Add(this.btnCrear);
-            this.guna2Panel1.Controls.Add(this.btnCerrar);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(63, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(827, 63);
-            this.guna2Panel1.TabIndex = 20;
-            // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Poppins Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(602, 19);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(150, 30);
-            this.guna2HtmlLabel2.TabIndex = 20;
-            this.guna2HtmlLabel2.Text = "Panel de Creacion";
-            // 
-            // btnCrear
-            // 
-            this.btnCrear.BackColor = System.Drawing.Color.Transparent;
-            this.btnCrear.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnCrear.HoverState.Image = global::App.Properties.Resources.agregar;
-            this.btnCrear.HoverState.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnCrear.Image = global::App.Properties.Resources.agregar;
-            this.btnCrear.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnCrear.ImageRotate = 0F;
-            this.btnCrear.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnCrear.Location = new System.Drawing.Point(548, 8);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnCrear.Size = new System.Drawing.Size(48, 49);
-            this.btnCrear.TabIndex = 0;
-            this.btnCrear.UseTransparentBackground = true;
-            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
-            // 
-            // pnlContenedor
-            // 
-            this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContenedor.Location = new System.Drawing.Point(63, 63);
-            this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(827, 564);
-            this.pnlContenedor.TabIndex = 21;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
             // CrearEncuentroEquipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,9 +244,9 @@
             this.Text = "CrearEncuentroEquipo";
             this.Load += new System.EventHandler(this.CrearEncuentroEquipo_Load);
             this.pnlMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

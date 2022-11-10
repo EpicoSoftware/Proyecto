@@ -39,7 +39,7 @@
             this.lblIdJugador = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtNombreJugador = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtApellidoJugdor = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtApellidoJugador = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtApellido = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.cboBusqueda = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -54,6 +54,7 @@
             this.chboxSeleccion = new Guna.UI2.WinForms.Guna2CheckBox();
             this.dtpFechaNacimiento = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblMensaje = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.SuspendLayout();
             // 
             // btnEliminar
@@ -89,6 +90,7 @@
             this.btnCrear.Size = new System.Drawing.Size(180, 45);
             this.btnCrear.TabIndex = 46;
             this.btnCrear.Text = "Crear";
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnActualizar
             // 
@@ -232,27 +234,27 @@
             this.guna2HtmlLabel1.TabIndex = 55;
             this.guna2HtmlLabel1.Text = "Apellido:";
             // 
-            // txtApellidoJugdor
+            // txtApellidoJugador
             // 
-            this.txtApellidoJugdor.BorderColor = System.Drawing.Color.Empty;
-            this.txtApellidoJugdor.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtApellidoJugdor.DefaultText = "";
-            this.txtApellidoJugdor.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtApellidoJugdor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtApellidoJugdor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtApellidoJugdor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtApellidoJugdor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoJugdor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtApellidoJugdor.ForeColor = System.Drawing.Color.Black;
-            this.txtApellidoJugdor.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtApellidoJugdor.Location = new System.Drawing.Point(92, 335);
-            this.txtApellidoJugdor.Name = "txtApellidoJugdor";
-            this.txtApellidoJugdor.PasswordChar = '\0';
-            this.txtApellidoJugdor.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.txtApellidoJugdor.PlaceholderText = "Nombre";
-            this.txtApellidoJugdor.SelectedText = "";
-            this.txtApellidoJugdor.Size = new System.Drawing.Size(146, 36);
-            this.txtApellidoJugdor.TabIndex = 54;
+            this.txtApellidoJugador.BorderColor = System.Drawing.Color.Empty;
+            this.txtApellidoJugador.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtApellidoJugador.DefaultText = "";
+            this.txtApellidoJugador.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtApellidoJugador.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtApellidoJugador.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtApellidoJugador.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtApellidoJugador.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtApellidoJugador.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtApellidoJugador.ForeColor = System.Drawing.Color.Black;
+            this.txtApellidoJugador.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtApellidoJugador.Location = new System.Drawing.Point(92, 335);
+            this.txtApellidoJugador.Name = "txtApellidoJugador";
+            this.txtApellidoJugador.PasswordChar = '\0';
+            this.txtApellidoJugador.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtApellidoJugador.PlaceholderText = "Apellido";
+            this.txtApellidoJugador.SelectedText = "";
+            this.txtApellidoJugador.Size = new System.Drawing.Size(146, 36);
+            this.txtApellidoJugador.TabIndex = 54;
             // 
             // txtApellido
             // 
@@ -299,7 +301,7 @@
             this.cboBusqueda.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboBusqueda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cboBusqueda.ItemHeight = 30;
-            this.cboBusqueda.Location = new System.Drawing.Point(225, 142);
+            this.cboBusqueda.Location = new System.Drawing.Point(225, 156);
             this.cboBusqueda.Name = "cboBusqueda";
             this.cboBusqueda.Size = new System.Drawing.Size(377, 36);
             this.cboBusqueda.TabIndex = 58;
@@ -356,6 +358,7 @@
             this.cboEquipo.Name = "cboEquipo";
             this.cboEquipo.Size = new System.Drawing.Size(165, 36);
             this.cboEquipo.TabIndex = 65;
+            this.cboEquipo.Click += new System.EventHandler(this.cboEquipo_Click);
             // 
             // cboDeporteJugador
             // 
@@ -418,7 +421,7 @@
             this.chboxSeleccion.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
             this.chboxSeleccion.Font = new System.Drawing.Font("Poppins", 9F);
             this.chboxSeleccion.ForeColor = System.Drawing.Color.White;
-            this.chboxSeleccion.Location = new System.Drawing.Point(551, 410);
+            this.chboxSeleccion.Location = new System.Drawing.Point(550, 350);
             this.chboxSeleccion.Name = "chboxSeleccion";
             this.chboxSeleccion.Size = new System.Drawing.Size(143, 26);
             this.chboxSeleccion.TabIndex = 70;
@@ -454,11 +457,22 @@
             this.guna2HtmlLabel6.TabIndex = 72;
             this.guna2HtmlLabel6.Text = "Fecha de Nacimiento:";
             // 
+            // lblMensaje
+            // 
+            this.lblMensaje.BackColor = System.Drawing.Color.Transparent;
+            this.lblMensaje.ForeColor = System.Drawing.Color.White;
+            this.lblMensaje.Location = new System.Drawing.Point(353, 446);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(167, 28);
+            this.lblMensaje.TabIndex = 73;
+            this.lblMensaje.Text = "Si no encuentras el equipo puedes <br>crearlo en el panel de la izquierda";
+            // 
             // ceJugador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Controls.Add(this.chboxSeleccion);
             this.Controls.Add(this.cboPaisEquipo);
@@ -471,7 +485,7 @@
             this.Controls.Add(this.cboBusqueda);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.guna2HtmlLabel1);
-            this.Controls.Add(this.txtApellidoJugdor);
+            this.Controls.Add(this.txtApellidoJugador);
             this.Controls.Add(this.guna2HtmlLabel4);
             this.Controls.Add(this.lblIdJugador);
             this.Controls.Add(this.txtNombreJugador);
@@ -505,7 +519,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblIdJugador;
         private Guna.UI2.WinForms.Guna2TextBox txtNombreJugador;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2TextBox txtApellidoJugdor;
+        private Guna.UI2.WinForms.Guna2TextBox txtApellidoJugador;
         private Guna.UI2.WinForms.Guna2TextBox txtApellido;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2ComboBox cboBusqueda;
@@ -520,5 +534,6 @@
         private Guna.UI2.WinForms.Guna2CheckBox chboxSeleccion;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpFechaNacimiento;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblMensaje;
     }
 }

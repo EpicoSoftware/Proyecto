@@ -146,7 +146,7 @@
             this.pnlMenu.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(1061, 64);
+            this.pnlMenu.Size = new System.Drawing.Size(1061, 60);
             this.pnlMenu.TabIndex = 3;
             // 
             // btnEncuentros
@@ -168,7 +168,7 @@
             this.btnEncuentros.IndicateFocus = true;
             this.btnEncuentros.Location = new System.Drawing.Point(73, 0);
             this.btnEncuentros.Name = "btnEncuentros";
-            this.btnEncuentros.Size = new System.Drawing.Size(149, 64);
+            this.btnEncuentros.Size = new System.Drawing.Size(149, 60);
             this.btnEncuentros.TabIndex = 19;
             this.btnEncuentros.Text = "Encuentros";
             this.btnEncuentros.UseTransparentBackground = true;
@@ -193,7 +193,7 @@
             this.btnAnuncios.IndicateFocus = true;
             this.btnAnuncios.Location = new System.Drawing.Point(228, 0);
             this.btnAnuncios.Name = "btnAnuncios";
-            this.btnAnuncios.Size = new System.Drawing.Size(120, 64);
+            this.btnAnuncios.Size = new System.Drawing.Size(120, 60);
             this.btnAnuncios.TabIndex = 18;
             this.btnAnuncios.Text = "Anuncios";
             this.btnAnuncios.UseTransparentBackground = true;
@@ -218,7 +218,7 @@
             this.btnUsuarios.IndicateFocus = true;
             this.btnUsuarios.Location = new System.Drawing.Point(364, 0);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(120, 64);
+            this.btnUsuarios.Size = new System.Drawing.Size(120, 60);
             this.btnUsuarios.TabIndex = 20;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseTransparentBackground = true;
@@ -231,7 +231,7 @@
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(12, 17);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(42, 32);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(42, 35);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 14;
             this.guna2PictureBox1.TabStop = false;
@@ -249,6 +249,7 @@
             this.Name = "AdminApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminAppcs";
+            this.Load += new System.EventHandler(this.AdminApp_Load);
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);

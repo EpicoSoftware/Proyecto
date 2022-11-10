@@ -53,7 +53,6 @@ namespace CapaLogica
             return listaAnuncios;
 
         }
-        
 
         public List<Anuncio> buscarAnuncio(string nomMarca)
         {
@@ -67,6 +66,39 @@ namespace CapaLogica
         {
             string respuesta = Modelos.EliminarAnuncio(idAnuncio);
             return respuesta;
+        }
+
+        public Anuncio ObtenerAnuncio(int idAnuncio)
+        {
+            Anuncio anuncio = new Anuncio();
+            string anuncioJson = Modelos.ObtenerAnuncio(idAnuncio);
+            anuncio = JsonConvert.DeserializeObject<Anuncio>(anuncioJson);
+
+            return anuncio;
+        }
+
+        public void ActualizarAnuncio(Anuncio anuncio)
+        {
+            if(string.IsNullOrEmpty(anuncio.CorreoContacto) || 
+                string.IsNullOrEmpty(anuncio.Imagen) || 
+                string.IsNullOrEmpty(anuncio.Link) ||
+                string.IsNullOrEmpty(anuncio.NombreMarca))
+            {
+                switch (Sesion.idIdioma)
+                {
+                    case 1:
+                        MessageBox.Show("Debe llenar todos los campos", "Error");
+                        break;
+                    case 2:
+                        MessageBox.Show("You must fill all fields", "Error");
+                        break;
+                }
+            }
+            else
+            {
+                Modelos.ActualizarAnuncio(anuncio);
+            }
+            
         }
 
     }

@@ -63,5 +63,11 @@ namespace App
             UserControl gUsuarios = new GestorUsuarios();
             agregarUserControl(gUsuarios);
         }
+
+        private void AdminApp_Load(object sender, EventArgs e)
+        {
+            UserControl encuentro = new Encuentros();
+            agregarUserControl(encuentro);
+        }
     }
 }

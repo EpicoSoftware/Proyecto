@@ -145,6 +145,7 @@
     <Compile Include="Deporte.cs" />
     <Compile Include="EncriptarMD5.cs" />
     <Compile Include="Encuentro.cs" />
+    <Compile Include="Equipo.cs" />
     <Compile Include="Imagenes.cs" />
     <Compile Include="Jugadores.cs" />
     <Compile Include="Modelos.cs" />

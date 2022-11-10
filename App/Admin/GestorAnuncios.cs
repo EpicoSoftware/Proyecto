@@ -17,7 +17,7 @@ namespace App
 {
     public partial class GestorAnuncios : UserControl
     {
-        static byte[] fotoBanner;
+        static string rutaImagen;
         public GestorAnuncios()
         {
             InitializeComponent();
@@ -34,7 +34,8 @@ namespace App
 
         private void btnCargarImg_Click(object sender, EventArgs e)
         {
-            fotoBanner = Imagenes.SubirImagen(picBannerPreview);
+            rutaImagen = Imagenes.GuardarImagen();
+            picBannerPreview.Image = Imagenes.ObtenerImagen(rutaImagen);
         }
 
         private void btnPublicar_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace App
             anuncio.Link = txtLink.Text;
             anuncio.NombreMarca = txtMarca.Text;
             anuncio.CorreoContacto = txtCorreoContacto.Text;
-            anuncio.Imagen = fotoBanner;
+            anuncio.Imagen = rutaImagen;
             anuncio.Estado = toggleEstado.Checked;
 
             string anuncioJson = JsonConvert.SerializeObject(anuncio);
@@ -107,6 +108,7 @@ namespace App
             }
             
         }
+
         private void cargarAnuncios()
         {
             List<Anuncio> listaAnuncios = new List<Anuncio>();
@@ -122,11 +124,11 @@ namespace App
                 anuncio.Preview = ad.Imagen;
                 anuncio.Estado = ad.Estado;
                 anuncio.IdAnuncio = ad.IdAnuncio;
-                //MessageBox.Show(ad.NombreMarca);
                 flpAnuncios.Controls.Add(anuncio);
             }
             
         }
+
         private void GestorAnuncios_Load(object sender, EventArgs e)
         {
             cargarAnuncios();

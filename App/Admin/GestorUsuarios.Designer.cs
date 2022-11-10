@@ -38,6 +38,10 @@
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblUsuario = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.cboTipoUsuario = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblTipo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
+            this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // btnRefrescar
@@ -56,6 +60,7 @@
             this.btnRefrescar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnRefrescar.Size = new System.Drawing.Size(40, 40);
             this.btnRefrescar.TabIndex = 21;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // btnPublicar
             // 
@@ -75,8 +80,9 @@
             this.btnPublicar.Name = "btnPublicar";
             this.btnPublicar.Size = new System.Drawing.Size(154, 45);
             this.btnPublicar.TabIndex = 20;
-            this.btnPublicar.Text = "Publicar";
+            this.btnPublicar.Text = "Registrar";
             this.btnPublicar.UseTransparentBackground = true;
+            this.btnPublicar.Click += new System.EventHandler(this.btnPublicar_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -105,6 +111,7 @@
             this.btnBuscar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnBuscar.Size = new System.Drawing.Size(40, 40);
             this.btnBuscar.TabIndex = 18;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -215,15 +222,85 @@
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
             this.lblUsuario.Location = new System.Drawing.Point(525, 106);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(19, 28);
+            this.lblUsuario.Size = new System.Drawing.Size(25, 28);
             this.lblUsuario.TabIndex = 26;
-            this.lblUsuario.Text = "12";
+            this.lblUsuario.Text = "00";
+            // 
+            // cboTipoUsuario
+            // 
+            this.cboTipoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.cboTipoUsuario.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoUsuario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboTipoUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboTipoUsuario.ItemHeight = 30;
+            this.cboTipoUsuario.Items.AddRange(new object[] {
+            "Usuario Gratis",
+            "Usuario Pago",
+            "Administrador"});
+            this.cboTipoUsuario.Location = new System.Drawing.Point(836, 141);
+            this.cboTipoUsuario.Name = "cboTipoUsuario";
+            this.cboTipoUsuario.Size = new System.Drawing.Size(165, 36);
+            this.cboTipoUsuario.TabIndex = 71;
+            // 
+            // lblTipo
+            // 
+            this.lblTipo.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipo.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipo.ForeColor = System.Drawing.Color.White;
+            this.lblTipo.Location = new System.Drawing.Point(767, 147);
+            this.lblTipo.Name = "lblTipo";
+            this.lblTipo.Size = new System.Drawing.Size(31, 24);
+            this.lblTipo.TabIndex = 70;
+            this.lblTipo.Text = "Tipo:";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Animated = true;
+            this.btnEliminar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEliminar.BorderThickness = 2;
+            this.btnEliminar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEliminar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEliminar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.btnEliminar.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnEliminar.Location = new System.Drawing.Point(656, 503);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(180, 45);
+            this.btnEliminar.TabIndex = 69;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Animated = true;
+            this.btnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnActualizar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnActualizar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(124)))), ((int)(((byte)(29)))));
+            this.btnActualizar.Font = new System.Drawing.Font("Poppins SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Location = new System.Drawing.Point(851, 503);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(180, 45);
+            this.btnActualizar.TabIndex = 68;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // GestorUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.Controls.Add(this.cboTipoUsuario);
+            this.Controls.Add(this.lblTipo);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.txtEmail);
@@ -254,5 +331,9 @@
         private Guna.UI2.WinForms.Guna2TextBox txtNombre;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblUsuario;
+        private Guna.UI2.WinForms.Guna2ComboBox cboTipoUsuario;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTipo;
+        private Guna.UI2.WinForms.Guna2Button btnEliminar;
+        private Guna.UI2.WinForms.Guna2Button btnActualizar;
     }
 }

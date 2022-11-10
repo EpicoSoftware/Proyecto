@@ -15,6 +15,7 @@ namespace App.UserControlAdmin
 {
     public partial class Encuentros : UserControl
     {
+        public static int tipoEncuentro;
         public Encuentros()
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace App.UserControlAdmin
 
         private void btnCrearXEquipo_Click(object sender, EventArgs e)
         {
-            CrearEncuentroEquipo cee = new CrearEncuentroEquipo();
+            CrearEncuentro cee = new CrearEncuentro();
             cee.Visible = true;
 
         }

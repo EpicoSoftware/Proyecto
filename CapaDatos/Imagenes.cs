@@ -41,5 +41,55 @@ namespace CapaDatos
             }
             return imagenByte;
         }
+
+        public static string GuardarImagen()
+        {
+            string ruta = "";
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            DialogResult re = ofd.ShowDialog();
+            if (re == DialogResult.OK)
+            {
+                string filename = ofd.FileName;
+                string file = Path.GetFileName(ofd.FileName);
+                string path = Application.StartupPath.Substring(0, Application.StartupPath.Length - 10);
+
+                ruta = path + "\\imagenes\\" + file;
+
+                if (File.Exists(ruta))
+                {
+
+                }
+                else
+                {
+                    try
+                    {
+                        File.Copy(filename, ruta);
+                    }
+                    catch(Exception e)
+                    {
+                        MessageBox.Show(e.ToString());
+                    }
+                    
+                }
+                
+                
+            }
+            return ruta;
+        }
+
+        public static Image ObtenerImagen(string ruta)
+        {
+            Image imagen = Image.FromFile(ruta);
+            return imagen;
+        }
+
+        public static void EliminarImagen(string ruta)
+        {
+            if (File.Exists(ruta))
+            {
+                File.Delete(ruta);
+            }
+        }
     }
 }

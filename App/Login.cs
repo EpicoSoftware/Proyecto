@@ -57,6 +57,8 @@ namespace App
                         this.Visible = false;
                         break;
                     case 3:
+                        App ap = new App();
+                        ap.Visible = true;
                         AdminApp adminApp = new AdminApp();
                         adminApp.Visible = true;
                         this.Visible = false;
