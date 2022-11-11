@@ -117,6 +117,12 @@
     <Compile Include="Admin\AgreJugadoresEn.Designer.cs">
       <DependentUpon>AgreJugadoresEn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ceEquipo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\ceEquipo.Designer.cs">
+      <DependentUpon>ceEquipo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\cePanelCreacion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\AgreJugadoresEn.resx">
       <DependentUpon>AgreJugadoresEn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\ceEquipo.resx">
+      <DependentUpon>ceEquipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\cePanelCreacion.resx">
       <DependentUpon>cePanelCreacion.cs</DependentUpon>

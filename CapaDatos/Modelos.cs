@@ -29,7 +29,7 @@ namespace CapaDatos
         }
         public static string CargarPaises()
         {
-            List<String> listaPais = new List<String>();
+            List<string> listaPais = new List<string>();
             string pais;
             MySqlDataReader reader;
             MySqlConnection conexion = getConexion();
@@ -49,6 +49,27 @@ namespace CapaDatos
 
             var listaPaisJson = JsonConvert.SerializeObject(listaPais);
             return listaPaisJson;
+        }
+        public static int ObtenerIdPais(string nomPais)
+        {
+            int idPais = 0;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from Paises WHERE nomPais = @nomPais";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nomPais", nomPais);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idPais = int.Parse(reader["idPais"].ToString());
+            }
+
+            return idPais;
         }
 
         //AUTENTICACION
@@ -605,6 +626,7 @@ namespace CapaDatos
                 equipo.IdPais = int.Parse(reader["idPais"].ToString());
                 equipo.NomEquipo = reader["nomEquipo"].ToString();
                 equipo.NomDt = reader["nomDt"].ToString();
+                equipo.ApeDt = reader["apellidoDt"].ToString();
                 equipo.RutaEscudo = reader["escudo"].ToString();
                 equipo.EsSeleccion = bool.Parse(reader["esSeleccion"].ToString());
 
@@ -624,7 +646,7 @@ namespace CapaDatos
             conexion.Open();
 
             string sql =
-                "SELECT * from equipo WHERE idDeporte = @idDeporte AND idPais = @idPais";
+                "SELECT * from Equipo WHERE idDeporte = @idDeporte AND idPais = @idPais";
 
             MySqlCommand comando = new MySqlCommand(sql, conexion);
             comando.Parameters.AddWithValue("@idDeporte", idDeporte);
@@ -639,6 +661,7 @@ namespace CapaDatos
                 equipo.IdPais = int.Parse(reader["idPais"].ToString());
                 equipo.NomEquipo = reader["nomEquipo"].ToString();
                 equipo.NomDt = reader["nomDt"].ToString();
+                equipo.ApeDt = reader["apellidoDt"].ToString();
                 equipo.RutaEscudo = reader["escudo"].ToString();
                 equipo.EsSeleccion = bool.Parse(reader["esSeleccion"].ToString());
 
@@ -647,6 +670,140 @@ namespace CapaDatos
 
             var listaEquipoJson = JsonConvert.SerializeObject(listaEquipo);
             return listaEquipoJson;
+        }
+
+        public static string CrearEquipo(Equipo equipo)
+        {
+            string respuesta = "";
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "INSERT INTO Equipo (nomEquipo, escudo, nomDt, apellidoDt, esSeleccion, idDeporte, idPais) " +
+                    "VALUES (@nomEquipo, @escudo, @nomDt, @apellidoDt, @esSeleccion, @idDeporte, @idPais);";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@nomEquipo", equipo.NomEquipo);
+                comando.Parameters.AddWithValue("@escudo", equipo.RutaEscudo);
+                comando.Parameters.AddWithValue("@nomDt", equipo.NomDt);
+                comando.Parameters.AddWithValue("@apellidoDt", equipo.ApeDt);
+                comando.Parameters.AddWithValue("@esSeleccion", equipo.EsSeleccion);
+                comando.Parameters.AddWithValue("@idDeporte", equipo.IdDeporte);
+                comando.Parameters.AddWithValue("@idPais", equipo.IdPais);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+                MessageBox.Show(e.ToString());
+            }
+
+            return respuesta;
+
+
+        }
+
+        public static string EliminarEquipo(int idEquipo)
+        {
+            string respuesta = null;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "DELETE FROM Equipo WHERE idEquipo = @idEquipo;";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@idEquipo", idEquipo);
+                reader = comando.ExecuteReader();
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+            return respuesta;
+        }
+
+        public static string ActulizarEquipo(Equipo equipo)
+        {
+            string respuesta = "";
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "UPDATE Equipo " +
+                    "SET nomEquipo = @nomEquipo, " +
+                    "escudo = @escudo, " +
+                    "nomDt = @nomDt, " +
+                    "apellidoDt = @apellidoDt, " +
+                    "esSeleccion = @esSeleccion, " +
+                    "idDeporte = @idDeporte, " +
+                    "idPais = @idPais " +
+                    "WHERE (idEquipo = @idEquipo);";
+                   
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@idEquipo", equipo.IdEquipo);
+                comando.Parameters.AddWithValue("@nomEquipo", equipo.NomEquipo);
+                comando.Parameters.AddWithValue("@escudo", equipo.RutaEscudo);
+                comando.Parameters.AddWithValue("@nomDt", equipo.NomDt);
+                comando.Parameters.AddWithValue("@apellidoDt", equipo.ApeDt);
+                comando.Parameters.AddWithValue("@esSeleccion", equipo.EsSeleccion);
+                comando.Parameters.AddWithValue("@idDeporte", equipo.IdDeporte);
+                comando.Parameters.AddWithValue("@idPais", equipo.IdPais);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+            return respuesta;
+
+
+        }
+
+        public static string ObtenerEquipoFiltro(string nombre, int idPais)
+        {
+            Equipo equipo = null;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from Equipo WHERE nomEquipo LIKE @nombre AND idPais = @idPais";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nombre", nombre);
+            comando.Parameters.AddWithValue("@idPais", idPais);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                equipo = new Equipo();
+                equipo.IdEquipo = int.Parse(reader["idEquipo"].ToString());
+                equipo.IdDeporte = int.Parse(reader["idDeporte"].ToString());
+                equipo.IdPais = int.Parse(reader["idPais"].ToString());
+                equipo.NomEquipo = reader["nomEquipo"].ToString();
+                equipo.NomDt = reader["nomDt"].ToString();
+                equipo.ApeDt = reader["apellidoDt"].ToString();
+                equipo.RutaEscudo = reader["escudo"].ToString();
+                equipo.EsSeleccion = bool.Parse(reader["esSeleccion"].ToString());
+            }
+
+            var equipoJson = JsonConvert.SerializeObject(equipo);
+            return equipoJson;
         }
 
         public static int ObtenerIdDeporte(string nomDeporte)
@@ -849,6 +1006,223 @@ namespace CapaDatos
             }
 
             return respuesta;
+        }
+
+        public static string CrearJugador(Jugadores jugador)
+        {
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "INSERT INTO Jugador (Nombre, Apellido, FechaNac, idPais) VALUES (@nombre, @apellido, @fechaNac, @idPais);";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@nombre", jugador.Nombre);
+                comando.Parameters.AddWithValue("@apellido", jugador.Apellido);
+                comando.Parameters.AddWithValue("@fechaNac", jugador.FechaNac);
+                comando.Parameters.AddWithValue("@idPais", jugador.IdPais);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+                MessageBox.Show(respuesta);
+            }
+
+            return respuesta;
+        }
+
+        public static int ObtenerIdJugador(string nombre, string apellido, string fechaNac, int idPais)
+        {
+            Jugadores juga = new Jugadores();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from Jugador WHERE Nombre = @nombre AND Apellido = @apellido AND FechaNac = @fechaNac AND idPais = @idPais";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nombre", nombre);
+            comando.Parameters.AddWithValue("@apellido", apellido);
+            comando.Parameters.AddWithValue("@fechaNac", fechaNac);
+            comando.Parameters.AddWithValue("@idPais", idPais);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                juga.IdJugador = int.Parse(reader["idJugador"].ToString());
+            }
+
+            MessageBox.Show("idJugador: " + juga.IdJugador);
+            return juga.IdJugador;
+        }
+
+        public static string JugadorFormaParte(int idJugador, int idEquipo)
+        {
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "INSERT INTO Formaparte (idJugador, idEquipo) VALUES(@idJugador, @idEquipo);";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@idJugador", idJugador);
+                comando.Parameters.AddWithValue("@idEquipo", idEquipo);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+                MessageBox.Show(respuesta);
+            }
+
+            return respuesta;
+        }
+
+        public static string EliminarJugador(int idJugador)
+        {
+            string respuesta = null;
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "DELETE FROM Enceuntroind_jugadores WHERE idJugador = @idJugador; " +
+                    "DELETE FROM Formaparte WHERE idJugador = @idJugador; " +
+                    "DELETE FROM Jugador WHERE idJugador = @idJugador; ";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@id", idJugador);
+                reader = comando.ExecuteReader();
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+            }
+
+            return respuesta;
+        }
+
+        public static void ActualizarJugador(Jugadores jugador)
+        {
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "UPDATE Jugador SET " +
+                "Nombre = @nombre, " +
+                "Apellido = @apellido, " +
+                "FechaNac = @fechaNac, " +
+                "idPais = @idPais " +
+                "WHERE idJugador = @idJugador; ";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@idJugador", jugador.IdJugador);
+            comando.Parameters.AddWithValue("@nombre", jugador.Nombre);
+            comando.Parameters.AddWithValue("@apellido", jugador.Apellido);
+            comando.Parameters.AddWithValue("@fechaNac", jugador.FechaNac);
+            comando.Parameters.AddWithValue("@idPais", jugador.IdPais);
+            reader = comando.ExecuteReader();
+        }
+
+        public static string ListaJugadoresEquipo(int idEquipo)
+        {
+            Jugadores juga;
+            List<Jugadores> listaJuga = new List<Jugadores>();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * FROM Jugador WHERE idJugador = (SELECT idJugador FROM Formaparte WHERE idEquipo = @idEquipo)";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@idEquipo", idEquipo);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                juga = new Jugadores();
+                juga.IdJugador = int.Parse(reader["idJugador"].ToString());
+                juga.Nombre = reader["Nombre"].ToString();
+                juga.Apellido = reader["Apellido"].ToString();
+                juga.IdPais = int.Parse(reader["idPais"].ToString());
+                juga.FechaNac = reader["FechaNac"].ToString();
+                listaJuga.Add(juga);
+            }
+            var listaJugadores = JsonConvert.SerializeObject(listaJuga);
+            return listaJugadores;
+        }
+
+        public static string BuscarJugador(string nombre, string apellido, int idPais)
+        {
+            Jugadores juga = new Jugadores();
+            MySqlDataReader reader;
+            MySqlConnection conexion = getConexion();
+            conexion.Open();
+
+            string sql =
+                "SELECT * from Jugador WHERE Nombre = @nombre AND Apellido = @apellido AND FechaNac = @fechaNac AND idPais = @idPais";
+
+            MySqlCommand comando = new MySqlCommand(sql, conexion);
+            comando.Parameters.AddWithValue("@nombre", nombre);
+            comando.Parameters.AddWithValue("@apellido", apellido);
+            comando.Parameters.AddWithValue("@idPais", idPais);
+            reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                juga.IdJugador = int.Parse(reader["idJugador"].ToString());
+                juga.Nombre = reader["Nombre"].ToString();
+                juga.Apellido = reader["Apellido"].ToString();
+                juga.FechaNac = reader["FechaNac"].ToString();
+                juga.IdPais = int.Parse(reader["idPais"].ToString());
+            }
+
+            var jugadorJson = JsonConvert.SerializeObject(juga);
+            return jugadorJson;
+        }
+
+        public static void AgregarJugadorEquipoEncuentro(int idJugador, int idEncuentro, int idEquipo)
+        {
+            string respuesta = null;
+            MySqlConnection conexion = getConexion();
+
+            try
+            {
+                conexion.Open();
+
+                string sql =
+                    "INSERT INTO encuentroequi_equipo (idEncuentro, idEquipo, idJugador) VALUES(@idEncuentro, @idEquipo, @idJugador);";
+
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.Parameters.AddWithValue("@idJugador", idJugador);
+                comando.Parameters.AddWithValue("@idEquipo", idEquipo);
+                comando.Parameters.AddWithValue("@idEncuentro", idEncuentro);
+
+                Console.WriteLine(comando.ExecuteNonQuery());
+            }
+            catch (Exception e)
+            {
+                respuesta = e.ToString();
+                MessageBox.Show(respuesta);
+            }
+
         }
 
     }

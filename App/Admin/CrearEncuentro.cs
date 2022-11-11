@@ -55,5 +55,11 @@ namespace App.Admin
             uc.TipoEncuentro = 1;
             agregarUserControl(uc);
         }
+
+        private void btnEquipos_Click(object sender, EventArgs e)
+        {
+            ceEquipo uc = new ceEquipo();
+            agregarUserControl(uc);
+        }
     }
 }

@@ -22,37 +22,39 @@ namespace App.Admin
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if ((string.IsNullOrEmpty(txtNombre.Text)) && string.IsNullOrEmpty(txtApellido.Text) && cboDeporte.SelectedItem == null)
+            if ((string.IsNullOrEmpty(txtNombre.Text)) || string.IsNullOrEmpty(txtApellido.Text) || cboPais.SelectedItem == null)
             {
-                MessageBox.Show("Debe agregar algun criterio de busqueda");
-                //Debe agregar algun criterio de busqueda
-                
-            }
-            if (string.IsNullOrEmpty(txtNombre.Text))
-            {
-                if (cboDeporte.SelectedItem == null)
+                switch (Sesion.idIdioma)
                 {
-                    MessageBox.Show("Buscar solo por apellido ");
-                    //Buscar solo por apellido 
-                    //Jugadores jugadorBusqueda = apiResultados.obtenerJugador("", txtNombre,)
+                    case 1:
+                        MessageBox.Show("Debe completar los criterios de busqueda");
+                        break;
+                    case 2:
+                        MessageBox.Show("You must fill all searching criteria");
+                        break;
+                }
+            }
+            else
+            {
+                Jugadores jugadorBusqueda = apiResultados.BuscarJugador(txtNombre.Text, txtApellido.Text, Program.ObtenerIdPais(cboPais.SelectedItem.ToString()));
+                if (jugadorBusqueda == null)
+                {
+                    switch (Sesion.idIdioma)
+                    {
+                        case 1:
+                            MessageBox.Show("No se encontro un jugador para los datos ingresados");
+                            break;
+                        case 2:
+                            MessageBox.Show("We couden't find a player for the entered data");
+                            break;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Buscar por apellido en Deporte");
-                    //Buscar por apellido en Deporte
+                    txtNombreJugador.Text = jugadorBusqueda.Nombre;
+                    txtApellidoJugador.Text = jugadorBusqueda.Apellido;
+                    cboNacionalidadJugador.SelectedIndex = jugadorBusqueda.IdPais - 1;
                 }
-            }
-            if (string.IsNullOrEmpty(txtApellido.Text))
-            {
-                if (string.IsNullOrEmpty(cboDeporte.SelectedItem.ToString()))
-                {
-                    MessageBox.Show("Buscar solo por nombre");
-                    //Buscar solo por nombre
-                }
-            }
-            if (cboDeporte.SelectedItem == null)
-            {
-
             }
            
         }
@@ -65,6 +67,7 @@ namespace App.Admin
             {
                 cboNacionalidadJugador.Items.Add(pais);
                 cboPaisEquipo.Items.Add(pais);
+                cboPais.Items.Add(pais);
             }
         }
         private void CargarCboDeportes()
@@ -73,16 +76,16 @@ namespace App.Admin
             listaDeporte = apiResultados.CargarDeportes();
             foreach(Deporte dep in listaDeporte)
             {
-                cboDeporte.Items.Add(dep.NomDeporte);
+                cboPais.Items.Add(dep.NomDeporte);
                 cboDeporteJugador.Items.Add(dep.NomDeporte);
             }
         }
         private void CargarCboEquipos() {
-            if(cboDeporteJugador.SelectedItem != null || cboPaisEquipo != null)
+            if(cboDeporteJugador.SelectedItem != null && cboPaisEquipo.SelectedItem != null)
             {
                 List<Equipo> listaEquipo;
                 int idDeporte = apiResultados.ObtenerIdDeporte(cboDeporteJugador.SelectedItem.ToString());
-                listaEquipo = apiResultados.CargarEquiposFiltro(idDeporte, cboPaisEquipo.SelectedIndex -1);
+                listaEquipo = apiResultados.CargarEquiposFiltro(idDeporte, Program.ObtenerIdPais(cboPaisEquipo.SelectedItem.ToString()));
                 foreach (Equipo equipo in listaEquipo)
                 {
                     cboEquipo.Items.Add(equipo.NomEquipo);
@@ -92,7 +95,38 @@ namespace App.Admin
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            Jugadores jugador = new Jugadores();
+            jugador.Nombre = txtNombreJugador.Text;
+            jugador.Apellido = txtApellidoJugador.Text;
+            jugador.IdPais = Program.ObtenerIdPais(cboNacionalidadJugador.SelectedItem.ToString());
+            jugador.IdDeporte = apiResultados.ObtenerIdDeporte(cboDeporteJugador.SelectedItem.ToString());
+            jugador.FechaNac = dtpFechaNacimiento.Value.ToString("yyyy-MM-dd");
+            jugador.Selaccion = chboxSeleccion.Checked;
 
+            Equipo equipo = new Equipo();
+            equipo = apiResultados.CargarEquipoFiltro(cboEquipo.SelectedItem.ToString(), Program.ObtenerIdPais(cboPaisEquipo.SelectedItem.ToString()));
+
+            apiResultados.ActualizarJugador(jugador);
+
+            switch (Sesion.idIdioma)
+            {
+                case 2:
+                    MessageBox.Show("Player updated succesfully", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Controls.Clear();
+                    InitializeComponent();
+                    CargarCboPaises();
+                    CargarCboDeportes();
+                    CargarCboEquipos();
+                    break;
+                case 1:
+                    MessageBox.Show("Jugador actualizado", "Hecho!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Controls.Clear();
+                    InitializeComponent();
+                    CargarCboPaises();
+                    CargarCboDeportes();
+                    CargarCboEquipos();
+                    break;
+            }
         }
 
         private void ceJugador_Load(object sender, EventArgs e)
@@ -104,6 +138,17 @@ namespace App.Admin
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            Jugadores jugador = new Jugadores();
+            jugador.Nombre = txtNombreJugador.Text;
+            jugador.Apellido = txtApellidoJugador.Text;
+            jugador.IdPais = Program.ObtenerIdPais(cboNacionalidadJugador.SelectedItem.ToString());
+            jugador.IdDeporte = apiResultados.ObtenerIdDeporte(cboDeporteJugador.SelectedItem.ToString());
+            jugador.FechaNac = dtpFechaNacimiento.Value.ToString("yyyy-MM-dd");
+            jugador.Selaccion = chboxSeleccion.Checked;
+
+            Equipo equipo = new Equipo();
+            equipo = apiResultados.CargarEquipoFiltro(cboEquipo.SelectedItem.ToString(), Program.ObtenerIdPais(cboPaisEquipo.SelectedItem.ToString()));
+
             DialogResult res;
             string mensajeEsp = 
                         "Nombre: " + txtNombreJugador.Text + " " + txtApellidoJugador.Text +
@@ -132,13 +177,18 @@ namespace App.Admin
                     }
                     else
                     {
-                        //apiAuth.EliminarUsuario(usuarioSeleccionado.IdUsuario, usuarioSeleccionado.IdTipoUsuario);
-                        MessageBox.Show("Jugador correctamete creado", "Listo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Controls.Clear();
-                        InitializeComponent();
-                        CargarCboPaises();
-                        CargarCboDeportes();
-                        CargarCboEquipos();
+                        string respuesta = apiResultados.RegistrarJugador(jugador, equipo);
+                        if (string.IsNullOrEmpty(respuesta))
+                        {
+                            MessageBox.Show("Jugador correctamete creado", "Listo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Controls.Clear();
+                            InitializeComponent();
+                            CargarCboPaises();
+                            CargarCboDeportes();
+                            CargarCboEquipos();
+                        }
+                        else MessageBox.Show("Jugador no pudo ser creado", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
                     break;
                 case 2:
@@ -149,13 +199,19 @@ namespace App.Admin
                     }
                     else
                     {
-                        //apiAuth.EliminarUsuario(usuarioSeleccionado.IdUsuario, usuarioSeleccionado.IdTipoUsuario);
-                        MessageBox.Show("Player created succesfully", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Controls.Clear();
-                        InitializeComponent();
-                        CargarCboPaises();
-                        CargarCboDeportes();
-                        CargarCboEquipos();
+                        string respuesta = apiResultados.RegistrarJugador(jugador, equipo);
+                        if (string.IsNullOrEmpty(respuesta))
+                        {
+                            MessageBox.Show("Player created succesfully", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Controls.Clear();
+                            InitializeComponent();
+                            CargarCboPaises();
+                            CargarCboDeportes();
+                            CargarCboEquipos();
+                        }
+                        else MessageBox.Show("Player couden't be created", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
                     }
                     break;
             }
@@ -177,6 +233,16 @@ namespace App.Admin
                 }
             }
 
+        }
+
+        private void cboDeporteJugador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarCboEquipos();
+        }
+
+        private void cboPaisEquipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarCboEquipos();
         }
     }
 }

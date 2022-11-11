@@ -31,10 +31,9 @@
             this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
             this.btnCrear = new Guna.UI2.WinForms.Guna2Button();
             this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
-            this.cboDeporte = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cboPais = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnBuscar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblIdJugador = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtNombreJugador = new Guna.UI2.WinForms.Guna2TextBox();
@@ -55,6 +54,7 @@
             this.dtpFechaNacimiento = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblMensaje = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnBuscar = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // btnEliminar
@@ -109,29 +109,29 @@
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // cboDeporte
+            // cboPais
             // 
-            this.cboDeporte.AutoRoundedCorners = true;
-            this.cboDeporte.BackColor = System.Drawing.Color.Transparent;
-            this.cboDeporte.BorderRadius = 17;
-            this.cboDeporte.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboDeporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDeporte.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboDeporte.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboDeporte.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboDeporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboDeporte.ItemHeight = 30;
-            this.cboDeporte.Location = new System.Drawing.Point(436, 84);
-            this.cboDeporte.Name = "cboDeporte";
-            this.cboDeporte.Size = new System.Drawing.Size(218, 36);
-            this.cboDeporte.TabIndex = 41;
+            this.cboPais.AutoRoundedCorners = true;
+            this.cboPais.BackColor = System.Drawing.Color.Transparent;
+            this.cboPais.BorderRadius = 17;
+            this.cboPais.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPais.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboPais.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboPais.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboPais.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboPais.ItemHeight = 30;
+            this.cboPais.Location = new System.Drawing.Point(436, 84);
+            this.cboPais.Name = "cboPais";
+            this.cboPais.Size = new System.Drawing.Size(218, 36);
+            this.cboPais.TabIndex = 41;
             // 
             // lblTitulo
             // 
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
-            this.lblTitulo.Location = new System.Drawing.Point(297, 18);
+            this.lblTitulo.Location = new System.Drawing.Point(28, 24);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(233, 36);
             this.lblTitulo.TabIndex = 40;
@@ -158,26 +158,6 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(179, 40);
             this.txtNombre.TabIndex = 48;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Animated = true;
-            this.btnBuscar.AutoRoundedCorners = true;
-            this.btnBuscar.BorderRadius = 19;
-            this.btnBuscar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
-            this.btnBuscar.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Image = global::App.Properties.Resources.busqueda;
-            this.btnBuscar.Location = new System.Drawing.Point(669, 82);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(126, 40);
-            this.btnBuscar.TabIndex = 49;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // guna2HtmlLabel4
             // 
@@ -285,9 +265,9 @@
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(449, 64);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(49, 24);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(27, 24);
             this.guna2HtmlLabel2.TabIndex = 57;
-            this.guna2HtmlLabel2.Text = "Deporte";
+            this.guna2HtmlLabel2.Text = "Pais";
             // 
             // cboBusqueda
             // 
@@ -374,6 +354,7 @@
             this.cboDeporteJugador.Name = "cboDeporteJugador";
             this.cboDeporteJugador.Size = new System.Drawing.Size(165, 36);
             this.cboDeporteJugador.TabIndex = 67;
+            this.cboDeporteJugador.SelectedIndexChanged += new System.EventHandler(this.cboDeporteJugador_SelectedIndexChanged);
             // 
             // lblDeporte
             // 
@@ -400,6 +381,7 @@
             this.cboPaisEquipo.Name = "cboPaisEquipo";
             this.cboPaisEquipo.Size = new System.Drawing.Size(234, 36);
             this.cboPaisEquipo.TabIndex = 68;
+            this.cboPaisEquipo.SelectedIndexChanged += new System.EventHandler(this.cboPaisEquipo_SelectedIndexChanged);
             // 
             // guna2HtmlLabel3
             // 
@@ -467,6 +449,26 @@
             this.lblMensaje.TabIndex = 73;
             this.lblMensaje.Text = "Si no encuentras el equipo puedes <br>crearlo en el panel de la izquierda";
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Animated = true;
+            this.btnBuscar.AutoRoundedCorners = true;
+            this.btnBuscar.BorderRadius = 19;
+            this.btnBuscar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBuscar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(101)))), ((int)(((byte)(255)))));
+            this.btnBuscar.Font = new System.Drawing.Font("Poppins Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Image = global::App.Properties.Resources.busqueda;
+            this.btnBuscar.Location = new System.Drawing.Point(669, 82);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(126, 40);
+            this.btnBuscar.TabIndex = 49;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // ceJugador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,7 +496,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.cboDeporte);
+            this.Controls.Add(this.cboPais);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.guna2HtmlLabel5);
@@ -511,7 +513,7 @@
         private Guna.UI2.WinForms.Guna2Button btnEliminar;
         private Guna.UI2.WinForms.Guna2Button btnCrear;
         private Guna.UI2.WinForms.Guna2Button btnActualizar;
-        private Guna.UI2.WinForms.Guna2ComboBox cboDeporte;
+        private Guna.UI2.WinForms.Guna2ComboBox cboPais;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblTitulo;
         private Guna.UI2.WinForms.Guna2TextBox txtNombre;
         private Guna.UI2.WinForms.Guna2Button btnBuscar;

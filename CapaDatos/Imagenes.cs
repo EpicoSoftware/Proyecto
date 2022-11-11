@@ -46,7 +46,7 @@ namespace CapaDatos
         {
             string ruta = "";
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            ofd.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
             DialogResult re = ofd.ShowDialog();
             if (re == DialogResult.OK)
             {
@@ -58,7 +58,7 @@ namespace CapaDatos
 
                 if (File.Exists(ruta))
                 {
-
+                   
                 }
                 else
                 {
@@ -80,7 +80,10 @@ namespace CapaDatos
 
         public static Image ObtenerImagen(string ruta)
         {
-            Image imagen = Image.FromFile(ruta);
+            Image imagen = null;
+            if (File.Exists(ruta))
+                imagen = Image.FromFile(ruta);
+            else MessageBox.Show("La imagen no exite");
             return imagen;
         }
 

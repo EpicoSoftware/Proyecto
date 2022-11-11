@@ -10,7 +10,7 @@ namespace CapaDatos
     public class Equipo
     {
         int idEquipo, idDeporte, idPais;
-        string nomEquipo, rutaEscudo, nomDt;
+        string nomEquipo, rutaEscudo, nomDt, apeDt;
         bool esSeleccion;
 
         public int IdEquipo { get => idEquipo; set => idEquipo = value; }
@@ -20,5 +20,6 @@ namespace CapaDatos
         public string NomDt { get => nomDt; set => nomDt = value; }
         public bool EsSeleccion { get => esSeleccion; set => esSeleccion = value; }
         public int IdPais { get => idPais; set => idPais = value; }
+        public string ApeDt { get => apeDt; set => apeDt = value; }
     }
 }

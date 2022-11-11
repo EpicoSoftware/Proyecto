@@ -22,6 +22,12 @@ namespace App
             return listaPaises;
         }
 
+        public static int ObtenerIdPais(string nomPais)
+        {
+            int id = Modelos.ObtenerIdPais(nomPais);
+            return id;
+        }
+
         private static int idioma;
         public static int Idioma { get => idioma; set => idioma = value; }
 

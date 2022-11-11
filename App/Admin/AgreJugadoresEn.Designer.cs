@@ -73,6 +73,7 @@
             this.cboJugadores.Name = "cboJugadores";
             this.cboJugadores.Size = new System.Drawing.Size(192, 36);
             this.cboJugadores.TabIndex = 42;
+            this.cboJugadores.SelectedIndexChanged += new System.EventHandler(this.cboJugadores_SelectedIndexChanged);
             // 
             // guna2HtmlLabel2
             // 
@@ -98,6 +99,7 @@
             this.btnAgregar.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.btnAgregar.Size = new System.Drawing.Size(42, 42);
             this.btnAgregar.TabIndex = 59;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // lblTitulo
             // 
@@ -138,6 +140,7 @@
             this.btnConfirmar.Size = new System.Drawing.Size(277, 45);
             this.btnConfirmar.TabIndex = 62;
             this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // btnEliminar
             // 
@@ -179,6 +182,7 @@
             this.Name = "AgreJugadoresEn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Jugadores";
+            this.Load += new System.EventHandler(this.AgreJugadoresEn_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
